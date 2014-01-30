@@ -7,7 +7,7 @@ else
   gem 'gds-api-adapters', '8.2.3'
 end
 
-
+gem 'exception_notification', '4.0.1'
 gem 'plek', '1.3.0'
 
 group :test do
