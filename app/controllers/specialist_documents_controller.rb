@@ -1,6 +1,6 @@
 require 'gds_api/helpers'
 
-class CasesController < ApplicationController
+class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
 
   def show; end

@@ -1,3 +1,3 @@
 SpecialistFrontend::Application.routes.draw do
-  resources :cases, only: [:show]
+  resources :specialist_documents, only: [:show], path: 'specialist-documents'
 end
