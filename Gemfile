@@ -8,6 +8,7 @@ else
 end
 
 gem 'exception_notification', '4.0.1'
+gem 'aws-ses', '0.5.0', require: 'aws/ses'
 gem 'plek', '1.3.0'
 
 group :test do
