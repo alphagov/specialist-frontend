@@ -13,6 +13,14 @@ Bundler.require(:default, Rails.env)
 
 module SpecialistFrontend
   class Application < Rails::Application
+    
+    config.assets.precompile += %w(
+      application.scss
+      application-ie6.scss
+      application-ie7.scss
+      application-ie8.scss
+    )
+        
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
