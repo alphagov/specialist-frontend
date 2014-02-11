@@ -1,7 +1,99 @@
-/*
- *= require_self
- *= require_tree .
- */
-body {
-  background:red;
+@import "colours";
+@import "measurements";
+@import "conditionals";
+@import "shims";
+@import "typography";
+
+@import "reset";
+
+#wrapper {
+  display: block;
+  text-align: center;
+
+  @include media(desktop) {
+    padding-bottom: $gutter*2;
+  }
+
+
+  #page {
+    text-align: left;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: auto;
+    max-width: 960 + $gutter*2;
+    @extend %contain-floats;
+
+    @include ie-lte(8){
+      width: 960px;
+    }
+  }
 }
+
+.inner-block {
+  padding: 0 $gutter-half;
+
+  @include media(tablet){
+    padding: 0 $gutter;
+  }
+}
+
+#wrapper {
+  header {
+    @extend %contain-floats;
+    padding-top: $gutter-half;
+
+    @include media(tablet){
+      padding-top: $gutter*2;
+    }
+
+    .category {
+      @include core-24;
+      color: $secondary-text-colour;
+    }
+    h1 {
+      @include bold-36;
+      margin-bottom: $gutter-half;
+      max-width: 15em;
+
+      @include media(tablet){
+        margin-bottom: $gutter;
+      }
+    }
+  }
+
+  .metadata {
+    position: relative;
+    @include core-14;
+    @extend %contain-floats;
+
+    @include media(tablet){
+      float: left;
+      width: $two-thirds;
+    }
+
+    dt {
+      float: left;
+      clear: left;
+      width: auto;
+      min-width: 120px;
+      @include media(tablet) {
+        padding-right: $gutter-one-third;
+      }
+    }
+    dd {
+      float: left;
+      width: 57%;
+      @include media(desktop){
+        width: 70%;
+      }
+    }
+  }
+  aside {
+    @include media(tablet){
+      float: left;
+      width: $one-third;
+    }
+  }
+}
+

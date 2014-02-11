@@ -11,8 +11,11 @@
   </head>
 
   <body>
-    <div id="wrapper">
-    <%= yield %>
-  </div>
+    <div id="global-breadcrumb" class="header-context"></div>
+    <main id="wrapper" role="main">
+      <div id="page">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
