@@ -3,8 +3,10 @@
 @import "conditionals";
 @import "shims";
 @import "typography";
+@import "css3";
 
 @import "reset";
+@import "govspeak";
 
 #wrapper {
   display: block;
@@ -41,10 +43,10 @@
 #wrapper {
   header {
     @extend %contain-floats;
-    padding-top: $gutter-half;
+    padding: $gutter-half 0;
 
     @include media(tablet){
-      padding-top: $gutter*2;
+      padding: $gutter*2 0 $gutter;
     }
 
     .category {
@@ -90,9 +92,69 @@
     }
   }
   aside {
+    padding: $gutter-half 0 0;
+
     @include media(tablet){
       float: left;
       width: $one-third;
+      padding: 0;
+    }
+
+    p {
+      @include core-19;
+
+      @include media(tablet){
+        @include core-24;
+      }
+      a {
+        font-weight: bold;
+        &.tag {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  nav {
+    list-style: none;
+    @include core-16;
+
+    @include media(tablet){
+      width: $one-third;
+      float: left;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    li {
+      padding-top: 10px;
+      font-weight: bold;
+    }
+  }
+  .dash-list {
+    li {
+      list-style-position: inside;
+      padding-right: $gutter-half;
+      padding-top: 5px;
+      font-weight: normal;
+
+      @media (min-width: 1px ){ // target modern browsers
+        margin-left: $gutter-half;
+        list-style: none;
+        &:before {
+          content: "-";
+          position: relative;
+          float: left;
+          width: $gutter-half;
+          margin-left: $gutter-half*-1;
+        }
+      }
+    }
+  }
+  .content {
+    @include media(tablet){
+      width: $two-thirds;
+      float: left;
     }
   }
 }
