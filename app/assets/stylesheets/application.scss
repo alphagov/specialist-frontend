@@ -11,11 +11,11 @@
 #wrapper {
   display: block;
   text-align: center;
-
+  padding-bottom: $gutter;
+  
   @include media(desktop) {
     padding-bottom: $gutter*2;
   }
-
 
   #page {
     text-align: left;
@@ -44,9 +44,9 @@
   header {
     @extend %contain-floats;
     padding: $gutter-half 0;
-
+    
     @include media(tablet){
-      padding: $gutter*2 0 $gutter;
+      padding: $gutter*2 0 $gutter*2;
     }
 
     .category {
@@ -89,37 +89,80 @@
         }
       }
     }
-  }
-  aside {
-    padding: $gutter-half 0 0;
-
-    @include media(tablet){
-      float: left;
-      width: $one-third;
-      padding: 0;
-    }
-
-    p {
-      @include core-19;
+    aside {
+      padding: $gutter-half 0 0;
 
       @include media(tablet){
-        @include core-24;
+        float: left;
+        width: $one-third;
+        padding: 0;
       }
-      a {
-        font-weight: bold;
-        &.tag {
-          text-decoration: none;
+      
+      p {
+        @include core-19;
+
+        @include media(tablet){
+          @include core-24;
+        }
+        a {
+          font-weight: bold;
+          &.tag {
+            text-decoration: none;
+          }
+        }
+      } 
+    }
+    .summary {
+      @include core-19;
+      clear:both;
+      padding: $gutter/2 0 0;
+      
+      @include media(tablet){
+        @include core-24;
+        padding: $gutter 0 0;
+      }
+    }
+    .updates {
+      @include core-19;
+      padding: $gutter/2 0 0;
+      
+      @include media(tablet){
+        padding: $gutter 0 0;
+      }
+      
+      ul {
+        display:inline;
+      }
+      li {
+        list-style:none;
+        display: inline;
+        margin-left: 16px;
+        span {
+          @include inline-block;
+          vertical-align: middle;
+          background: url(image-path('updates_sprite.jpg')) no-repeat;
+          height:25px;
+          overflow:hidden;
+          text-indent: -999em;
+          margin-right: 8px;
+        }
+        
+        .email {
+          background-position: 97% 0;
         }
       }
     }
   }
+  
   nav {
     list-style: none;
     @include core-16;
-
+    padding-bottom: $gutter;
+    
     @include media(tablet){
       width: $one-third;
       float: left;
+      padding-bottom: $gutter*2;
     }
 
     a {
