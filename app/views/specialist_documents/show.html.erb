@@ -25,17 +25,7 @@
       <dd><%= @document.details.outcome_type.capitalize %></dd>
     </dl>
   </div>
-  
-  <% if @document.related.present? %>
-  <aside>
-    <% @document.related.each do | link | %>
-    <div class="inner-block">
-      <p><!--<a href="#" class="tag">Benefits</a> like<br>--><a href="<%=link[:web_url]%>"><%=link[:title]%></a></p>
-    </div>
-    <% end %>
-  </aside>
-  <% end %>
-  
+    
   <div class='summary'>
     <div class='inner-block'>
       <p>

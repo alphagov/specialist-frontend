@@ -89,29 +89,6 @@
         }
       }
     }
-    aside {
-      padding: $gutter-half 0 0;
-
-      @include media(tablet){
-        float: left;
-        width: $one-third;
-        padding: 0;
-      }
-      
-      p {
-        @include core-19;
-
-        @include media(tablet){
-          @include core-24;
-        }
-        a {
-          font-weight: bold;
-          &.tag {
-            text-decoration: none;
-          }
-        }
-      } 
-    }
     .summary {
       @include core-19;
       clear:both;
