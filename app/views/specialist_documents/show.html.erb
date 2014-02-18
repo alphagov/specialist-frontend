@@ -25,7 +25,6 @@
       <dd><%= @document.details.outcome_type.capitalize %></dd>
     </dl>
   </div>
-    
   <div class='summary'>
     <div class='inner-block'>
       <p>
@@ -191,27 +190,17 @@
   </div>
   <div class='links'>
     <dl class='inner-block'>
-      <dt>Organisations:</dt>
-      <dd>
-        <ul>
-          <li><a href='#'>Bona Vacantia</a></li>
-          <li><a href='#'>Treasury Solicitor's Department</a></li>
-        </ul>
-      </dd>
       <dt>Sector:</dt>
-      <dd><a href='#'>Oil and gas Exploration and petroleum</a></dd>
-      <dt>Collection:</dt>
-      <dd><a href='#'>Oil and gas Exploration and petroleum</a></dd>
-      <dt>Policy:</dt>
-      <dd>
-        <ul>
-          <li><a href='#'>Energy</a></li>
-          <li><a href='#'>Providing regulation and licensing of energy industries and infrastructure</a></li>
-          <li><a href='#'>Maintaining UK energy security</a></li>
-        </ul>
-      </dd>
-      <dt>Minister:</dt>
-      <dd><a href='#'>Michael Fallon MP</a></dd>
+      <dd><a href="#"><%= @document.details.market_sector.gsub('-', " ").titleize %></a></dd>
+
+      <dt>Case type:</dt>
+      <dd><a href="#"><%= @document.details.case_type %></a></dd>
+
+      <dt>Case state:</dt>
+      <dd><a href="#"><%= @document.details.case_state.capitalize %></a></dd><!-- link back to filter page with that option selected -->
+
+      <dt>Outcome type:</dt>
+      <dd><%= @document.details.outcome_type.capitalize %></dd>
     </dl>
   </div>
 </footer>
