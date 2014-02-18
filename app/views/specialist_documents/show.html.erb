@@ -1,40 +1,45 @@
 <header>
   <div class="inner-block">
     <span class="category">Competition &amp; Markets Authority case</span>
-    <h1>Private healthcare market investigation</h1>
+    <h1><%= @document.title %></h1>
   </div>
   <div class="metadata">
     <dl class="inner-block">
-      <dt>Date of referral:</dt>
-      <dd><time title="2014-01-22T12:38:13+00:00">4 April 2012</time></dd>
-
-      <dt>Statutory deadline:</dt>
-      <dd><time title="2014-01-22T12:38:13+00:00">3 April 2014</time></dd>
+      <dt>Opened date:</dt>
+      <dd><time title="2014-01-22T12:38:13+00:00"><%= Time.new(@document.updated_at).strftime('%-d %B %Y') %></time></dd>
 
       <dt>Page history:</dt>
-      <dd class="js-toggle-change-notes change-notes">
-      Updated <time class="published-at date" title="2014-01-22T12:38:13+00:00">14 October 2013</time>, <span class="toggle">see all updates</span>
+      <dd>Updated <time title="2014-01-22T12:38:13+00:00"><%= Time.new(@document.updated_at).strftime('%-d %B %Y') %></time>, <span>see all updates</span>
       </dd>
 
       <dt>Sector:</dt>
-      <dd><a href="#">Healthcare and medical equipment</a></dd>
+      <dd><a href="#"><%= @document.details.market_sector.gsub('-', " ").titleize %></a></dd>
 
       <dt>Case type:</dt>
-      <dd><a href="#">Market investigation</a></dd>
+      <dd><a href="#"><%= @document.details.case_type %></a></dd>
 
       <dt>Case state:</dt>
-      <dd><a href="#">Open</a></dd>
+      <dd><a href="#"><%= @document.details.case_state.capitalize %></a></dd><!-- link back to filter page with that option selected -->
+      
+      <dt>Outcome type:</dt>
+      <dd><%= @document.details.outcome_type.capitalize %></dd>
     </dl>
   </div>
+  
+  <% if @document.related.present? %>
   <aside>
+    <% @document.related.each do | link | %>
     <div class="inner-block">
-      <p><a href="#" class="tag">Benefits</a> like<br><a href="#">Winter Fuel Payment</a></p>
+      <p><!--<a href="#" class="tag">Benefits</a> like<br>--><a href="<%=link[:web_url]%>"><%=link[:title]%></a></p>
     </div>
+    <% end %>
   </aside>
+  <% end %>
+  
   <div class='summary'>
     <div class='inner-block'>
       <p>
-        The CMA is determining remedies for features of the market or markets for the supply or acquisition of Private Healthcare which prevent, restrict or distort competition.
+        <%= @document.details.summary %>
       </p>
     </div>
   </div>
@@ -72,11 +77,6 @@
     <li class="contact"><a href="#contacts">Contacts</a></li>
   </ol>
 </nav>
-
-
-<pre>
-<%= require 'pp'; @document.to_hash.pretty_inspect %>
-</pre>
 
 <div class="content">
   <div class="inner-block">
@@ -191,9 +191,9 @@
   <div class='history'>
     <div class="inner-block">
       <dl>
-        <dt>Published:</dt>
+        <dt>First published:</dt>
         <dd><time title="2014-01-22T12:38:13+00:00">4 April 2012</time></dd>
-        <dt>Updated:</dt>
+        <dt>Last updated:</dt>
         <dd><time title="2014-01-22T12:38:13+00:00">10 April 2012</time></dd>
       </dl>
       <a href='#'>+ full page history</a>
@@ -223,5 +223,5 @@
       <dt>Minister:</dt>
       <dd><a href='#'>Michael Fallon MP</a></dd>
     </dl>
-  </div>  
+  </div>
 </footer>
