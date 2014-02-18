@@ -17,10 +17,10 @@ module SpecialistFrontend
   class Application < Rails::Application
     
     config.assets.precompile += %w(
-      application.scss
-      application-ie6.scss
-      application-ie7.scss
-      application-ie8.scss
+      application.css
+      application-ie6.css
+      application-ie7.css
+      application-ie8.css
     )
         
     # Settings in config/environments/* take precedence over those specified here.
