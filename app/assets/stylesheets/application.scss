@@ -140,8 +140,9 @@
         span {
           @include inline-block;
           vertical-align: middle;
-          background: url(image-path('updates_sprite.jpg')) no-repeat;
+          background: image-url('updates_sprite.jpg') no-repeat;
           height:25px;
+          width:25px;
           overflow:hidden;
           text-indent: -999em;
           margin-right: 8px;
