@@ -1,2 +1,6 @@
-<h1><%= document.title %></h1>
-<p><%= document.summary %></p>
+<h1><%= @document.title %></h1>
+<p><%= @document.summary %></p>
+
+<pre>
+<%= require 'pp'; @document.to_hash.pretty_inspect %>
+</pre>

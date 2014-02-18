@@ -3,11 +3,12 @@ require 'gds_api/helpers'
 class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
 
-  def show; end
-
-protected
-  def document
-    @document ||= content_api.artefact(params[:id])
+  def show
+    @document = content_api.artefact(params[:path])
+    error_not_found unless @document
   end
-  helper_method :document
+
+  def error_not_found
+    render status: :not_found, text: "404 error not found"
+  end
 end
