@@ -1,7 +1,6 @@
 <!--TODO: link back to filter pages with that options selected for appropriate dd items-->
 <!--TODO: Updates links (what should these be?)-->
 <!--TODO: queryable market sector list-->
-<!--TODO: Page history stuff-->
 <!--TODO: Contents nav (how is this generated?)-->
 
 
@@ -17,7 +16,7 @@
       <dd><%= nice_date_format @document.updated_at %></dd>
 
       <dt>Page history:</dt>
-      <dd>Updated <%= nice_date_format @document.updated_at %>, <span>see all updates</span>
+      <dd>Updated <%= nice_date_format @document.updated_at %>.
       </dd>
 
       <dt>Sector:</dt>
@@ -30,7 +29,7 @@
       <dd><a href="#"><%= @document.details.case_state.capitalize unless @document.details.empty? %></a></dd>
       
       <dt>Outcome type:</dt>
-      <dd><%= @document.details.outcome_type.capitalize unless @document.outcome_type.blank? %></dd>
+      <dd><%= @document.details.outcome_type.capitalize unless @document.details.empty? %></dd>
     </dl>
   </div>
   <div class='summary'>
@@ -92,7 +91,6 @@
         <dt>Last updated:</dt>
         <dd><%= nice_date_format @document.updated_at %></dd>
       </dl>
-      <a href='#'>+ full page history</a>
     </div>
   </div>
   <div class='links'>
