@@ -1,5 +1,4 @@
 <!--TODO: link back to filter pages with that options selected for appropriate dd items-->
-<!--TODO: Updates links (what should these be?)-->
 <!--TODO: queryable market sector list-->
 <!--TODO: Contents nav (govspeak helper, ask edds)-->
 
@@ -16,7 +15,7 @@
       <dd><%= nice_date_format @document.updated_at %></dd>
 
       <dt>Page history:</dt>
-      <dd>Updated <%= nice_date_format @document.updated_at %>.
+      <dd>Updated <%= nice_date_format @document.updated_at %>
       </dd>
 
       <dt>Sector:</dt>
@@ -77,7 +76,7 @@
 <div class="content">
   <div class="inner-block">
     <div class="govspeak">
-      <%= @document.details.body unless @document.details.empty? %>
+      <%= @document.details.body.html_safe unless @document.details.empty? %>
     </div>
   </div>
 </div>
