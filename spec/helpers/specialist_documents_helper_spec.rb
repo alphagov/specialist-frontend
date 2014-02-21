@@ -9,7 +9,6 @@ describe SpecialistDocumentsHelper do
     
     it 'should return a string with <time> tags' do
       html = helper.nice_date_format(@time)
-      /<time.*?>.*?<\/\stime>/.match(html)
       assert(html) =~ /<time.*?>.*?<\/\stime>/
     end
     
