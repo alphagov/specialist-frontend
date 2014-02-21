@@ -23,7 +23,7 @@ describe SpecialistDocumentsHelper do
       assert(helper.nice_date_format(@time).html_safe?)
     end
 
-    it 'should return nil if the string provded is blank or not a time' do
+    it 'should return nil if the string provded is nil' do
       assert(helper.nice_date_format(nil).nil?)
     end
 
