@@ -1,5 +1,5 @@
 module SpecialistDocumentsHelper
-  
+
   def nice_date_format(time_string)
     unless time_string.blank?
       time = Time.zone.parse(time_string)
@@ -9,5 +9,5 @@ module SpecialistDocumentsHelper
       string.html_safe
     end
   end
-  
+
 end
