@@ -11,15 +11,18 @@ gem 'exception_notification', '4.0.1'
 gem 'aws-ses', '0.5.0', require: 'aws/ses'
 gem 'plek', '1.3.0'
 gem 'unicorn', '4.8.1'
+gem 'slimmer', '3.25.0'
 
 group :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'webmock', '1.17.1'
+  gem 'rspec-rails', '2.14.1'
 end
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
   gem 'uglifier', '>= 1.3.0'
+  gem 'govuk_frontend_toolkit', '0.43.0'
 end
 
 gem 'debugger', group: [:development, :test]

@@ -1,0 +1,209 @@
+@import "colours";
+@import "measurements";
+@import "conditionals";
+@import "shims";
+@import "typography";
+@import "css3";
+
+@import "reset";
+@import "govspeak";
+
+#wrapper {
+  display: block;
+  text-align: center;
+  padding-bottom: $gutter;
+  
+  @include media(desktop) {
+    padding-bottom: $gutter*2;
+  }
+
+  #page {
+    text-align: left;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: auto;
+    max-width: 960 + $gutter*2;
+    @extend %contain-floats;
+
+    @include ie-lte(8){
+      width: 960px;
+    }
+  }
+}
+
+.inner-block {
+  padding: 0 $gutter-half;
+
+  @include media(tablet){
+    padding: 0 $gutter;
+  }
+}
+
+#wrapper {
+  header {
+    @extend %contain-floats;
+    padding: $gutter-half 0;
+    
+    @include media(tablet){
+      padding: $gutter*2 0 $gutter*2;
+    }
+
+    .category a{
+      @include core-24;
+      text-decoration:none;
+    }
+    h1 {
+      @include bold-36;
+      margin-bottom: $gutter-half;
+      max-width: 15em;
+
+      @include media(tablet){
+        margin-bottom: $gutter;
+      }
+    }
+    .metadata {
+      position: relative;
+      @include core-14;
+      @extend %contain-floats;
+
+      @include media(tablet){
+        float: left;
+        width: $two-thirds;
+      }
+
+      dt {
+        float: left;
+        clear: left;
+        width: auto;
+        min-width: 120px;
+        @include media(tablet){
+          padding-right: $gutter-one-third;
+        }
+      }
+      dd {
+        float: left;
+        width: 57%;
+        @include media(desktop){
+          width: 70%;
+        }
+      }
+    }
+    .summary {
+      @include core-19;
+      clear:both;
+      padding: $gutter/2 0 0;
+      
+      @include media(tablet){
+        @include core-24;
+        padding: $gutter 0 0;
+      }
+    }
+    .updates {
+      @include core-19;
+      padding: $gutter/2 0 0;
+      
+      @include media(tablet){
+        padding: $gutter 0 0;
+      }
+      
+      ul {
+        display:inline;
+      }
+      li {
+        list-style:none;
+        display: inline;
+        margin-left: 16px;
+        span {
+          @include inline-block;
+          vertical-align: middle;
+          background: image-url('updates_sprite.jpg') no-repeat;
+          height:25px;
+          width:25px;
+          overflow:hidden;
+          text-indent: -999em;
+          margin-right: 8px;
+        }
+        
+        .email {
+          background-position: 97% 0;
+        }
+      }
+    }
+  }
+  
+  nav {
+    list-style: none;
+    @include core-16;
+    padding-bottom: $gutter;
+    
+    @include media(tablet){
+      width: $one-third;
+      float: left;
+      padding-bottom: $gutter*2;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    li {
+      padding-top: 10px;
+      font-weight: bold;
+    }
+  }
+  .dash-list {
+    li {
+      list-style-position: inside;
+      padding-right: $gutter-half;
+      padding-top: 5px;
+      font-weight: normal;
+
+      @media (min-width: 1px ){ // target modern browsers
+        margin-left: $gutter-half;
+        list-style: none;
+        &:before {
+          content: "-";
+          position: relative;
+          float: left;
+          width: $gutter-half;
+          margin-left: $gutter-half*-1;
+        }
+      }
+    }
+  }
+  .content {
+    @include media(tablet){
+      width: $two-thirds;
+      float: left;
+    }
+  }
+  footer {
+    dt {
+      @include core-14;
+      padding-top:20px;
+    }
+    dd {
+      @include bold-24;
+      
+      ul {
+        list-style: none;
+      }
+    }
+    .links {
+      a {
+        text-decoration: none;
+      }
+      @include media(tablet){
+        float: right;
+        width: $two-thirds;
+      }
+    }
+    .history {
+      @include media(tablet){
+        float: left;
+        width: $one-third;
+      } 
+    }
+  }
+}
+

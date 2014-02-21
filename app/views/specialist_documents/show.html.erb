@@ -1,6 +1,111 @@
-<h1><%= @document.title %></h1>
-<p><%= @document.summary %></p>
+<!--TODO: link back to filter pages with that options selected for appropriate dd items-->
+<!--TODO: queryable market sector list-->
+<!--TODO: Contents nav (govspeak helper, ask edds)-->
 
-<pre>
-<%= require 'pp'; @document.to_hash.pretty_inspect %>
-</pre>
+
+
+<header>
+  <div class="inner-block">
+    <span class="category"><a href=''>Competition &amp; Markets Authority case</a></span>
+    <h1><%= @document.title %></h1>
+  </div>
+  <div class="metadata">
+    <dl class="inner-block">
+      <dt>Opened date:</dt>
+      <dd><%= nice_date_format @document.updated_at %></dd>
+
+      <dt>Page history:</dt>
+      <dd>Updated <%= nice_date_format @document.updated_at %>
+      </dd>
+
+      <dt>Sector:</dt>
+      <dd><a href="#"><%= @document.details.market_sector %></a></dd><!-- TODO::Waiting for the correct format here, should be available as a queryable market sector list -->
+
+      <dt>Case type:</dt>
+      <dd><a href="#"><%= @document.details.case_type unless @document.details.empty? %></a></dd>
+
+      <dt>Case state:</dt>
+      <dd><a href="#"><%= @document.details.case_state.capitalize unless @document.details.empty? %></a></dd>
+
+      <dt>Outcome type:</dt>
+      <dd><%= @document.details.outcome_type.capitalize unless @document.details.empty? %></dd>
+    </dl>
+  </div>
+  <div class='summary'>
+    <div class='inner-block'>
+      <p>
+        <%= @document.details.summary unless @document.details.empty? %>
+      </p>
+    </div>
+  </div>
+  <div class='updates'>
+    <div class='inner-block'>
+      Get updates to this case
+      <ul>
+        <li><a href='#'><span class='email'>get updates via</span>email</a></li>
+        <li><a href='#'><span class='feed'>get updates via</span>feed</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ol class="inner-block">
+    <li>
+      <a href="#phase-two">Phase 2</a>
+      <ol class="dash-list">
+        <li><a href="#core-documents">Core documents</a></li>
+        <li><a href="#news-releases-and-announcements">News releases and announcements</a></li>
+        <li><a href="#analysis">Analysis</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#annotated-issues-statement">Annotated issues statement</a></li>
+        <li><a href="#provisional-findings-report">Provisional findings report</a></li>
+        <li><a href="#private-healthcare-market-investigation">Private healthcare market investigation</a></li>
+      </ol>
+    </li>
+    <li>
+      <a href="#phase-one">Phase 1</a>
+      <ol class="dash-list">
+        <li><a href="#summary-initial-findings">Summary of initial findings and decision</a></li>
+      </ol>
+    </li>
+    <li class="contact"><a href="#contacts">Contacts</a></li>
+  </ol>
+</nav>
+
+<div class="content">
+  <div class="inner-block">
+    <div class="govspeak">
+      <%= @document.details.body.html_safe unless @document.details.empty? %>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class='history'>
+    <div class="inner-block">
+      <dl>
+        <dt>First published:</dt>
+        <dd><%= nice_date_format @document.updated_at %></dd>
+        <dt>Last updated:</dt>
+        <dd><%= nice_date_format @document.updated_at %></dd>
+      </dl>
+    </div>
+  </div>
+  <div class='links'>
+    <dl class='inner-block'>
+      <dt>Sector:</dt>
+      <dd><a href="#"><%= @document.details.market_sector %></a></dd>
+
+      <dt>Case type:</dt>
+      <dd><a href="#"><%= @document.details.case_type %></a></dd>
+
+      <dt>Case state:</dt>
+      <dd><a href="#"><%= @document.details.case_state.capitalize %></a></dd>
+
+      <dt>Outcome type:</dt>
+      <dd><%= @document.details.outcome_type.capitalize %></dd>
+    </dl>
+  </div>
+</footer>
+

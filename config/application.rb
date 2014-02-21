@@ -10,9 +10,21 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups(assets: %w(development test)))
+
 
 module SpecialistFrontend
   class Application < Rails::Application
+    
+    config.time_zone = 'London'
+    
+    config.assets.precompile += %w(
+      application.css
+      application-ie6.css
+      application-ie7.css
+      application-ie8.css
+    )
+        
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
