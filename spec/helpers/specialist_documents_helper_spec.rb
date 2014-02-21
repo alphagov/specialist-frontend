@@ -4,7 +4,7 @@ describe SpecialistDocumentsHelper do
   describe '#nice_date_format' do
 
     before :all do
-      @time = Time.now.getutc.to_s
+      @time = Time.new(2013, 03, 11, 2, 2, 2, "+00:00").to_s
     end
 
     it 'should return a string with <time> tags' do
@@ -13,8 +13,7 @@ describe SpecialistDocumentsHelper do
     end
 
     it 'should return <time> tag that includes a datetime attribute which is the ISO8601 timestamp for the time provided' do
-      time = Time.now
-      html = helper.nice_date_format(time.to_s)
+      html = helper.nice_date_format(@time)
       datetime = /<time[^>]+datetime=['"](.*?)['"]>/.match(html)[1]
       datetime.should ==  time.iso8601
     end
