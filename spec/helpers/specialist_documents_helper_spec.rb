@@ -15,7 +15,7 @@ describe SpecialistDocumentsHelper do
     it 'should return <time> tag that includes a datetime attribute which is the ISO8601 timestamp for the time provided' do
       time = Time.now
       html = helper.nice_date_format(time.to_s)
-      datetime = /<time.*?datetime=['|"](.*?)['|"]>/.match(html)[1]
+      datetime = /<time.*?datetime=['"](.*?)['"]>/.match(html)[1]
       datetime.should ==  time.iso8601
     end
     
