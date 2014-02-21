@@ -16,6 +16,8 @@ Bundler.require(*Rails.groups(assets: %w(development test)))
 module SpecialistFrontend
   class Application < Rails::Application
     
+    config.time_zone = 'London'
+    
     config.assets.precompile += %w(
       application.css
       application-ie6.css
