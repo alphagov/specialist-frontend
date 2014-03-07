@@ -1,9 +1,3 @@
-<!--TODO: link back to filter pages with that options selected for appropriate dd items-->
-<!--TODO: queryable market sector list-->
-<!--TODO: Contents nav (govspeak helper, ask edds)-->
-
-
-
 <header>
   <div class="inner-block">
     <span class="category"><a href=''>Competition &amp; Markets Authority case</a></span>
@@ -19,7 +13,7 @@
       </dd>
 
       <dt>Sector:</dt>
-      <dd><a href="#"><%= @document.details.market_sector %></a></dd><!-- TODO::Waiting for the correct format here, should be available as a queryable market sector list -->
+      <dd><a href="#"><%= @document.details.market_sector %></a></dd>
 
       <dt>Case type:</dt>
       <dd><a href="#"><%= @document.details.case_type unless @document.details.empty? %></a></dd>
@@ -51,25 +45,7 @@
 
 <nav>
   <ol class="inner-block">
-    <li>
-      <a href="#phase-two">Phase 2</a>
-      <ol class="dash-list">
-        <li><a href="#core-documents">Core documents</a></li>
-        <li><a href="#news-releases-and-announcements">News releases and announcements</a></li>
-        <li><a href="#analysis">Analysis</a></li>
-        <li><a href="#evidence">Evidence</a></li>
-        <li><a href="#annotated-issues-statement">Annotated issues statement</a></li>
-        <li><a href="#provisional-findings-report">Provisional findings report</a></li>
-        <li><a href="#private-healthcare-market-investigation">Private healthcare market investigation</a></li>
-      </ol>
-    </li>
-    <li>
-      <a href="#phase-one">Phase 1</a>
-      <ol class="dash-list">
-        <li><a href="#summary-initial-findings">Summary of initial findings and decision</a></li>
-      </ol>
-    </li>
-    <li class="contact"><a href="#contacts">Contacts</a></li>
+    <%= render 'nav_item', headings: @document.details['headers'] %>
   </ol>
 </nav>
 
