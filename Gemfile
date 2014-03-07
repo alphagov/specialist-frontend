@@ -25,4 +25,7 @@ group :assets do
   gem 'govuk_frontend_toolkit', '0.43.0'
 end
 
-gem 'debugger', group: [:development, :test]
+group :development, :test do
+  gem 'debugger'
+  gem 'jasmine-rails'
+end
