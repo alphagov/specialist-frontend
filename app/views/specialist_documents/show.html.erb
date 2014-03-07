@@ -6,7 +6,10 @@
   <div class="metadata">
     <dl class="inner-block">
       <dt>Opened date:</dt>
-      <dd><%= nice_date_format @document.updated_at %></dd>
+      <dd><%= nice_date_format @document.details.opened_date %></dd>
+
+      <dt>Closed date:</dt>
+      <dd><%= nice_date_format @document.details.closed_date %></dd>
 
       <dt>Page history:</dt>
       <dd>Updated <%= nice_date_format @document.updated_at %>
@@ -61,8 +64,12 @@
   <div class='history'>
     <div class="inner-block">
       <dl>
-        <dt>First published:</dt>
-        <dd><%= nice_date_format @document.updated_at %></dd>
+        <dt>Opened date:</dt>
+        <dd><%= nice_date_format @document.details.opened_date %></dd>
+        <% unless @document.details.closed_date.nil? %>
+          <dt>Closed date:</dt>
+          <dd><%= nice_date_format @document.details.closed_date %></dd>
+        <% end %>
         <dt>Last updated:</dt>
         <dd><%= nice_date_format @document.updated_at %></dd>
       </dl>
