@@ -30,9 +30,10 @@ function error_handler {
 trap "error_handler ${LINENO}" ERR
 github_status "$REPO_NAME" pending "is running on Jenkins"
 
-echo "PASS"
+bundle install --path "${HOME}/bundles/${JOB_NAME}" --deployment --without development
+RAILS_ENV=test bundle exec rake
 
-export EXIT_STATUS="0"
+export EXIT_STATUS=$?
 
 if [ "$EXIT_STATUS" == "0" ]; then
   github_status "$REPO_NAME" success "succeeded on Jenkins"
@@ -40,4 +41,4 @@ else
   github_status "$REPO_NAME" failure "failed on Jenkins"
 fi
 
-exit 0
+exit $EXIT_STATUS
