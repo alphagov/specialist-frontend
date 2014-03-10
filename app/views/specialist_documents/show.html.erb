@@ -66,7 +66,7 @@
       <dl>
         <dt>Opened date:</dt>
         <dd><%= nice_date_format @document.details.opened_date %></dd>
-        <% unless @document.details.closed_date.nil? %>
+        <% if @document.details.closed_date.present? %>
           <dt>Closed date:</dt>
           <dd><%= nice_date_format @document.details.closed_date %></dd>
         <% end %>
