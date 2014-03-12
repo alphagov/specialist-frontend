@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Slimmer::Headers
   before_filter :set_slimmer_headers
   before_filter :set_beta_notice
+  before_filter :set_robots_headers
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -16,4 +17,7 @@ private
     response.headers[Slimmer::Headers::BETA_HEADER] = "true"
   end
 
+  def set_robots_headers
+    response.headers["X-Robots-Tag"] = "none"
+  end
 end
