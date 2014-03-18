@@ -99,37 +99,6 @@
         padding: $gutter 0 0;
       }
     }
-    .updates {
-      @include core-19;
-      padding: $gutter/2 0 0;
-      
-      @include media(tablet){
-        padding: $gutter 0 0;
-      }
-      
-      ul {
-        display:inline;
-      }
-      li {
-        list-style:none;
-        display: inline;
-        margin-left: 16px;
-        span {
-          @include inline-block;
-          vertical-align: middle;
-          background: image-url('updates_sprite.jpg') no-repeat;
-          height:25px;
-          width:25px;
-          overflow:hidden;
-          text-indent: -999em;
-          margin-right: 8px;
-        }
-        
-        .email {
-          background-position: 97% 0;
-        }
-      }
-    }
   }
   
   nav {
