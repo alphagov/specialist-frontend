@@ -1,3 +1,4 @@
+//= require govuk_toolkit
 //= require_tree .
 
 $(function(){
