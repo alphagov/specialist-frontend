@@ -37,8 +37,8 @@
   </div>
 </header>
 
-<nav>
-  <ol class="inner-block">
+<nav class="sidebar">
+  <ol class="inner-block js-stick-at-top-when-scrolling">
     <%= render 'nav_item', headings: @document.details['headers'] %>
   </ol>
 </nav>
@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<footer>
+<footer class="js-footer">
   <div class='history'>
     <div class="inner-block">
       <dl>
