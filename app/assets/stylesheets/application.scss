@@ -7,6 +7,7 @@
 
 @import "reset";
 @import "govspeak";
+@import "stick-at-top-when-scrolling";
 
 #wrapper {
   display: block;
@@ -101,17 +102,18 @@
     }
   }
   
-  nav {
-    list-style: none;
-    @include core-16;
-    padding-bottom: $gutter;
-    
+  .sidebar {
     @include media(tablet){
       width: $one-third;
       float: left;
       padding-bottom: $gutter*2;
     }
 
+    ol {
+      list-style: none;
+      @include core-16;
+      padding-bottom: $gutter;
+    }
     a {
       text-decoration: none;
     }
@@ -147,6 +149,8 @@
     }
   }
   footer {
+    clear: both;
+
     dt {
       @include core-14;
       padding-top:20px;
@@ -171,7 +175,7 @@
       @include media(tablet){
         float: left;
         width: $one-third;
-      } 
+      }
     }
   }
 }
