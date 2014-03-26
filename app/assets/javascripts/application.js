@@ -3,5 +3,8 @@
 
 $(function(){
   GOVUK.primaryLinks.init('.primary-item');
-  GOVUK.stickAtTopWhenScrolling.init();
+
+  if (typeof ieVersion === 'undefined' || ieVersion > 6) {
+    GOVUK.stickAtTopWhenScrolling.init();
+  }
 });
