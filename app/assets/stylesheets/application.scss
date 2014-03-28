@@ -113,6 +113,9 @@
       list-style: none;
       @include core-16;
       padding-bottom: $gutter;
+
+      ol {
+        padding-bottom:0;      }
     }
     a {
       text-decoration: none;
