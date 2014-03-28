@@ -11,20 +11,24 @@ class DocumentPresenter
   end
 
   def date_metadata
-    {
+    date_metadata = {
       "Opened date" => opened_date,
       "Closed date" => closed_date,
       "Updated at" => updated_at,
     }
+
+    date_metadata.reject { |_, value| value.blank? }
   end
 
   def metadata
-    {
+    metadata = {
       "Market sector" => market_sector,
       "Case type" => case_type,
       "Case state" => case_state.capitalize,
       "Outcome type" => outcome_type,
     }
+
+    metadata.reject { |_, value| value.blank? }
   end
 
 end
