@@ -7,32 +7,32 @@
   <div class="metadata">
     <dl class="inner-block">
       <dt>Opened date:</dt>
-      <dd><%= nice_date_format @document.details.opened_date %></dd>
+      <dd><%= nice_date_format @document.opened_date %></dd>
 
       <dt>Closed date:</dt>
-      <dd><%= nice_date_format @document.details.closed_date %></dd>
+      <dd><%= nice_date_format @document.closed_date %></dd>
 
       <dt>Page history:</dt>
       <dd>Updated <%= nice_date_format @document.updated_at %>
       </dd>
 
       <dt>Sector:</dt>
-      <dd><%= @document.details.market_sector %></dd>
+      <dd><%= @document.market_sector %></dd>
 
       <dt>Case type:</dt>
-      <dd><%= @document.details.case_type unless @document.details.empty? %></dd>
+      <dd><%= @document.case_type %></dd>
 
       <dt>Case state:</dt>
-      <dd><%= @document.details.case_state.capitalize unless @document.details.empty? %></dd>
+      <dd><%= @document.case_state.capitalize %></dd>
 
       <dt>Outcome type:</dt>
-      <dd><%= @document.details.outcome_type.capitalize unless @document.details.empty? %></dd>
+      <dd><%= @document.outcome_type.capitalize %></dd>
     </dl>
   </div>
   <div class='summary'>
     <div class='inner-block'>
       <p>
-        <%= @document.details.summary unless @document.details.empty? %>
+        <%= @document.summary %>
       </p>
     </div>
   </div>
@@ -40,14 +40,14 @@
 
 <nav class="sidebar">
   <ol class="inner-block js-stick-at-top-when-scrolling">
-    <%= render 'nav_item', headings: @document.details['headers'] %>
+    <%= render 'nav_item', headings: @document.headers %>
   </ol>
 </nav>
 
 <div class="content">
   <div class="inner-block">
     <div class="govspeak">
-      <%= @document.details.body.html_safe unless @document.details.empty? %>
+      <%= @document.body.html_safe  %>
     </div>
   </div>
 </div>
@@ -57,10 +57,10 @@
     <div class="inner-block">
       <dl>
         <dt>Opened date:</dt>
-        <dd><%= nice_date_format @document.details.opened_date %></dd>
-        <% if @document.details.closed_date.present? %>
+        <dd><%= nice_date_format @document.opened_date %></dd>
+        <% if @document.closed_date.present? %>
           <dt>Closed date:</dt>
-          <dd><%= nice_date_format @document.details.closed_date %></dd>
+          <dd><%= nice_date_format @document.closed_date %></dd>
         <% end %>
         <dt>Last updated:</dt>
         <dd><%= nice_date_format @document.updated_at %></dd>
@@ -70,16 +70,16 @@
   <div class='links'>
     <dl class='inner-block'>
       <dt>Sector:</dt>
-      <dd><%= @document.details.market_sector %></dd>
+      <dd><%= @document.market_sector %></dd>
 
       <dt>Case type:</dt>
-      <dd><%= @document.details.case_type %></dd>
+      <dd><%= @document.case_type %></dd>
 
       <dt>Case state:</dt>
-      <dd><%= @document.details.case_state.capitalize %></dd>
+      <dd><%= @document.case_state.capitalize %></dd>
 
       <dt>Outcome type:</dt>
-      <dd><%= @document.details.outcome_type.capitalize %></dd>
+      <dd><%= @document.outcome_type.capitalize %></dd>
     </dl>
   </div>
 </footer>
