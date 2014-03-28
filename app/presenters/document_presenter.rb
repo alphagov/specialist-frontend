@@ -10,4 +10,21 @@ class DocumentPresenter
     @document = document
   end
 
+  def date_metadata
+    {
+      "Opened date" => opened_date,
+      "Closed date" => closed_date,
+      "Updated at" => updated_at,
+    }
+  end
+
+  def metadata
+    {
+      "Market sector" => market_sector,
+      "Case type" => case_type,
+      "Case state" => case_state.capitalize,
+      "Outcome type" => outcome_type,
+    }
+  end
+
 end

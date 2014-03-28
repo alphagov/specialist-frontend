@@ -6,27 +6,15 @@
   </div>
   <div class="metadata">
     <dl class="inner-block">
-      <dt>Opened date:</dt>
-      <dd><%= nice_date_format @document.opened_date %></dd>
+      <% @document.date_metadata.each do |label, date|%>
+        <dt><%= label %>:</dt>
+        <dd><%= nice_date_format date %></dd>
+      <% end %>
 
-      <dt>Closed date:</dt>
-      <dd><%= nice_date_format @document.closed_date %></dd>
-
-      <dt>Page history:</dt>
-      <dd>Updated <%= nice_date_format @document.updated_at %>
-      </dd>
-
-      <dt>Sector:</dt>
-      <dd><%= @document.market_sector %></dd>
-
-      <dt>Case type:</dt>
-      <dd><%= @document.case_type %></dd>
-
-      <dt>Case state:</dt>
-      <dd><%= @document.case_state.capitalize %></dd>
-
-      <dt>Outcome type:</dt>
-      <dd><%= @document.outcome_type.capitalize %></dd>
+      <% @document.metadata.each do |label, value|%>
+        <dt><%= label %>:</dt>
+        <dd><%= value %></dd>
+      <% end %>
     </dl>
   </div>
   <div class='summary'>
@@ -56,30 +44,19 @@
   <div class='history'>
     <div class="inner-block">
       <dl>
-        <dt>Opened date:</dt>
-        <dd><%= nice_date_format @document.opened_date %></dd>
-        <% if @document.closed_date.present? %>
-          <dt>Closed date:</dt>
-          <dd><%= nice_date_format @document.closed_date %></dd>
+        <% @document.date_metadata.each do |label, date|%>
+          <dt><%= label %>:</dt>
+          <dd><%= nice_date_format date %></dd>
         <% end %>
-        <dt>Last updated:</dt>
-        <dd><%= nice_date_format @document.updated_at %></dd>
       </dl>
     </div>
   </div>
   <div class='links'>
     <dl class='inner-block'>
-      <dt>Sector:</dt>
-      <dd><%= @document.market_sector %></dd>
-
-      <dt>Case type:</dt>
-      <dd><%= @document.case_type %></dd>
-
-      <dt>Case state:</dt>
-      <dd><%= @document.case_state.capitalize %></dd>
-
-      <dt>Outcome type:</dt>
-      <dd><%= @document.outcome_type.capitalize %></dd>
+      <% @document.metadata.each do |label, value|%>
+        <dt><%= label %>:</dt>
+        <dd><%= value %></dd>
+      <% end %>
     </dl>
   </div>
 </footer>
