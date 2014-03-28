@@ -13,6 +13,8 @@ gem 'plek', '1.3.0'
 gem 'unicorn', '4.8.1'
 gem 'slimmer', '3.25.0'
 
+gem 'logstasher', '0.4.8'
+
 group :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'webmock', '1.17.1'
