@@ -13,7 +13,7 @@
   display: block;
   text-align: center;
   padding-bottom: $gutter;
-  
+
   @include media(desktop) {
     padding-bottom: $gutter*2;
   }
@@ -45,7 +45,7 @@
   header {
     @extend %contain-floats;
     padding: $gutter-half 0;
-    
+
     @include media(tablet){
       padding: $gutter*2 0 $gutter*2;
     }
@@ -94,14 +94,14 @@
       @include core-19;
       clear:both;
       padding: $gutter/2 0 0;
-      
+
       @include media(tablet){
         @include core-24;
         padding: $gutter 0 0;
       }
     }
   }
-  
+
   .sidebar {
     @include media(tablet){
       width: $one-third;
@@ -113,6 +113,9 @@
       list-style: none;
       @include core-16;
       padding-bottom: $gutter;
+
+      ol {
+        padding-bottom:0;      }
     }
     a {
       text-decoration: none;
@@ -157,7 +160,7 @@
     }
     dd {
       @include bold-24;
-      
+
       ul {
         list-style: none;
       }
