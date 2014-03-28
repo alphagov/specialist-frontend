@@ -1,7 +1,7 @@
 <% content_for :page_title, [@document.title, "Competition & Markets Authority case"].join(' ') %>
 <header>
   <div class="inner-block">
-    <span class="category"><a href=''>Competition &amp; Markets Authority case</a></span>
+    <span class="category">Competition &amp; Markets Authority case</span>
     <h1><%= @document.title %></h1>
   </div>
   <div class="metadata">
@@ -17,13 +17,13 @@
       </dd>
 
       <dt>Sector:</dt>
-      <dd><a href="#"><%= @document.details.market_sector %></a></dd>
+      <dd><%= @document.details.market_sector %></dd>
 
       <dt>Case type:</dt>
-      <dd><a href="#"><%= @document.details.case_type unless @document.details.empty? %></a></dd>
+      <dd><%= @document.details.case_type unless @document.details.empty? %></dd>
 
       <dt>Case state:</dt>
-      <dd><a href="#"><%= @document.details.case_state.capitalize unless @document.details.empty? %></a></dd>
+      <dd><%= @document.details.case_state.capitalize unless @document.details.empty? %></dd>
 
       <dt>Outcome type:</dt>
       <dd><%= @document.details.outcome_type.capitalize unless @document.details.empty? %></dd>
@@ -70,13 +70,13 @@
   <div class='links'>
     <dl class='inner-block'>
       <dt>Sector:</dt>
-      <dd><a href="#"><%= @document.details.market_sector %></a></dd>
+      <dd><%= @document.details.market_sector %></dd>
 
       <dt>Case type:</dt>
-      <dd><a href="#"><%= @document.details.case_type %></a></dd>
+      <dd><%= @document.details.case_type %></dd>
 
       <dt>Case state:</dt>
-      <dd><a href="#"><%= @document.details.case_state.capitalize %></a></dd>
+      <dd><%= @document.details.case_state.capitalize %></dd>
 
       <dt>Outcome type:</dt>
       <dd><%= @document.details.outcome_type.capitalize %></dd>
