@@ -4,8 +4,10 @@ class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
 
   def show
-    @document = content_api.artefact(params[:path])
-    error_not_found unless @document
+    artefact = content_api.artefact(params[:path])
+    error_not_found unless artefact
+
+    @document = DocumentPresenter.new(artefact)
   end
 
   def error_not_found
