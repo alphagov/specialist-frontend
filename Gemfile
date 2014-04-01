@@ -4,7 +4,7 @@ gem 'rails', '4.0.2'
 if ENV['API_DEV']
   gem 'gds-api-adapters', :path => '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '8.2.3'
+  gem 'gds-api-adapters', '10.6.1'
 end
 
 gem 'exception_notification', '4.0.1'
@@ -30,4 +30,5 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'jasmine-rails'
+  gem 'pry'
 end

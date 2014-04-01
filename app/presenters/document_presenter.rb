@@ -1,12 +1,23 @@
 class DocumentPresenter
 
-  attr_reader :document
+  attr_reader :document, :schema
+  private :document, :schema
 
   delegate :title, :details, :updated_at, to: :document
 
-  delegate :opened_date, :closed_date, :market_sector, :case_type, :case_state, :outcome_type, :summary, :headers, :body, to: :"document.details"
+  delegate :opened_date,
+    :closed_date,
+    :market_sector,
+    :case_type,
+    :case_state,
+    :outcome_type,
+    :summary,
+    :headers,
+    :body,
+    to: :"document.details"
 
-  def initialize(document)
+  def initialize(schema, document)
+    @schema = schema
     @document = document
   end
 
@@ -21,14 +32,17 @@ class DocumentPresenter
   end
 
   def metadata
-    metadata = {
-      "Market sector" => market_sector,
-      "Case type" => case_type,
-      "Case state" => case_state.capitalize,
-      "Outcome type" => outcome_type,
-    }
-
-    metadata.reject { |_, value| value.blank? }
+    schema.user_friendly_values(raw_metadata)
   end
 
+  private
+
+  def raw_metadata
+    {
+      case_type: case_type,
+      case_state: case_state,
+      market_sector: market_sector,
+      outcome_type: outcome_type,
+    }.reject { |_, value| value.blank? }
+  end
 end
