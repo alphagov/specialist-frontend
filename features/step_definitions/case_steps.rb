@@ -19,12 +19,14 @@ Given(/^a published case$/) do
       "case_type" => "regulatory-references-and-appeals",
       "case_state" => "closed",
       "market_sector" => "distribution-and-service-industries",
-      "outcome_type" => "undertakings-in-lieu-of-reference",
+      "outcome_type" => "markets-phase-1-undertakings-in-lieu-of-reference",
       "headers" => []
     }
   )
 
   content_api_has_an_artefact(@slug, artefact)
+
+  finder_api_has_schema("cma-cases")
 end
 
 When(/^I visit the case page$/) do

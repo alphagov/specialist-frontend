@@ -2,55 +2,67 @@ require 'ostruct'
 require 'spec_helper'
 
 describe DocumentPresenter do
-  subject { DocumentPresenter.new(document) }
+  subject(:presenter) { DocumentPresenter.new(schema, document) }
 
   let(:document) do
-    OpenStruct.new(title: document_title,
-                   updated_at: document_updated_at,
-                   details: document_details)
+    double(
+      :document,
+      title: document_title,
+      updated_at: document_updated_at,
+      details: document_details,
+    )
   end
 
   let(:document_title) { 'A Document' }
   let(:document_updated_at) { 3.days.ago }
-  let(:document_details) { OpenStruct.new }
+  let(:schema) { double(:schema) }
 
   describe '#metadata' do
-    context 'with all attributes present' do
-      let(:document_details) do
-        OpenStruct.new(
-          market_sector: 'Energy',
-          case_type: 'Merger',
-          case_state: 'closed',
-          outcome_type: 'Referred',
-        )
+    let(:document_case_type) { double(:document_case_type) }
+    let(:user_friendly_metadata) { double(:user_friendly_metadata) }
+    let(:document_details) { double(:document_details, document_details_attrs) }
+    let(:document_details_attrs) {
+      {
+        case_type: "a case type",
+        case_state: "a case state",
+        market_sector: "a market sector",
+        outcome_type: "an outcome type",
+      }
+    }
+
+    before do
+      allow(schema).to receive(:user_friendly_values)
+        .and_return(user_friendly_metadata)
+    end
+
+    context 'when all attributes present' do
+      it "converts raw metadata to user friendly metadata via the schema" do
+        presenter.metadata
+
+        expect(schema).to have_received(:user_friendly_values)
+          .with(document_details_attrs)
       end
 
-      specify do
-        subject.metadata.should == {
-          'Market sector' => 'Energy',
-          'Case type' => 'Merger',
-          'Case state' => 'Closed',
-          'Outcome type' => 'Referred',
-        }
+      it "returns user-friendly metadata" do
+        expect(presenter.metadata).to eq(user_friendly_metadata)
       end
     end
 
-    context 'with outcome type blank' do
-      let(:document_details) do
-        OpenStruct.new(
-          market_sector: 'Energy',
-          case_type: 'Merger',
-          case_state: 'closed',
-          outcome_type: nil,
-        )
-      end
-
-      specify do
-        subject.metadata.should == {
-          'Market sector' => 'Energy',
-          'Case type' => 'Merger',
-          'Case state' => 'Closed',
+    context 'when some attributes are blank' do
+      let(:document_details_attrs) {
+        {
+          case_type: "a case type",
+          case_state: "a case state",
+          market_sector: "a market sector",
+          outcome_type: "",
         }
+      }
+
+      it "excludes them" do
+        presenter.metadata
+
+        expect(schema).to have_received(:user_friendly_values)
+          .with(document_details_attrs.except(:outcome_type))
       end
     end
   end
