@@ -21,6 +21,10 @@ class DocumentPresenter
     @document = document
   end
 
+  def format_name
+    "Competition and Markets Authority case"
+  end
+
   def date_metadata
     date_metadata = {
       "Opened date" => opened_date,
