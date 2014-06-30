@@ -7,7 +7,7 @@ class SpecialistDocumentsController < ApplicationController
     artefact = content_api.artefact(params[:path])
     error_not_found unless artefact
 
-    @document = DocumentPresenter.new(schema, artefact)
+    @document = CmaCasePresenter.new(schema, artefact)
   end
 
   private
