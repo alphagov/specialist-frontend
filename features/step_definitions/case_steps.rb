@@ -35,7 +35,7 @@ When(/^I visit the case page$/) do
   visit "/#{@slug}"
 end
 
-Then(/^I should the case's content$/) do
+Then(/^I should see the case's content$/) do
   expect(page).to have_content(@title)
   expect(page).to have_content(@summary)
   expect(page).to have_content(@artefact[:opened_date])
