@@ -3,8 +3,9 @@ Given(/^a published case$/) do
   @slug = slug_from_title(@title)
   @summary = "Example summary"
 
-  artefact = artefact_for_slug(@slug).merge(
+  @artefact = artefact_for_slug(@slug).merge(
     "title" => @title,
+    "format" => "cma-case"
     "details" => {
       "need_id" => nil,
       "business_proposition" => false,
@@ -20,11 +21,12 @@ Given(/^a published case$/) do
       "case_state" => "closed",
       "market_sector" => "distribution-and-service-industries",
       "outcome_type" => "markets-phase-1-undertakings-in-lieu-of-reference",
-      "headers" => []
+      "headers" => [],
+      "document_type" => "cma_case",
     }
   )
 
-  content_api_has_an_artefact(@slug, artefact)
+  content_api_has_an_artefact(@slug, @artefact)
 
   finder_api_has_schema("cma-cases")
 end
@@ -33,9 +35,13 @@ When(/^I visit the case page$/) do
   visit "/#{@slug}"
 end
 
-Then(/^I should the case's content$/) do
-  assert_match @title, page.body
-  assert_match @summary, page.body
+Then(/^I should see the case's content$/) do
+  expect(page).to have_content(@title)
+  expect(page).to have_content(@summary)
+  expect(page).to have_content(@artefact[:opened_date])
+  expect(page).to have_content(@artefact[:closed_date])
+  expect(page).to have_content(@artefact[:case_type])
+  expect(page).to have_content(@artefact[:case_state])
 end
 
 def slug_from_title(title)
