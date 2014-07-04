@@ -18,7 +18,7 @@ describe SpecialistDocumentsController do
     end
 
     context "when the document_type is cma_case" do
-      let(:format) { "cma-case" }
+      let(:format) { "cma_case" }
 
       it "sets document with a CmaCasePresenter" do
         expect(finder_api).to have_received(:get_schema).with("cma-cases") { schema }
@@ -27,7 +27,7 @@ describe SpecialistDocumentsController do
     end
 
     context "when the document_type is aaib_report" do
-      let(:format) { "aaib-report" }
+      let(:format) { "aaib_report" }
 
       it "sets document with a AaibReportPresenter" do
         expect(finder_api).to have_received(:get_schema).with("aaib-reports") { schema }

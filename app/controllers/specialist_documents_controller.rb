@@ -25,9 +25,9 @@ private
 
   def document_presenter(artefact)
     case artefact.format
-    when "cma-case"
+    when "cma_case"
       CmaCasePresenter.new(schema("cma-cases"), artefact)
-    when "aaib-report"
+    when "aaib_report"
       AaibReportPresenter.new(schema("aaib-reports"), artefact)
     end
   end

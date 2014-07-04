@@ -5,7 +5,7 @@ Given(/^a published case$/) do
 
   @artefact = artefact_for_slug(@slug).merge(
     "title" => @title,
-    "format" => "cma-case",
+    "format" => "cma_case",
     "details" => {
       "need_id" => nil,
       "business_proposition" => false,
