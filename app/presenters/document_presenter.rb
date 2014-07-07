@@ -2,7 +2,6 @@ class DocumentPresenter
 
   delegate :title, :details, :updated_at, to: :document
   delegate :summary,
-    :headers,
     :body,
     to: :"document.details"
 
@@ -22,6 +21,10 @@ class DocumentPresenter
 
   def metadata
     schema.user_friendly_values(raw_metadata)
+  end
+
+  def headers
+    document.details || []
   end
 
 private

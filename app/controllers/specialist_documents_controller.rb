@@ -31,6 +31,14 @@ private
       CmaCasePresenter.new(schema("cma-cases"), artefact)
     when "aaib_report"
       AaibReportPresenter.new(schema("aaib-reports"), artefact)
+    else
+      DocumentPresenter.new(NullSchema.new, artefact)
+    end
+  end
+
+  class NullSchema
+    def user_friendly_values(input)
+      input
     end
   end
 
