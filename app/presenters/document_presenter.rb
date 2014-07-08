@@ -1,18 +1,7 @@
 class DocumentPresenter
 
-  attr_reader :document, :schema
-  private :document, :schema
-
   delegate :title, :details, :updated_at, to: :document
-
-  delegate :opened_date,
-    :closed_date,
-    :market_sector,
-    :case_type,
-    :case_state,
-    :outcome_type,
-    :summary,
-    :headers,
+  delegate :summary,
     :body,
     to: :"document.details"
 
@@ -22,31 +11,46 @@ class DocumentPresenter
   end
 
   def format_name
-    "Competition and Markets Authority case"
+    ""
   end
 
   def date_metadata
-    date_metadata = {
-      "Opened date" => opened_date,
-      "Closed date" => closed_date,
-      "Updated at" => updated_at,
-    }
-
-    date_metadata.reject { |_, value| value.blank? }
+    metadata = default_date_metadata.merge(extra_date_metadata)
+    metadata.reject { |_, value| value.blank? }
   end
 
   def metadata
     schema.user_friendly_values(raw_metadata)
   end
 
-  private
+  def headers
+    document.details || []
+  end
+
+private
+
+  attr_reader :document, :schema
+
+  def default_date_metadata
+    {
+      "Updated at" => updated_at,
+    }
+  end
+
+  def extra_date_metadata
+    {}
+  end
+
+  def default_raw_metadata
+    {}
+  end
+
+  def extra_raw_metadata
+    {}
+  end
 
   def raw_metadata
-    {
-      case_type: case_type,
-      case_state: case_state,
-      market_sector: market_sector,
-      outcome_type: outcome_type,
-    }.reject { |_, value| value.blank? }
+    metadata = default_raw_metadata.merge(extra_raw_metadata)
+    metadata.reject { |_, value| value.blank? }
   end
 end
