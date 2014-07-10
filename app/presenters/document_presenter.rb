@@ -24,7 +24,7 @@ class DocumentPresenter
   end
 
   def headers
-    document.details || []
+    document.details.headers || []
   end
 
 private

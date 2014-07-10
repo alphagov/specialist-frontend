@@ -1,7 +1,7 @@
-  require "ostruct"
+require "ostruct"
 require "spec_helper"
 
-describe CmaCasePresenter do
+describe DocumentPresenter do
 
   subject(:presenter) {
     Class.new(DocumentPresenter) {
@@ -80,6 +80,19 @@ describe CmaCasePresenter do
       specify do
         subject.date_metadata.should eq({})
       end
+    end
+  end
+
+  describe "details" do
+    it "returns the headers if there are some" do
+      headers_array = ['blah']
+      details_attributes.merge!(headers: ['blah'])
+      expect(presenter.headers).to eq(headers_array)
+    end
+
+    it "returns an empty array if there is no headers in the details hash" do
+      allow(document_details).to receive(:headers) { nil }
+      expect(presenter.headers).to eq([])
     end
   end
 end
