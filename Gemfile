@@ -4,7 +4,7 @@ gem 'rails', '4.0.2'
 if ENV['API_DEV']
   gem 'gds-api-adapters', :path => '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '10.6.1'
+  gem 'gds-api-adapters', '12.0.0'
 end
 
 gem 'exception_notification', '4.0.1'
@@ -14,6 +14,11 @@ gem 'unicorn', '4.8.1'
 gem 'slimmer', '3.25.0'
 
 gem 'logstasher', '0.4.8'
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 group :test do
   gem 'cucumber-rails', '1.4.0', require: false

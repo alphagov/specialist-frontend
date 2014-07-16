@@ -10,4 +10,9 @@ module SpecialistDocumentsHelper
     end
   end
 
+  def metadata_value_sentence(values)
+    values.map { |v| content_tag(:span, v) }
+      .to_sentence(last_word_connector: ' and ')
+      .html_safe
+  end
 end

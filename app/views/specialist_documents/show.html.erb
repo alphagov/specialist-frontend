@@ -8,12 +8,12 @@
     <dl class="inner-block">
       <% @document.date_metadata.each do |label, date|%>
         <dt><%= label %>:</dt>
-        <dd><%= nice_date_format date %></dd>
+        <dd><%= nice_date_format(date) %></dd>
       <% end %>
 
-      <% @document.metadata.each do |label, value|%>
+      <% @document.metadata.each do |label, values|%>
         <dt><%= label %>:</dt>
-        <dd><%= value %></dd>
+        <dd><%= metadata_value_sentence(values) %></dd>
       <% end %>
     </dl>
   </div>
@@ -46,16 +46,18 @@
       <dl>
         <% @document.date_metadata.each do |label, date|%>
           <dt><%= label %>:</dt>
-          <dd><%= nice_date_format date %></dd>
+          <dd><%= nice_date_format(date) %></dd>
         <% end %>
       </dl>
     </div>
   </div>
   <div class='links'>
     <dl class='inner-block'>
-      <% @document.metadata.each do |label, value|%>
+      <% @document.metadata.each do |label, values|%>
         <dt><%= label %>:</dt>
-        <dd><%= value %></dd>
+        <% values.each do |value| %>
+          <dd><%= value %></dd>
+        <% end %>
       <% end %>
     </dl>
   </div>
