@@ -6,7 +6,7 @@ class AaibReportPresenter < DocumentPresenter
     to: :"document.details"
 
   def format_name
-    "Air Accident Investigation Branch report"
+    "Air Accidents Investigation Branch report"
   end
 
 private
