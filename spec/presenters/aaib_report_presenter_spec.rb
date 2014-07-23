@@ -15,23 +15,48 @@ describe AaibReportPresenter do
 
   let(:updated_at) { DateTime.new(2014, 4, 1) }
 
-  let(:detail_object) { double(:detail_object, document_details) }
+  let(:detail_object) { double(:detail_object, detail_attributes) }
 
-  let(:document_details) {
+  let(:schema_attributes) {
     {
       aircraft_category: "Big Aeroplanes",
       report_type: "a report type",
     }
   }
 
-  let(:schema) { double(:schema) }
+  let(:detail_attributes) {
+    schema_attributes.merge({
+      aircraft_types: "some types of aircraft",
+      location: "a location",
+      registrations: "some registrations",
+    })
+  }
+
+  let(:user_friendly_document_details) {
+    {
+      "Aircraft category" => "Big Aeroplanes",
+      "Report type" => "a report type",
+    }
+  }
+
+  let(:schema) {
+    double(:schema, user_friendly_values: user_friendly_document_details)
+  }
 
   describe "#metadata" do
     it "converts raw metadata to user friendly metadata via the schema" do
       expect(schema).to receive(:user_friendly_values)
-        .with(document_details)
+        .with(schema_attributes)
 
       presenter.metadata
+    end
+
+    it "contains the extra fields that are not in the schema" do
+      expect(presenter.metadata).to include(
+        "Aircraft types",
+        "Location",
+        "Registrations",
+      )
     end
   end
 
