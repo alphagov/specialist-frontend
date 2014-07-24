@@ -24,6 +24,7 @@ group :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'webmock', '1.17.1'
   gem 'rspec-rails', '2.14.1'
+  gem 'launchy'
 end
 
 group :assets do

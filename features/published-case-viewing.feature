@@ -5,5 +5,5 @@ Feature: Published case viewing
 
 Scenario: Viewing a published case
   Given a published case
-  When I visit the case page
+  When I visit the document page
   Then I should see the case's content

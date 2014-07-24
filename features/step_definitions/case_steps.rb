@@ -30,17 +30,17 @@ Given(/^a published case$/) do
   finder_api_has_schema("cma-cases")
 end
 
-When(/^I visit the case page$/) do
+When(/^I visit the document page$/) do
   visit "/#{@slug}"
 end
 
 Then(/^I should see the case's content$/) do
   expect(page).to have_content(@title)
   expect(page).to have_content(@summary)
-  expect(page).to have_content(@artefact[:opened_date])
-  expect(page).to have_content(@artefact[:closed_date])
-  expect(page).to have_content(@artefact[:case_type])
-  expect(page).to have_content(@artefact[:case_state])
+  expect(page).to have_content("1 January 2012")
+  expect(page).to have_content("21 November 2014")
+  expect(page).to have_content("Regulatory references and appeals")
+  expect(page).to have_content("Closed")
 end
 
 def slug_from_title(title)
