@@ -21,6 +21,9 @@ describe AaibReportPresenter do
     {
       aircraft_category: "Big Aeroplanes",
       report_type: "a report type",
+      aircraft_type: "a UFO",
+      registration: "ET1",
+      location: "Bermuda Triangle",
     }
   }
 
