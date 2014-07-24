@@ -3,6 +3,9 @@ class AaibReportPresenter < DocumentPresenter
   delegate :date_of_occurrence,
     :aircraft_category,
     :report_type,
+    :aircraft_type,
+    :registration,
+    :location,
     to: :"document.details"
 
   def format_name
@@ -21,6 +24,9 @@ private
     {
       aircraft_category: aircraft_category,
       report_type: report_type,
+      aircraft_type: aircraft_type,
+      registration: registration,
+      location: location,
     }
   end
 end
