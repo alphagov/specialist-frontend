@@ -10,7 +10,6 @@ class AaibReportPresenter < DocumentPresenter
   end
 
 private
-
   def extra_date_metadata
     {
       "Date of occurrence" => date_of_occurrence,
