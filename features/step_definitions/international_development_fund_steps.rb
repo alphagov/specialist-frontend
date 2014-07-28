@@ -18,7 +18,7 @@ Given(/^a published international development fund exists$/) do
   )
 
   content_api_has_an_artefact(@slug, @artefact)
-  finder_api_has_schema("international-development-funds", idf_schema)
+  finder_api_has_schema("international-development-funding", idf_schema)
 end
 
 Then(/^I should see the fund's content$/) do

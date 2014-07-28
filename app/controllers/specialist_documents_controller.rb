@@ -30,7 +30,7 @@ private
       # have been republished and panopticon has correct 'format'.
       CmaCasePresenter.new(schema("cma-cases"), artefact)
     when "international_development_fund"
-      InternationalDevelopmentFundPresenter.new(schema("international-development-funds"), artefact)
+      InternationalDevelopmentFundPresenter.new(schema("international-development-funding"), artefact)
     when "aaib_report"
       AaibReportPresenter.new(schema("aaib-reports"), artefact)
     else
