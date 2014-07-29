@@ -2,7 +2,7 @@ class InternationalDevelopmentFundPresenter < DocumentPresenter
   delegate(
     :application_state,
     :location,
-    :document_sector,
+    :development_sector,
     :eligible_entities,
     :value_of_fund,
     to: :"document.details"
@@ -12,12 +12,16 @@ class InternationalDevelopmentFundPresenter < DocumentPresenter
     "International development funding"
   end
 
+  def finder_path
+    "/international-development-funding"
+  end
+
 private
-  def extra_raw_metadata
+  def filterable_metadata
     {
       application_state: application_state,
       location: location,
-      document_sector: document_sector,
+      development_sector: development_sector,
       eligible_entities: eligible_entities,
       value_of_fund: value_of_fund,
     }

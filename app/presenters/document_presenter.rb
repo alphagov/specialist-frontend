@@ -15,12 +15,13 @@ class DocumentPresenter
   end
 
   def date_metadata
-    metadata = default_date_metadata.merge(extra_date_metadata)
-    metadata.reject { |_, value| value.blank? }
+    default_date_metadata
+      .merge(extra_date_metadata)
+      .reject { |_, value| value.blank? }
   end
 
   def metadata
-    schema.user_friendly_values(raw_metadata)
+    (expanded_filtered_metadata + expanded_extra_metadata)
   end
 
   def headers
@@ -30,6 +31,45 @@ class DocumentPresenter
 private
 
   attr_reader :document, :schema
+
+  def metadata_response_builder(label, values)
+    OpenStruct.new(
+      label: label,
+      values: Array(values).map { |value|
+        OpenStruct.new(label: value, linkable?: false)
+      }
+    )
+  end
+
+  def filtered_metadata_response_builder(key, data)
+    label = data.fetch(:label)
+
+    OpenStruct.new(
+      label: label,
+      values: data.fetch(:values).map { |value|
+        OpenStruct.new(
+          label: value.fetch(:label),
+          linkable?: true,
+          href: "#{finder_path}/?#{key}%5B%5D=#{value.fetch(:slug)}"
+        )
+      }
+    )
+  end
+
+  def expanded_extra_metadata
+    extra_metadata
+      .reject { |_, value| value.blank? }
+      .map { |label, values| metadata_response_builder(label, values) }
+  end
+
+  def convert_filtered_metadata(expanded_filterable_metadata)
+    expanded_filterable_metadata.map { |key, data| filtered_metadata_response_builder(key, data) }
+  end
+
+  def expanded_filtered_metadata
+    present_metadata = filterable_metadata.reject { |_, value| value.blank? }
+    convert_filtered_metadata(schema.user_friendly_values(present_metadata))
+  end
 
   def default_date_metadata
     {
@@ -41,16 +81,11 @@ private
     {}
   end
 
-  def default_raw_metadata
+  def filterable_metadata
     {}
   end
 
-  def extra_raw_metadata
+  def extra_metadata
     {}
-  end
-
-  def raw_metadata
-    metadata = default_raw_metadata.merge(extra_raw_metadata)
-    metadata.reject { |_, value| value.blank? }
   end
 end

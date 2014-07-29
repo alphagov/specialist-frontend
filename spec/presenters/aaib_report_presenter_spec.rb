@@ -18,18 +18,42 @@ describe AaibReportPresenter do
   let(:detail_object) { double(:detail_object, document_details) }
 
   let(:document_details) {
+    filterable_metadata.merge(extra_metadata)
+  }
+
+  let(:filterable_metadata) {
     {
       aircraft_category: "Big Aeroplanes",
       report_type: "a report type",
     }
   }
 
+  let(:extra_metadata) {
+    {
+      aircraft_types: "Jumbo Jets and Kitchenettes",
+      registrations: ["G-BAOZ", "G-BIVE"],
+      location: "Just outside Slough",
+    }
+  }
+
   let(:schema) { double(:schema) }
+
+  let(:schema_response) {
+    {
+      "aircraft_category" => {
+        label: "Aircraft category",
+        values: [
+          {label: 'Big Aeroplanes', slug: "big-aeroplanes"}
+        ]
+      }
+    }
+  }
 
   describe "#metadata" do
     it "converts raw metadata to user friendly metadata via the schema" do
       expect(schema).to receive(:user_friendly_values)
-        .with(document_details)
+        .with(filterable_metadata)
+        .and_return(schema_response)
 
       presenter.metadata
     end

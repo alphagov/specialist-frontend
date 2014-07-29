@@ -1,0 +1,4 @@
+<% document.metadata.each do |data| %>
+  <dt><%= data.label %>:</dt>
+  <dd><%= metadata_value_sentence(data) %></dd>
+<% end %>
