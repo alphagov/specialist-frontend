@@ -11,10 +11,7 @@
         <dd><%= nice_date_format(date) %></dd>
       <% end %>
 
-      <% @document.metadata.each do |label, values|%>
-        <dt><%= label %>:</dt>
-        <dd><%= metadata_value_sentence(values) %></dd>
-      <% end %>
+      <%= render partial: 'metadata', locals: { document: @document } %>
     </dl>
   </div>
   <div class='summary'>
@@ -53,12 +50,7 @@
   </div>
   <div class='links'>
     <dl class='inner-block'>
-      <% @document.metadata.each do |label, values|%>
-        <dt><%= label %>:</dt>
-        <% values.each do |value| %>
-          <dd><%= value %></dd>
-        <% end %>
-      <% end %>
+      <%= render partial: 'metadata', locals: { document: @document } %>
     </dl>
   </div>
 </footer>
