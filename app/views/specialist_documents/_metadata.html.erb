@@ -1,0 +1,4 @@
+<% document.metadata.each do |facet_key, data| %>
+  <dt><%= data.fetch(:label) %>:</dt>
+  <dd><%= metadata_value_sentence(data, facet_key, document.finder_path) %></dd>
+<% end %>

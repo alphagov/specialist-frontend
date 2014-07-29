@@ -12,6 +12,10 @@ class InternationalDevelopmentFundPresenter < DocumentPresenter
     "International development funding"
   end
 
+  def finder_path
+    "/international-development-funding"
+  end
+
 private
   def extra_raw_metadata
     {

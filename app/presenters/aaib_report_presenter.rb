@@ -9,6 +9,10 @@ class AaibReportPresenter < DocumentPresenter
     "Air Accidents Investigation Branch report"
   end
 
+  def finder_path
+    "/aaib-reports"
+  end
+
 private
   def extra_date_metadata
     {
