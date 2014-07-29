@@ -2,7 +2,7 @@ class InternationalDevelopmentFundPresenter < DocumentPresenter
   delegate(
     :application_state,
     :location,
-    :document_sector,
+    :development_sector,
     :eligible_entities,
     :value_of_fund,
     to: :"document.details"
@@ -17,7 +17,7 @@ private
     {
       application_state: application_state,
       location: location,
-      document_sector: document_sector,
+      development_sector: development_sector,
       eligible_entities: eligible_entities,
       value_of_fund: value_of_fund,
     }

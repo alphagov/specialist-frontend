@@ -11,7 +11,7 @@ Given(/^a published international development fund exists$/) do
       "summary" => @summary,
       "application_state" => "open",
       "location" => ["mozambique", "zambia", "zimbabwe"],
-      "document_sector" => ["health", "disabilities"],
+      "development_sector" => ["health", "disabilities"],
       "eligible_entities" => ["companies", "local-government"],
       "value_of_fund" => "100001-500000",
     }
