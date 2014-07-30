@@ -20,7 +20,7 @@ private
     }
   end
 
-  def extra_raw_metadata
+  def filterable_metadata
     {
       aircraft_category: aircraft_category,
       report_type: report_type,

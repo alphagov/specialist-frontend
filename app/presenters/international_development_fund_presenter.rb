@@ -17,7 +17,7 @@ class InternationalDevelopmentFundPresenter < DocumentPresenter
   end
 
 private
-  def extra_raw_metadata
+  def filterable_metadata
     {
       application_state: application_state,
       location: location,

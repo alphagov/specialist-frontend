@@ -6,13 +6,23 @@ describe DocumentPresenter do
   subject(:presenter) {
     Class.new(DocumentPresenter) {
 
-      delegate :foo, to: :"document.details"
+      delegate :foo, :bar, to: :"document.details"
 
       private
-      def extra_raw_metadata
+      def filterable_metadata
         {
           foo: foo,
         }
+      end
+
+      def extra_metadata
+        {
+          "Bar" => bar,
+        }
+      end
+
+      def finder_path
+        '/finder'
       end
 
     }.new(schema, document)
@@ -29,25 +39,52 @@ describe DocumentPresenter do
 
   let(:document_title) { "A Document" }
   let(:document_updated_at) { 3.days.ago }
-  let(:document_details) { double(:document_details, details_attributes) }
-  let(:details_attributes) { { foo: foo } }
-  let(:foo) { "Bar" }
+  let(:document_details) { double(:document_details, all_attributes) }
+  let(:filterable_attributes) { { foo: foo } }
+  let(:extra_attributes) { { bar: bar } }
+  let(:all_attributes) { filterable_attributes.merge(extra_attributes) }
+
+  let(:schema_response) {
+    {
+      "foo" => {
+        label: "Foo",
+        values: [
+          {label: 'The Bar', slug: "bar"}
+        ]
+      }
+    }
+  }
+
+  let(:foo) { "bar" }
+  let(:bar) { "qux" }
   let(:schema) { double(:schema) }
 
   describe "#metadata" do
     before do
-      allow(schema).to receive(:user_friendly_values).and_return(details_attributes)
+      allow(schema).to receive(:user_friendly_values).and_return(schema_response)
     end
 
     context "when all attributes present" do
       it "converts raw metadata to user friendly metadata via the schema" do
         presenter.metadata
 
-        expect(schema).to have_received(:user_friendly_values).with(details_attributes)
+        expect(schema).to have_received(:user_friendly_values).with(filterable_attributes)
       end
 
       it "returns user-friendly metadata" do
-        expect(presenter.metadata).to eq(details_attributes)
+        metadata = presenter.metadata
+        expect(metadata.size).to eq(2)
+
+        linkable = metadata.select { |m| m.label == "Foo" }.first
+        linkable_value = linkable.values.first
+
+        expect(linkable_value.linkable?).to eq(true)
+        expect(linkable_value.href).to eq("/finder/?foo%5B%5D=bar")
+
+        unlinkable = metadata.select { |m| m.label == "Bar" }.first
+        unlinkable_value = unlinkable.values.first
+
+        expect(unlinkable_value.linkable?).to eq(false)
       end
     end
 
@@ -58,7 +95,7 @@ describe DocumentPresenter do
         presenter.metadata
 
         expect(schema).to have_received(:user_friendly_values)
-          .with(details_attributes.except(:foo))
+          .with(filterable_attributes.except(:foo))
       end
     end
   end
@@ -86,7 +123,7 @@ describe DocumentPresenter do
   describe "details" do
     it "returns the headers if there are some" do
       headers_array = ['blah']
-      details_attributes.merge!(headers: ['blah'])
+      filterable_attributes.merge!(headers: ['blah'])
       expect(presenter.headers).to eq(headers_array)
     end
 

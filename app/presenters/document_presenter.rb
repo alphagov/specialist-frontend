@@ -15,8 +15,9 @@ class DocumentPresenter
   end
 
   def date_metadata
-    metadata = default_date_metadata.merge(extra_date_metadata)
-    metadata.reject { |_, value| value.blank? }
+    default_date_metadata
+      .merge(extra_date_metadata)
+      .reject { |_, value| value.blank? }
   end
 
   def metadata
@@ -80,16 +81,11 @@ private
     {}
   end
 
-  def default_raw_metadata
+  def filterable_metadata
     {}
   end
 
-  def extra_raw_metadata
+  def extra_metadata
     {}
-  end
-
-  def raw_metadata
-    metadata = default_raw_metadata.merge(extra_raw_metadata)
-    metadata.reject { |_, value| value.blank? }
   end
 end

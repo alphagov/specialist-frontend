@@ -10,9 +10,13 @@ module SpecialistDocumentsHelper
     end
   end
 
-  def metadata_value_sentence(data, key, finder_path)
-    data.fetch(:values).map { |v|
-      content_tag(:a, v.fetch(:label), href: "#{finder_path}?#{key}%5B%5D=#{v.fetch(:slug)}" )
+  def metadata_value_sentence(metadata)
+    metadata.values.map { |value|
+      if value.linkable?
+        content_tag(:a, value.label, href: value.href)
+      else
+        value.label
+      end
     }.to_sentence(last_word_connector: ' and ').html_safe
   end
 end
