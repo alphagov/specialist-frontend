@@ -1,7 +1,7 @@
 <% content_for :page_title, [@document.title, @document.format_name].join(' ') %>
 <header>
   <div class="inner-block">
-    <span class="category"><%= @document.format_name %></span>
+    <span class="category"><%= link_to @document.format_name, @document.finder_path %></span>
     <h1><%= @document.title %></h1>
   </div>
   <div class="metadata">
