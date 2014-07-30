@@ -2,6 +2,9 @@ class AaibReportPresenter < DocumentPresenter
 
   delegate :date_of_occurrence,
     :aircraft_category,
+    :aircraft_types,
+    :location,
+    :registrations,
     :report_type,
     to: :"document.details"
 
@@ -24,6 +27,14 @@ private
     {
       aircraft_category: aircraft_category,
       report_type: report_type,
+    }
+  end
+
+  def extra_metadata
+    {
+      "Aircraft types" => aircraft_types,
+      "Location" => location,
+      "Registrations" => registrations,
     }
   end
 end
