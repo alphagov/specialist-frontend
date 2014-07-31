@@ -30,8 +30,8 @@ describe AaibReportPresenter do
 
   let(:extra_metadata) {
     {
-      aircraft_types: "Jumbo Jets and Kitchenettes",
-      registrations: ["G-BAOZ", "G-BIVE"],
+      aircraft_type: "Jumbo Jets and Kitchenettes",
+      registration: ["G-BAOZ", "G-BIVE"],
       location: "Just outside Slough",
     }
   }
