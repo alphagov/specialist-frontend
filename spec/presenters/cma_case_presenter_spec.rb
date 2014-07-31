@@ -28,10 +28,22 @@ describe CmaCasePresenter do
 
   let(:schema) { double(:schema) }
 
+  let(:schema_response) {
+    {
+      "foo" => {
+        label: "Foo",
+        values: [
+          {label: 'The Bar', slug: "bar"}
+        ]
+      }
+    }
+  }
+
   describe "#metadata" do
     it "converts raw metadata to user friendly metadata via the schema" do
       expect(schema).to receive(:user_friendly_values)
         .with(document_details)
+        .and_return(schema_response)
 
       presenter.metadata
     end

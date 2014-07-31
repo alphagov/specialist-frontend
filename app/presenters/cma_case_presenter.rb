@@ -12,6 +12,10 @@ class CmaCasePresenter < DocumentPresenter
     "Competition and Markets Authority case"
   end
 
+  def finder_path
+    "/cma-cases"
+  end
+
 private
   def extra_date_metadata
     {
@@ -20,7 +24,7 @@ private
     }
   end
 
-  def extra_raw_metadata
+  def filterable_metadata
     {
       case_type: case_type,
       case_state: case_state,

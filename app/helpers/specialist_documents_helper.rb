@@ -10,9 +10,17 @@ module SpecialistDocumentsHelper
     end
   end
 
-  def metadata_value_sentence(values)
-    values.map { |v| content_tag(:span, v) }
-      .to_sentence(last_word_connector: ' and ')
-      .html_safe
+  def metadata_value(value)
+    if value.linkable?
+      content_tag(:a, value.label, href: value.href)
+    else
+      value.label
+    end
+  end
+
+  def metadata_value_sentence(metadata)
+    metadata.values.map { |value|
+      metadata_value(value)
+    }.to_sentence(last_word_connector: ' and ').html_safe
   end
 end
