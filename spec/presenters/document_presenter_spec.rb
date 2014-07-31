@@ -79,7 +79,7 @@ describe DocumentPresenter do
         linkable_value = linkable.values.first
 
         expect(linkable_value.linkable?).to eq(true)
-        expect(linkable_value.href).to eq("/finder/?foo%5B%5D=bar")
+        expect(linkable_value.href).to eq("/finder?foo%5B%5D=bar")
 
         unlinkable = metadata.select { |m| m.label == "Bar" }.first
         unlinkable_value = unlinkable.values.first
