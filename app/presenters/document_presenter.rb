@@ -50,7 +50,7 @@ private
         OpenStruct.new(
           label: value.fetch(:label),
           linkable?: true,
-          href: "#{finder_path}/?#{key}%5B%5D=#{value.fetch(:slug)}"
+          href: "#{finder_path}?#{key}%5B%5D=#{value.fetch(:slug)}"
         )
       }
     )
