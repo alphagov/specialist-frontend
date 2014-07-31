@@ -32,17 +32,20 @@ describe DocumentPresenter do
     double(
       :document,
       title: document_title,
-      updated_at: document_updated_at,
       details: document_details,
     )
   end
 
   let(:document_title) { "A Document" }
-  let(:document_updated_at) { 3.days.ago }
+  let(:document_published_at) { 3.days.ago }
   let(:document_details) { double(:document_details, all_attributes) }
   let(:filterable_attributes) { { foo: foo } }
   let(:extra_attributes) { { bar: bar } }
-  let(:all_attributes) { filterable_attributes.merge(extra_attributes) }
+  let(:all_attributes) {
+    filterable_attributes.merge(extra_attributes).merge({
+      published_at: document_published_at,
+    })
+  }
 
   let(:schema_response) {
     {
@@ -102,7 +105,7 @@ describe DocumentPresenter do
 
   describe "#date_metadata" do
     context "with all attributes present" do
-      let(:document_updated_at) { DateTime.new(2014, 4, 1) }
+      let(:document_published_at) { DateTime.new(2014, 4, 1) }
 
       specify do
         subject.date_metadata.should eq({
@@ -112,7 +115,7 @@ describe DocumentPresenter do
     end
 
     context "with closed date blank" do
-      let(:document_updated_at) { nil }
+      let(:document_published_at) { nil }
 
       specify do
         subject.date_metadata.should eq({})

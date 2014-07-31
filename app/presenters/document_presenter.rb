@@ -1,8 +1,9 @@
 class DocumentPresenter
 
-  delegate :title, :details, :updated_at, to: :document
+  delegate :title, :details, to: :document
   delegate :summary,
     :body,
+    :published_at,
     to: :"document.details"
 
   def initialize(schema, document)
@@ -73,7 +74,7 @@ private
 
   def default_date_metadata
     {
-      "Updated at" => updated_at,
+      "Updated at" => published_at,
     }
   end
 
