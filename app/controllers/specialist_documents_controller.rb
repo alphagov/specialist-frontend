@@ -29,6 +29,8 @@ private
       AaibReportPresenter.new(schema("aaib-reports"), artefact)
     when "cma_case"
       CmaCasePresenter.new(schema("cma-cases"), artefact)
+    when "drug_safety_update"
+      DrugSafetyUpdatePresenter.new(schema("drug-safety-update"), artefact)
     when "international_development_fund"
       InternationalDevelopmentFundPresenter.new(schema("international-development-funding"), artefact)
     else

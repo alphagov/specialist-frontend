@@ -1,0 +1,30 @@
+Given(/^a published drug safety update exists$/) do
+  @title = "Paracetamol - Damaging effects"
+  @slug = slug_from_title(@title)
+  @summary = "Update about paracetamol"
+
+  @artefact = artefact_for_slug(@slug).merge(
+    "title" => @title,
+    "format" => "drug_safety_update",
+    "details" => {
+      "body" => "<p>Body content</p>\n",
+      "summary" => @summary,
+      "therapeutic_area" => ["anaesthesia-intensive-care", "cancer"],
+    }
+  )
+
+  content_api_has_an_artefact(@slug, @artefact)
+  finder_api_has_schema("drug-safety-update", drug_safety_update_schema)
+end
+
+Then(/^I should see the update's content$/) do
+  expect(page).to have_content(@title)
+  expect(page).to have_content(@summary)
+  expect(page).to have_content("Anaesthesia and intensive care and Cancer")
+end
+
+def drug_safety_update_schema
+  File.read(
+    File.expand_path('../../fixtures/schemas/drug-safety-update-schema.json', __FILE__)
+  )
+end
