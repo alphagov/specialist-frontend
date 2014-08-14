@@ -25,7 +25,9 @@ private
 
   def document_presenter(artefact)
     case artefact.format
-    when "cma_case"
+    when "cma_case", "specialist-document"
+      # TODO: Remove 'specialist-document' once docs
+      # have been republished and panopticon has correct 'format'.
       CmaCasePresenter.new(schema("cma-cases"), artefact)
     when "international_development_fund"
       InternationalDevelopmentFundPresenter.new(schema("international-development-funding"), artefact)
