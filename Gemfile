@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.9'
 if ENV['API_DEV']
   gem 'gds-api-adapters', :path => '../gds-api-adapters'
 else
@@ -28,7 +28,7 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails', '~> 4.0.0'
+  gem 'sass-rails', '~> 4.0.2'
   gem 'uglifier', '>= 1.3.0'
   gem 'govuk_frontend_toolkit', '0.45.0'
 end
