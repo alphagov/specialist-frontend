@@ -9,11 +9,11 @@ Given(/^a published international development fund exists$/) do
     "details" => {
       "body" => "<p>Body content</p>\n",
       "summary" => @summary,
-      "application_state" => "open",
+      "fund_state" => "open",
       "location" => ["mozambique", "zambia", "zimbabwe"],
       "development_sector" => ["health", "disabilities"],
       "eligible_entities" => ["companies", "local-government"],
-      "value_of_fund" => "100001-500000",
+      "value_of_funding" => "100001-500000",
     }
   )
 

@@ -4,7 +4,7 @@
   "document_noun": "fund",
   "facets": [
     {
-      "key": "application_state",
+      "key": "fund_state",
       "name": "Applications",
       "type": "single-select",
       "include_blank": false,
@@ -231,7 +231,7 @@
       ]
     },
     {
-      "key": "value_of_fund",
+      "key": "value_of_funding",
       "name": "Value of fund",
       "type": "multi-select",
       "include_blank": false,
