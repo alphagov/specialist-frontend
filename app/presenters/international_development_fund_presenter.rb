@@ -1,10 +1,10 @@
 class InternationalDevelopmentFundPresenter < DocumentPresenter
   delegate(
-    :application_state,
+    :fund_state,
     :location,
     :development_sector,
     :eligible_entities,
-    :value_of_fund,
+    :value_of_funding,
     to: :"document.details"
   )
 
@@ -19,11 +19,11 @@ class InternationalDevelopmentFundPresenter < DocumentPresenter
 private
   def filterable_metadata
     {
-      application_state: application_state,
+      fund_state: fund_state,
       location: location,
       development_sector: development_sector,
       eligible_entities: eligible_entities,
-      value_of_fund: value_of_fund,
+      value_of_funding: value_of_funding,
     }
   end
 end
