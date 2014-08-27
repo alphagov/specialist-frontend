@@ -33,6 +33,8 @@ private
       DrugSafetyUpdatePresenter.new(schema("drug-safety-update"), artefact)
     when "international_development_fund"
       InternationalDevelopmentFundPresenter.new(schema("international-development-funding"), artefact)
+    when "medical_safety_alert"
+      MedicalSafetyAlertPresenter.new(schema("medical-safety-alert"), artefact)
     else
       DocumentPresenter.new(NullSchema.new, artefact)
     end
