@@ -15,7 +15,7 @@ Given(/^a published medical safety alert exists$/) do
   )
 
   content_api_has_an_artefact(@slug, @artefact)
-  finder_api_has_schema("medical-safety-alert", medical_safety_alert_schema)
+  finder_api_has_schema("drug-device-alerts", medical_safety_alert_schema)
 end
 
 Then(/^I see the content of the medical safety alert$/) do
