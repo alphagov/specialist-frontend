@@ -15,6 +15,8 @@ gem 'slimmer', '3.25.0'
 
 gem 'logstasher', '0.4.8'
 
+gem 'airbrake', '4.0.0'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
