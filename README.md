@@ -1,9 +1,15 @@
 #Specialist frontend
 
 ##Purpose
+
+Displays long form single page documents published via [alphagov/specialist-publisher](https://github.com/alphagov/specialist-publisher).
+
 ![Specialist frontend screenshot](https://raw.githubusercontent.com/alphagov/specialist-frontend/master/docs/assets/page-screenshot.png)
 
-Displays documents published via [alphagov/specialist-publisher](https://github.com/alphagov/specialist-publisher).
+###Examples
+
+* [Energy Market Investigation](https://www.gov.uk/cma-cases/energy-market-investigation) published by the [Competition and Markets Authority](https://www.gov.uk/government/organisations/competition-and-markets-authority).
+* [Trade Advocacy Fund](https://www.gov.uk/international-development-funding/trade-advocacy-fund) published by the [Department for International Development](https://www.gov.uk/government/organisations/department-for-international-development).
 
 ##Dependencies
 * [alphagov/static](https://github.com/alphagov/static): provides static assets (JS/CSS) and provides the GOV.UK templates.
