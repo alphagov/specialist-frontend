@@ -26,4 +26,4 @@ $ bundle exec rake
 
 ##Adding a new document type
 1. Add a new presenter in `app/presenters` for the new document type.
-2. Add the mapping for the new presenter to its document type in `app/controllers/specialist_documents_controller.rb#document_presenter`
+2. Add the mapping for the new presenter to its document type in the `document_presenter` method in `app/controllers/specialist_documents_controller.rb`
