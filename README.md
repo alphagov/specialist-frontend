@@ -1,7 +1,7 @@
 #Specialist frontend
 
 ##Purpose
-![Specialist frontend screenshot](https://raw.githubusercontent.com/alphagov/specialist-frontend/add-documentation/docs/assets/page-screenshot.png)
+![Specialist frontend screenshot](https://raw.githubusercontent.com/alphagov/specialist-frontend/master/docs/assets/page-screenshot.png)
 
 Displays documents published via [alphagov/specialist-publisher](https://github.com/alphagov/specialist-publisher).
 
