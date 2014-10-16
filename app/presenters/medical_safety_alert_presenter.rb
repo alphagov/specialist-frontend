@@ -2,6 +2,7 @@ class MedicalSafetyAlertPresenter < DocumentPresenter
   delegate(
     :alert_type,
     :medical_specialism,
+    :issued_date,
     to: :"document.details"
   )
 
@@ -18,6 +19,12 @@ private
     {
       alert_type: alert_type,
       medical_specialism: medical_specialism,
+    }
+  end
+
+  def extra_date_metadata
+    {
+      "Issued date" => issued_date,
     }
   end
 end
