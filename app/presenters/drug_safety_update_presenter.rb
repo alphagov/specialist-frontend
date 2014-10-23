@@ -1,6 +1,7 @@
 class DrugSafetyUpdatePresenter < DocumentPresenter
   delegate(
     :therapeutic_area,
+    :published_date,
     to: :"document.details"
   )
 
@@ -16,6 +17,12 @@ private
   def filterable_metadata
     {
       therapeutic_area: therapeutic_area,
+    }
+  end
+
+  def extra_date_metadata
+    {
+      "Published date" => published_date,
     }
   end
 end
