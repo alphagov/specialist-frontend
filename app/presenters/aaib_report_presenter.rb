@@ -34,7 +34,7 @@ private
     {
       "Aircraft types" => aircraft_type,
       "Location" => location,
-      "Registrations" => registration,
+      "Registration" => registration,
     }
   end
 end
