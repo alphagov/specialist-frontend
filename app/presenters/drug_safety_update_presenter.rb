@@ -1,7 +1,7 @@
 class DrugSafetyUpdatePresenter < DocumentPresenter
   delegate(
     :therapeutic_area,
-    :published_date,
+    :first_published_at,
     to: :"document.details"
   )
 
@@ -22,7 +22,7 @@ private
 
   def extra_date_metadata
     {
-      "Published date" => published_date,
+      "Published at" => first_published_at,
     }
   end
 end
