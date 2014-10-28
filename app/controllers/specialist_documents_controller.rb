@@ -35,6 +35,8 @@ private
       InternationalDevelopmentFundPresenter.new(schema("international-development-funding"), artefact)
     when "medical_safety_alert"
       MedicalSafetyAlertPresenter.new(schema("drug-device-alerts"), artefact)
+    when "raib_report"
+      RaibReportPresenter.new(schema("raib-reports"), artefact)
     else
       DocumentPresenter.new(NullSchema.new, artefact)
     end

@@ -1,0 +1,38 @@
+{
+  "slug": "raib-reports",
+  "document_noun": "report",
+  "facets": [
+    {
+      "key": "railway_type",
+      "name": "Railway type",
+      "type": "multi-select",
+      "include_blank": false,
+      "preposition": "of type",
+      "allowed_values": [
+        {"label": "Heavy rail", "value": "heavy-rail"},
+        {"label": "Light rail", "value": "light-rail"},
+        {"label": "Metros", "value": "metros"},
+        {"label": "Heritage railways", "value": "heritage-railways"}
+      ]
+    },
+    {
+      "key": "report_type",
+      "name": "Report type",
+      "type": "multi-select",
+      "include_blank": false,
+      "preposition": "of type",
+      "allowed_values": [
+        {"label": "Investigation reports", "value": "investigation-reports"},
+        {"label": "Bulletins", "value": "bulletins"},
+        {"label": "Interim reports", "value": "interim-reports"},
+        {"label": "Discontinuation reports", "value": "discontinuation-reports"}
+      ]
+    },
+    {
+      "key": "date_of_occurrence",
+      "name": "Date of occurrence",
+      "type": "date",
+      "preposition": "occurred"
+    }
+  ]
+}
