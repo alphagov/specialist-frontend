@@ -23,10 +23,10 @@
       "include_blank": false,
       "preposition": "of type",
       "allowed_values": [
-        {"label": "Investigation reports", "value": "investigation-reports"},
-        {"label": "Safety bulletins", "value": "safety-bulletins"},
-        {"label": "Completed preliminary examinations", "value": "completed-preliminary-examinations"},
-        {"label": "Overseas reports", "value": "overseas-reports"}
+        {"label": "Investigation report", "value": "investigation-report"},
+        {"label": "Safety bulletin", "value": "safety-bulletin"},
+        {"label": "Completed preliminary examination", "value": "completed-preliminary-examination"},
+        {"label": "Overseas report", "value": "overseas-report"}
       ]
     },
     {
