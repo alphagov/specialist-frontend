@@ -1,7 +1,7 @@
 Feature: MAIB report viewing
   As a specialist member of the public
   I want to be able to view MAIB reports
-  So that I can find out about air accidents
+  So that I can find out about marine accidents
 
 Scenario: Viewing a published update
   Given a published MAIB report exists
