@@ -23,4 +23,10 @@ module SpecialistDocumentsHelper
       metadata_value(value)
     }.to_sentence(last_word_connector: ' and ').html_safe
   end
+
+  def orgs_to_sentence(organisations)
+    organisations.map { |org|
+      content_tag(:a, org.title, href: org.web_url)
+    }.to_sentence(last_word_connector: ' and ').html_safe
+  end
 end
