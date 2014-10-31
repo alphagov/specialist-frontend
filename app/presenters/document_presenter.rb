@@ -29,6 +29,12 @@ class DocumentPresenter
     document.details.headers || []
   end
 
+  def organisations
+    document.tags.select{ |t| 
+      t.type = "organisation"
+    }
+  end
+
 private
 
   attr_reader :document, :schema

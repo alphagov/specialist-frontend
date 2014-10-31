@@ -6,6 +6,11 @@
   </div>
   <div class="metadata">
     <dl class="inner-block">
+      <% if @document.organisations.any? %>
+        <dt>From:</dt>
+        <dd><%= orgs_to_sentence(@document.organisations) %></dd>
+      <% end %>
+
       <% @document.date_metadata.each do |label, date|%>
         <dt><%= label %>:</dt>
         <dd><%= nice_date_format(date) %></dd>
