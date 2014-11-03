@@ -32,7 +32,7 @@ private
 
   def extra_metadata
     {
-      "Aircraft types" => aircraft_type,
+      "Aircraft type" => aircraft_type,
       "Location" => location,
       "Registration" => registration,
     }

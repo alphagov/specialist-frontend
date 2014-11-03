@@ -33,7 +33,7 @@ Then(/^I see the content of the AAIB report$/) do
   check_metadata_value("Date of occurrence", "3 April 1992")
   check_metadata_value("Aircraft category", "General aviation - fixed wing")
   check_metadata_value("Report type", "Bulletin - Pre-1997 uncategorised monthly report")
-  check_metadata_value("Aircraft types", "Grob G115")
+  check_metadata_value("Aircraft type", "Grob G115")
   check_metadata_value("Location", "Loch Muick near Ballater, Scotland")
   check_metadata_value("Registration", "G-BPKG")
 end
