@@ -103,8 +103,6 @@
 
   .sidebar {
     @include media(tablet){
-      width: $one-third;
-      float: left;
       padding-bottom: $gutter*2;
     }
 
@@ -114,7 +112,8 @@
       padding-bottom: $gutter;
 
       ol {
-        padding-bottom:0;      }
+        padding-bottom:0;
+      }
     }
     a {
       text-decoration: none;
@@ -142,12 +141,6 @@
           margin-left: $gutter-half*-1;
         }
       }
-    }
-  }
-  .content {
-    @include media(tablet){
-      width: $two-thirds;
-      float: left;
     }
   }
   footer {

@@ -30,18 +30,17 @@
     </div>
   </div>
 </header>
+<div class="grid-row">
+  <nav class="column-third sidebar">
+    <ol class="js-stick-at-top-when-scrolling">
+      <%= render 'nav_item', headings: @document.headers %>
+    </ol>
+  </nav>
 
-<nav class="sidebar">
-  <ol class="inner-block js-stick-at-top-when-scrolling">
-    <%= render 'nav_item', headings: @document.headers %>
-  </ol>
-</nav>
-
-<div class="content">
-  <div class="inner-block">
-    <div class="govspeak">
-      <%= @document.body.html_safe  %>
-    </div>
+  <div class="column-two-thirds">
+    <%= render partial: 'govuk_component/govspeak', locals: {
+      content: @document.body.html_safe
+    } %>
   </div>
 </div>
 
