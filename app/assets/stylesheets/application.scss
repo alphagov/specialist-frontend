@@ -9,38 +9,16 @@
 @import "stick-at-top-when-scrolling";
 
 #wrapper {
-  display: block;
   padding-bottom: $gutter;
-  border-bottom: $gutter-one-third solid $govuk-blue;
 
   @include media(desktop) {
     padding-bottom: $gutter*2;
   }
 
   #page {
-    text-align: left;
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    width: auto;
-    max-width: 960 + $gutter*2;
     @extend %contain-floats;
-
-    @include ie-lte(8){
-      width: 960px;
-    }
   }
-}
 
-.inner-block {
-  padding: 0 $gutter-half;
-
-  @include media(tablet){
-    padding: 0 $gutter;
-  }
-}
-
-#wrapper {
   header {
     @extend %contain-floats;
     padding: $gutter-half 0;
