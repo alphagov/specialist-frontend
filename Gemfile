@@ -32,7 +32,7 @@ end
 group :assets do
   gem 'sass-rails', '~> 4.0.2'
   gem 'uglifier', '>= 1.3.0'
-  gem 'govuk_frontend_toolkit', '0.45.0'
+  gem 'govuk_frontend_toolkit', '3.0.1'
 end
 
 group :development, :test do
