@@ -16,13 +16,13 @@ class AaibReportPresenter < DocumentPresenter
     "/aaib-reports"
   end
 
-private
   def extra_date_metadata
     {
       "Date of occurrence" => date_of_occurrence,
     }
   end
 
+private
   def filterable_metadata
     {
       aircraft_category: aircraft_category,

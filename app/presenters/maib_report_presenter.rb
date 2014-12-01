@@ -13,13 +13,13 @@ class MaibReportPresenter < DocumentPresenter
     "/maib-reports"
   end
 
-private
   def extra_date_metadata
     {
       "Date of occurrence" => date_of_occurrence,
     }
   end
 
+private
   def filterable_metadata
     {
       vessel_type: vessel_type,

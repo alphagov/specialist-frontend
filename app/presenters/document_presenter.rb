@@ -30,9 +30,13 @@ class DocumentPresenter
   end
 
   def organisations
-    document.tags.select{ |t| 
+    document.tags.select{ |t|
       t.type = "organisation"
     }
+  end
+
+  def extra_date_metadata
+    {}
   end
 
 private
@@ -82,10 +86,6 @@ private
     {
       "Updated at" => published_at,
     }
-  end
-
-  def extra_date_metadata
-    {}
   end
 
   def filterable_metadata
