@@ -50,43 +50,12 @@
     }
 
     .category {
-      @include core-24;
       text-decoration:none;
     }
-    h1 {
-      @include bold-36;
-      margin-bottom: $gutter-half;
-      max-width: 15em;
 
-      @include media(tablet){
-        margin-bottom: $gutter;
-      }
-    }
-    .metadata {
-      position: relative;
-      @include core-14;
-      @extend %contain-floats;
-
-      @include media(tablet){
-        float: left;
-        width: $two-thirds;
-      }
-
+    .govuk-metadata {
       dt {
-        float: left;
-        clear: left;
-        width: auto;
-        min-width: 140px;
-        @include media(tablet){
-          padding-right: $gutter-one-third;
-        }
-      }
-      dd {
-        float: left;
-        width: 57%;
-        @include media(desktop){
-          width: 70%;
-        }
+        min-width: 134px;
       }
     }
     .summary {

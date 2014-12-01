@@ -1,27 +1,19 @@
 <% content_for :page_title, [@document.title, @document.format_name].join(' ') %>
 <header>
-  <div class="inner-block">
-    <span class="category"><%= link_to @document.format_name, @document.finder_path %></span>
-    <h1><%= @document.title %></h1>
-  </div>
-  <div class="metadata">
-    <dl class="inner-block">
-      <% if @document.organisations.any? %>
-        <dt>From:</dt>
-        <dd><%= orgs_to_sentence(@document.organisations) %></dd>
-      <% end %>
+  <%= render partial: 'govuk_component/title', locals: {
+    context: link_to(@document.format_name, @document.finder_path),
+    title: @document.title
+  } %>
 
-      <% @document.date_metadata.each do |label, date|%>
-        <dt><%= label %>:</dt>
-        <dd><%= nice_date_format(date) %></dd>
-      <% end %>
+  <%= render partial: 'govuk_component/metadata', locals: {
+    from: @document.organisations.map { |org|
+      link_to(org.title, org.web_url)
+    },
+    other: date_hash(@document.date_metadata).merge(
+        metadata_hash(@document.metadata)
+      )
+  } %>
 
-      <% @document.metadata.each do |data| %>
-        <dt><%= data.label %>:</dt>
-        <dd><%= metadata_value_sentence(data) %></dd>
-      <% end %>
-    </dl>
-  </div>
   <div class='summary'>
     <div class='inner-block'>
       <p>
