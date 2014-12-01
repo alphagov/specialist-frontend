@@ -35,25 +35,17 @@
 </div>
 
 <footer class="js-footer">
-  <div class='history'>
-    <div class="inner-block">
-      <dl>
-        <% @document.date_metadata.each do |label, date|%>
-          <dt><%= label %>:</dt>
-          <dd><%= nice_date_format(date) %></dd>
-        <% end %>
-      </dl>
-    </div>
-  </div>
-  <div class='links'>
-    <dl class='inner-block'>
-      <% @document.metadata.each do |data|%>
-        <dt><%= data.label %>:</dt>
-        <% data.values.each do |value| %>
-          <dd><%= metadata_value(value) %></dd>
-        <% end %>
-      <% end %>
-    </dl>
-  </div>
+  <%= render partial: 'govuk_component/document_footer', locals: {
+    published: nice_date_format(@document.published_at),
+    other_dates: date_hash(@document.extra_date_metadata),
+    other: metadata_hash(@document.metadata),
+    history: @document.change_history.map { |c|
+      {
+        display_time: nice_date_format(c.public_timestamp),
+        timestamp: c.public_timestamp,
+        note: c.note,
+      }
+    }
+  } %>
 </footer>
 

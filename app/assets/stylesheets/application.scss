@@ -91,33 +91,6 @@
   }
   footer {
     clear: both;
-
-    dt {
-      @include core-14;
-      padding-top:20px;
-    }
-    dd {
-      @include bold-24;
-
-      ul {
-        list-style: none;
-      }
-    }
-    .links {
-      a {
-        text-decoration: none;
-      }
-      @include media(tablet){
-        float: right;
-        width: $two-thirds;
-      }
-    }
-    .history {
-      @include media(tablet){
-        float: left;
-        width: $one-third;
-      }
-    }
   }
 }
 

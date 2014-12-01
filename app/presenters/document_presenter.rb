@@ -39,6 +39,10 @@ class DocumentPresenter
     {}
   end
 
+  def change_history
+    document.details.change_history || []
+  end
+
 private
 
   attr_reader :document, :schema
