@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Slimmer::Headers
+  include Slimmer::SharedTemplates
   before_filter :set_slimmer_headers
 
   # Prevent CSRF attacks by raising an exception.
@@ -8,6 +9,6 @@ class ApplicationController < ActionController::Base
 
 private
   def set_slimmer_headers
-    response.headers[Slimmer::Headers::TEMPLATE_HEADER] = "header_footer_only"
+    response.headers[Slimmer::Headers::TEMPLATE_HEADER] = "core_layout"
   end
 end
