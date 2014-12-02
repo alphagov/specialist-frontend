@@ -17,6 +17,12 @@ Given(/^a published RAIB report exists$/) do
       "updated_at" => "2014-10-24T08:41:18Z",
       "date_of_occurrence" => "1992-04-03",
       "published_at" => "2014-10-24T08:41:18Z",
+      "change_history" => [
+        {
+          "public_timestamp" => "2014-10-24T08:41:18Z",
+          "note" => "Published the RAIB Report",
+        },
+      ],
     }
   )
 
@@ -30,12 +36,6 @@ Then(/^I see the content of the RAIB report$/) do
   check_metadata_value("Date of occurrence", "3 April 1992")
   check_metadata_value("Railway type", "Heavy rail")
   check_metadata_value("Report type", "Investigation report")
-end
-
-def check_metadata_value(key, value)
-  within(".metadata") do
-    expect(page).to have_content("#{key}: #{value}")
-  end
 end
 
 def raib_report_schema

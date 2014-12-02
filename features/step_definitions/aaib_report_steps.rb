@@ -20,6 +20,12 @@ Given(/^a published AAIB report exists$/) do
       "aircraft_type" => "Grob G115",
       "registration" => "G-BPKG",
       "published_at" => "2014-10-24T08:41:18Z",
+      "change_history" => [
+        {
+          "public_timestamp" => "2014-10-24T08:41:18Z",
+          "note" => "Published the AAIB Report",
+        },
+      ],
     }
   )
 
@@ -36,12 +42,6 @@ Then(/^I see the content of the AAIB report$/) do
   check_metadata_value("Aircraft type", "Grob G115")
   check_metadata_value("Location", "Loch Muick near Ballater, Scotland")
   check_metadata_value("Registration", "G-BPKG")
-end
-
-def check_metadata_value(key, value)
-  within(".metadata") do
-    expect(page).to have_content("#{key}: #{value}")
-  end
 end
 
 def aaib_report_schema

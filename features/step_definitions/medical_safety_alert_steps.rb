@@ -11,6 +11,12 @@ Given(/^a published medical safety alert exists$/) do
       "summary" => @summary,
       "alert_type" => ["drugs"],
       "medical_specialism" => ["general-practice"],
+      "change_history" => [
+        {
+          "public_timestamp" => "2014-10-24T08:41:18Z",
+          "note" => "Published the Medical Safety Alert",
+        },
+      ],
     }
   )
 
