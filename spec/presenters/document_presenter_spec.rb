@@ -44,6 +44,7 @@ describe DocumentPresenter do
   let(:all_attributes) {
     filterable_attributes.merge(extra_attributes).merge({
       published_at: document_published_at,
+      bulk_published: false,
     })
   }
 

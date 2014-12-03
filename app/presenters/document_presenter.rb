@@ -4,6 +4,7 @@ class DocumentPresenter
   delegate :summary,
     :body,
     :published_at,
+    :bulk_published,
     to: :"document.details"
 
   def initialize(schema, document)
@@ -79,6 +80,8 @@ private
   end
 
   def default_date_metadata
+    return {} if bulk_published
+
     {
       "Updated at" => published_at,
     }
