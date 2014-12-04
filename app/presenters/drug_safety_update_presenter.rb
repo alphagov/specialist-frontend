@@ -6,7 +6,7 @@ class DrugSafetyUpdatePresenter < DocumentPresenter
   )
 
   def format_name
-    "Drug safety update"
+    "Drug Safety Update"
   end
 
   def finder_path
