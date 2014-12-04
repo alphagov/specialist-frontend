@@ -11,7 +11,7 @@ gem 'exception_notification', '4.0.1'
 gem 'aws-ses', '0.5.0', require: 'aws/ses'
 gem 'plek', '1.3.0'
 gem 'unicorn', '4.8.1'
-gem 'slimmer', '5.0.0'
+gem 'slimmer', '5.1.0'
 
 gem 'logstasher', '0.4.8'
 
@@ -32,7 +32,7 @@ end
 group :assets do
   gem 'sass-rails', '~> 4.0.2'
   gem 'uglifier', '>= 1.3.0'
-  gem 'govuk_frontend_toolkit', '0.45.0'
+  gem 'govuk_frontend_toolkit', '3.0.1'
 end
 
 group :development, :test do

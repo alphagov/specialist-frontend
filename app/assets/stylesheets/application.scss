@@ -6,42 +6,19 @@
 @import "css3";
 
 @import "reset";
-@import "govspeak";
 @import "stick-at-top-when-scrolling";
 
 #wrapper {
-  display: block;
   padding-bottom: $gutter;
-  border-bottom: $gutter-one-third solid $govuk-blue;
 
   @include media(desktop) {
     padding-bottom: $gutter*2;
   }
 
   #page {
-    text-align: left;
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    width: auto;
-    max-width: 960 + $gutter*2;
     @extend %contain-floats;
-
-    @include ie-lte(8){
-      width: 960px;
-    }
   }
-}
 
-.inner-block {
-  padding: 0 $gutter-half;
-
-  @include media(tablet){
-    padding: 0 $gutter;
-  }
-}
-
-#wrapper {
   header {
     @extend %contain-floats;
     padding: $gutter-half 0;
@@ -51,48 +28,16 @@
     }
 
     .category {
-      @include core-24;
       text-decoration:none;
     }
-    h1 {
-      @include bold-36;
-      margin-bottom: $gutter-half;
-      max-width: 15em;
 
-      @include media(tablet){
-        margin-bottom: $gutter;
-      }
-    }
-    .metadata {
-      position: relative;
-      @include core-14;
-      @extend %contain-floats;
-
-      @include media(tablet){
-        float: left;
-        width: $two-thirds;
-      }
-
+    .govuk-metadata {
       dt {
-        float: left;
-        clear: left;
-        width: auto;
-        min-width: 140px;
-        @include media(tablet){
-          padding-right: $gutter-one-third;
-        }
-      }
-      dd {
-        float: left;
-        width: 57%;
-        @include media(desktop){
-          width: 70%;
-        }
+        min-width: 134px;
       }
     }
     .summary {
       @include core-19;
-      clear:both;
       padding: $gutter/2 0 0;
 
       @include media(tablet){
@@ -104,8 +49,6 @@
 
   .sidebar {
     @include media(tablet){
-      width: $one-third;
-      float: left;
       padding-bottom: $gutter*2;
     }
 
@@ -115,7 +58,8 @@
       padding-bottom: $gutter;
 
       ol {
-        padding-bottom:0;      }
+        padding-bottom:0;
+      }
     }
     a {
       text-decoration: none;
@@ -145,41 +89,8 @@
       }
     }
   }
-  .content {
-    @include media(tablet){
-      width: $two-thirds;
-      float: left;
-    }
-  }
   footer {
     clear: both;
-
-    dt {
-      @include core-14;
-      padding-top:20px;
-    }
-    dd {
-      @include bold-24;
-
-      ul {
-        list-style: none;
-      }
-    }
-    .links {
-      a {
-        text-decoration: none;
-      }
-      @include media(tablet){
-        float: right;
-        width: $two-thirds;
-      }
-    }
-    .history {
-      @include media(tablet){
-        float: left;
-        width: $one-third;
-      }
-    }
   }
 }
 

@@ -10,23 +10,29 @@ module SpecialistDocumentsHelper
     end
   end
 
-  def metadata_value(value)
-    if value.linkable?
-      content_tag(:a, value.label, href: value.href)
-    else
-      value.label
+  def metadata_values(data)
+    data.values.map { |value|
+      if value.linkable?
+        content_tag(:a, value.label, href: value.href)
+      else
+        value.label
+      end
+    }
+  end
+
+  def metadata_hash(metadata)
+    hash = {}
+    metadata.each do |value|
+      hash[value.label] = metadata_values(value)
     end
+    hash
   end
 
-  def metadata_value_sentence(metadata)
-    metadata.values.map { |value|
-      metadata_value(value)
-    }.to_sentence(last_word_connector: ' and ').html_safe
-  end
-
-  def orgs_to_sentence(organisations)
-    organisations.map { |org|
-      content_tag(:a, org.title, href: org.web_url)
-    }.to_sentence(last_word_connector: ' and ').html_safe
+  def date_hash(date_metadata)
+    hash = {}
+    date_metadata.each { |key, value|
+      hash[key] = nice_date_format(value)
+    }
+    hash
   end
 end

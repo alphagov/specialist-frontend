@@ -14,6 +14,12 @@ Given(/^a published international development fund exists$/) do
       "development_sector" => ["health", "disabilities"],
       "eligible_entities" => ["companies", "local-government"],
       "value_of_funding" => "100001-500000",
+      "change_history" => [
+        {
+          "public_timestamp" => "2014-10-24T08:41:18Z",
+          "note" => "Published the Fund",
+        },
+      ],
     }
   )
 
@@ -25,9 +31,13 @@ Then(/^I should see the fund's content$/) do
   expect(page).to have_content(@title)
   expect(page).to have_content(@summary)
   expect(page).to have_content("Open")
-  expect(page).to have_content("Mozambique, Zambia and Zimbabwe")
-  expect(page).to have_content("Health and Disabilities")
-  expect(page).to have_content("Companies and Local government")
+  expect(page).to have_content("Mozambique")
+  expect(page).to have_content("Zambia")
+  expect(page).to have_content("Zimbabwe")
+  expect(page).to have_content("Health")
+  expect(page).to have_content("Disabilities")
+  expect(page).to have_content("Companies")
+  expect(page).to have_content("Local government")
   expect(page).to have_content("£100,001 to £500,000")
 end
 

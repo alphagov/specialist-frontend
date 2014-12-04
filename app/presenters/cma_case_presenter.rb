@@ -16,7 +16,6 @@ class CmaCasePresenter < DocumentPresenter
     "/cma-cases"
   end
 
-private
   def extra_date_metadata
     {
       "Opened date" => opened_date,
@@ -24,6 +23,7 @@ private
     }
   end
 
+private
   def filterable_metadata
     {
       case_type: case_type,

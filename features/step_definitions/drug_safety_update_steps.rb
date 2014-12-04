@@ -10,6 +10,12 @@ Given(/^a published drug safety update exists$/) do
       "body" => "<p>Body content</p>\n",
       "summary" => @summary,
       "therapeutic_area" => ["anaesthesia-intensive-care", "cancer"],
+      "change_history" => [
+        {
+          "public_timestamp" => "2014-10-24T08:41:18Z",
+          "note" => "Published the Drug Safety Update",
+        },
+      ],
     }
   )
 
@@ -20,7 +26,8 @@ end
 Then(/^I see the content of the drug safety update$/) do
   expect(page).to have_content(@title)
   expect(page).to have_content(@summary)
-  expect(page).to have_content("Anaesthesia and intensive care and Cancer")
+  expect(page).to have_content("Anaesthesia and intensive care")
+  expect(page).to have_content("Cancer")
 end
 
 def drug_safety_update_schema

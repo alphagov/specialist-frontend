@@ -22,6 +22,12 @@ Given(/^a published case$/) do
       "market_sector" => "distribution-and-service-industries",
       "outcome_type" => "markets-phase-1-undertakings-in-lieu-of-reference",
       "headers" => [],
+      "change_history" => [
+        {
+          "public_timestamp" => "2014-11-24T08:41:18Z",
+          "note" => "Published the CMA Case",
+        },
+      ],
     }
   )
 

@@ -14,17 +14,17 @@ class MedicalSafetyAlertPresenter < DocumentPresenter
     "/drug-device-alerts"
   end
 
+  def extra_date_metadata
+    {
+      "Issued date" => issued_date,
+    }
+  end
+
 private
   def filterable_metadata
     {
       alert_type: alert_type,
       medical_specialism: medical_specialism,
-    }
-  end
-
-  def extra_date_metadata
-    {
-      "Issued date" => issued_date,
     }
   end
 end
