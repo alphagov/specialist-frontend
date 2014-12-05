@@ -30,9 +30,11 @@ module SpecialistDocumentsHelper
 
   def date_hash(date_metadata)
     hash = {}
-    date_metadata.each { |key, value|
-      hash[key] = nice_date_format(value)
-    }
+    date_metadata
+      .reject { |_, value| value.blank? }
+      .each { |key, value|
+        hash[key] = nice_date_format(value)
+      }
     hash
   end
 end

@@ -114,14 +114,6 @@ describe DocumentPresenter do
         })
       end
     end
-
-    context "with closed date blank" do
-      let(:document_published_at) { nil }
-
-      specify do
-        subject.date_metadata.should eq({})
-      end
-    end
   end
 
   describe "details" do
