@@ -39,7 +39,7 @@
     published: nice_date_format(@document.published_at),
     other_dates: date_hash(@document.extra_date_metadata),
     other: metadata_hash(@document.metadata),
-    history: @document.change_history.map { |c|
+    history: @document.change_history.reverse.map { |c|
       {
         display_time: nice_date_format(c.public_timestamp),
         timestamp: c.public_timestamp,
