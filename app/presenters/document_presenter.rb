@@ -19,7 +19,6 @@ class DocumentPresenter
   def date_metadata
     default_date_metadata
       .merge(extra_date_metadata)
-      .reject { |_, value| value.blank? }
   end
 
   def metadata

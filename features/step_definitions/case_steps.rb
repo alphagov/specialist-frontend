@@ -17,6 +17,7 @@ Given(/^a published case$/) do
       "summary" => @summary,
       "opened_date" => "2012-01-01",
       "closed_date" => "2014-11-21",
+      "updated_at" => "",
       "case_type" => "regulatory-references-and-appeals",
       "case_state" => "closed",
       "market_sector" => "distribution-and-service-industries",
@@ -47,6 +48,7 @@ Then(/^I should see the case's content$/) do
   expect(page).to have_content("21 November 2014")
   expect(page).to have_content("Regulatory references and appeals")
   expect(page).to have_content("Closed")
+  expect(page).to have_no_content("Updated at")
 end
 
 def slug_from_title(title)
