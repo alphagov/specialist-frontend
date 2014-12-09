@@ -50,4 +50,20 @@ private
     end
   end
 
+  def set_robots_headers
+    if finders_excluded_from_robots.include?(request.path.split('/')[1])
+      response.headers["X-Robots-Tag"] = "none"
+    end
+  end
+
+  def finders_excluded_from_robots
+    [
+      'aaib-reports',
+      'drug-safety-update',
+      'drug-device-alerts',
+      'maib-reports',
+      'raib-reports',
+    ]
+  end
+
 end

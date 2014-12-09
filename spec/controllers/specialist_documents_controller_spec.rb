@@ -34,6 +34,15 @@ describe SpecialistDocumentsController do
         assigns(:document).should be_a(AaibReportPresenter)
       end
     end
+
+    context "excluded from search engines" do
+      let(:format) { "aaib_report" }
+      let(:slug) { "aaib-reports/an-air-accident" }
+
+      it "sets the correct header" do
+        expect(response.headers["X-Robots-Tag"]).should eq("none")
+      end
+    end
   end
 
 end
