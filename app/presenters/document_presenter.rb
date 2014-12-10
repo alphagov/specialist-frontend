@@ -44,8 +44,11 @@ class DocumentPresenter
   end
 
 private
-
   attr_reader :document, :schema
+
+  def first_edition?
+    change_history.size <= 1
+  end
 
   def metadata_response_builder(label, values)
     OpenStruct.new(
@@ -89,8 +92,10 @@ private
   def default_date_metadata
     return {} if bulk_published
 
+    label = first_edition? ? "Published at" : "Updated at"
+
     {
-      "Updated at" => published_at,
+      label => published_at,
     }
   end
 
