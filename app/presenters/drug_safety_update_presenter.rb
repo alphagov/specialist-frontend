@@ -19,6 +19,12 @@ class DrugSafetyUpdatePresenter < DocumentPresenter
     }
   end
 
+  def default_date_metadata
+    return {} if bulk_published
+    return {} if first_edition?
+    super
+  end
+
 private
   def filterable_metadata
     {
