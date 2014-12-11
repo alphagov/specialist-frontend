@@ -43,6 +43,14 @@ class DocumentPresenter
     document.details.change_history || []
   end
 
+  def beta?
+    false
+  end
+
+  def beta_message
+    nil
+  end
+
 private
 
   attr_reader :document, :schema
