@@ -20,6 +20,14 @@ class MedicalSafetyAlertPresenter < DocumentPresenter
     }
   end
 
+  def beta?
+    true
+  end
+
+  def beta_message
+    "Until January 2015, <a href='http://www.mhra.gov.uk/Safetyinformation/Safetywarningsalertsandrecalls/index.htm'>the MHRA website</a> is the main source for drug alerts and medical device alerts."
+  end
+
 private
   def filterable_metadata
     {
