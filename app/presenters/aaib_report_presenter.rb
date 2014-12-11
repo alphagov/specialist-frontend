@@ -22,6 +22,14 @@ class AaibReportPresenter < DocumentPresenter
     }
   end
 
+  def beta?
+    true
+  end
+
+  def beta_message
+    "Until early 2015, the <a href='http://www.aaib.gov.uk/home/index.cfm'>AAIB website</a> is the main source for AAIB reports"
+  end
+
 private
   def filterable_metadata
     {

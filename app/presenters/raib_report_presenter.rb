@@ -19,6 +19,14 @@ class RaibReportPresenter < DocumentPresenter
     }
   end
 
+  def beta?
+    true
+  end
+
+  def beta_message
+    "Until early 2015, the <a href='http://www.raib.gov.uk/home/index.cfm'>RAIB website</a> is the main source for RAIB reports"
+  end
+
 private
   def filterable_metadata
     {

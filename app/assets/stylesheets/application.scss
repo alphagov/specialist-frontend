@@ -24,7 +24,7 @@
     padding: $gutter-half 0;
 
     @include media(tablet){
-      padding: $gutter*2 0 $gutter*2;
+      padding: $gutter 0 $gutter*2;
     }
 
     .category {

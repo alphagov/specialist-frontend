@@ -19,6 +19,14 @@ class MaibReportPresenter < DocumentPresenter
     }
   end
 
+  def beta?
+    true
+  end
+
+  def beta_message
+    "Until early 2015, the <a href='http://www.maib.gov.uk/home/index.cfm'>MAIB website</a> is the main source for MAIB reports"
+  end
+
 private
   def filterable_metadata
     {

@@ -19,6 +19,14 @@ class DrugSafetyUpdatePresenter < DocumentPresenter
     }
   end
 
+  def beta?
+    true
+  end
+
+  def beta_message
+    "Until January 2015, <a href='http://www.mhra.gov.uk/Safetyinformation/DrugSafetyUpdate/index.htm'>the MHRA website</a> is the official home of the Drug Safety Update."
+  end
+
 private
   def filterable_metadata
     {
