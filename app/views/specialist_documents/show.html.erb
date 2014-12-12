@@ -8,10 +8,15 @@
 <% end %>
 
 <header>
-  <%= render partial: 'govuk_component/title', locals: {
-    context: link_to(@document.format_name, @document.finder_path),
-    title: @document.title
-  } %>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <%= render partial: 'govuk_component/title', locals: {
+        context: link_to(@document.format_name, @document.finder_path),
+        title: @document.title,
+        average_title_length: "long"
+      } %>
+    </div>
+  </div>
 
   <%= render partial: 'govuk_component/metadata', locals: {
     from: @document.organisations.map { |org|
@@ -56,4 +61,3 @@
     }
   } %>
 </footer>
-
