@@ -48,7 +48,7 @@ Then(/^I should see the case's content$/) do
   expect(page).to have_content("21 November 2014")
   expect(page).to have_content("Regulatory references and appeals")
   expect(page).to have_content("Closed")
-  expect(page).to have_no_content("Updated at")
+  expect(page).to have_no_content("Updated")
 end
 
 def slug_from_title(title)

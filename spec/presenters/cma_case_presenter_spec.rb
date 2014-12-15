@@ -59,7 +59,7 @@ describe CmaCasePresenter do
 
     specify do
       subject.date_metadata.should eq({
-        "Updated at" => published_at,
+        "Updated" => published_at,
         "Opened date" => Date.new(2013, 9, 1),
         "Closed date" => Date.new(2014, 3, 1),
       })

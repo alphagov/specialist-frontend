@@ -35,7 +35,7 @@ end
 
 Then(/^I see the content of the AAIB report$/) do
   expect(page).to have_content(@title)
-  check_metadata_value("Updated at", "24 October 2014")
+  check_metadata_value("Updated", "24 October 2014")
   check_metadata_value("Date of occurrence", "3 April 1992")
   check_metadata_value("Aircraft category", "General aviation - fixed wing")
   check_metadata_value("Report type", "Bulletin - Pre-1997 uncategorised monthly report")

@@ -15,7 +15,7 @@ class DrugSafetyUpdatePresenter < DocumentPresenter
 
   def extra_date_metadata
     {
-      "Published at" => first_published_at,
+      "Published" => first_published_at,
     }
   end
 

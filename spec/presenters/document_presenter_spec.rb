@@ -110,7 +110,7 @@ describe DocumentPresenter do
 
       specify do
         subject.date_metadata.should eq({
-          "Updated at" => DateTime.new(2014, 4, 1),
+          "Updated" => DateTime.new(2014, 4, 1),
         })
       end
     end

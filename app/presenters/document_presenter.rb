@@ -98,8 +98,12 @@ private
     return {} if bulk_published
 
     {
-      "Updated at" => published_at,
+      "Updated" => published_at,
     }
+  end
+
+  def first_edition?
+    change_history.size <= 1
   end
 
   def filterable_metadata

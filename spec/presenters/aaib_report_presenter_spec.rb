@@ -68,7 +68,7 @@ describe AaibReportPresenter do
 
     specify do
       subject.date_metadata.should eq({
-        "Updated at" => published_at,
+        "Updated" => published_at,
         "Date of occurrence" => Date.new(2013, 9, 1),
       })
     end
