@@ -1,4 +1,5 @@
 class DocumentPresenter
+  include SpecialistDocumentsHelper
 
   delegate :title, :details, to: :document
   delegate :summary,
@@ -51,6 +52,14 @@ class DocumentPresenter
     nil
   end
 
+  def footer_date_metadata
+    if first_edition?
+      { published: nice_date_format(published_at) }
+    else
+      { updated: nice_date_format(published_at) }
+    end
+  end
+
 private
 
   attr_reader :document, :schema
@@ -96,9 +105,10 @@ private
 
   def default_date_metadata
     return {} if bulk_published
+    caption = first_edition? ? "Published" : "Updated"
 
     {
-      "Updated" => published_at,
+      caption => published_at,
     }
   end
 

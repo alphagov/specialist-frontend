@@ -49,7 +49,6 @@
 
 <footer class="js-footer">
   <%= render partial: 'govuk_component/document_footer', locals: {
-    published: nice_date_format(@document.published_at),
     other_dates: date_hash(@document.extra_date_metadata),
     other: metadata_hash(@document.metadata),
     history: @document.change_history.reverse.map { |c|
@@ -59,5 +58,5 @@
         note: c.note,
       }
     }
-  } %>
+  }.merge(@document.footer_date_metadata) %>
 </footer>

@@ -45,6 +45,7 @@ describe DocumentPresenter do
     filterable_attributes.merge(extra_attributes).merge({
       published_at: document_published_at,
       bulk_published: false,
+      change_history: [],
     })
   }
 
@@ -110,7 +111,7 @@ describe DocumentPresenter do
 
       specify do
         subject.date_metadata.should eq({
-          "Updated" => DateTime.new(2014, 4, 1),
+          "Published" => DateTime.new(2014, 4, 1),
         })
       end
     end
