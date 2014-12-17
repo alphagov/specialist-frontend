@@ -53,6 +53,7 @@ class DocumentPresenter
   end
 
   def footer_date_metadata
+    return {} if bulk_published
     if first_edition?
       { published: nice_date_format(published_at) }
     else
