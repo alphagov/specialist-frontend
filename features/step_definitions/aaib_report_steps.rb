@@ -1,8 +1,48 @@
 Given(/^a published AAIB report exists$/) do
   @title = "Grob G115, G-BPKG, 3 April 1992"
   @slug = slug_from_title(@title)
+  @artefact = create_aaib_report(@slug)
+end
 
-  @artefact = artefact_for_slug(@slug).merge(
+Then(/^I see the content of the AAIB report$/) do
+  expect(page).to have_content(@title)
+  check_metadata_value("Published", "24 October 2014")
+  check_metadata_value("Date of occurrence", "3 April 1992")
+  check_metadata_value("Aircraft category", "General aviation - fixed wing")
+  check_metadata_value("Report type", "Bulletin - Pre-1997 uncategorised monthly report")
+  check_metadata_value("Aircraft type", "Grob G115")
+  check_metadata_value("Location", "Loch Muick near Ballater, Scotland")
+  check_metadata_value("Registration", "G-BPKG")
+end
+
+Given(/^a published AAIB report with a major change exists$/) do
+  @title = "Grob G115, G-BPKG, 3 April 1992"
+  @slug = slug_from_title(@title)
+  @artefact = create_aaib_report(@slug, major_changes: 2)
+end
+
+Then(/^I see the content of the republished AAIB report$/) do
+  expect(page).to have_content(@title)
+  check_metadata_value("Updated", "24 October 2014")
+end
+
+def aaib_report_schema
+  File.read(
+    File.expand_path('../../fixtures/schemas/aaib-reports.json', __FILE__)
+  )
+end
+
+def create_aaib_report(slug, major_changes: 1)
+  base_time = Time.mktime(2013, 10, 24)
+
+  change_history = major_changes.times.map do |x|
+    {
+      "public_timestamp" => base_time + x.months,
+      "note" => "Published the AAIB report - #{x}",
+    }
+  end
+
+  artefact = artefact_for_slug(@slug).merge(
     "title" => @title,
     "format" => "aaib_report",
     "details" => {
@@ -20,32 +60,10 @@ Given(/^a published AAIB report exists$/) do
       "aircraft_type" => "Grob G115",
       "registration" => "G-BPKG",
       "published_at" => "2014-10-24T08:41:18Z",
-      "change_history" => [
-        {
-          "public_timestamp" => "2014-10-24T08:41:18Z",
-          "note" => "Published the AAIB Report",
-        },
-      ],
+      "change_history" => change_history,
     }
   )
 
-  content_api_has_an_artefact(@slug, @artefact)
+  content_api_has_an_artefact(slug, artefact)
   finder_api_has_schema("aaib-reports", aaib_report_schema)
-end
-
-Then(/^I see the content of the AAIB report$/) do
-  expect(page).to have_content(@title)
-  check_metadata_value("Updated at", "24 October 2014")
-  check_metadata_value("Date of occurrence", "3 April 1992")
-  check_metadata_value("Aircraft category", "General aviation - fixed wing")
-  check_metadata_value("Report type", "Bulletin - Pre-1997 uncategorised monthly report")
-  check_metadata_value("Aircraft type", "Grob G115")
-  check_metadata_value("Location", "Loch Muick near Ballater, Scotland")
-  check_metadata_value("Registration", "G-BPKG")
-end
-
-def aaib_report_schema
-  File.read(
-    File.expand_path('../../fixtures/schemas/aaib-reports.json', __FILE__)
-  )
 end
