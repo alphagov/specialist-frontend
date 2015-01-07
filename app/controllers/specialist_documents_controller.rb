@@ -15,8 +15,8 @@ class SpecialistDocumentsController < ApplicationController
 
 private
 
-  def schema(name)
-    finder_api.get_schema(name)
+  def finder(slug)
+    Finder.new(content_store.content_item("/#{slug}"))
   end
 
   def error_not_found
@@ -26,19 +26,19 @@ private
   def document_presenter(artefact)
     case artefact.format
     when "aaib_report"
-      AaibReportPresenter.new(schema("aaib-reports"), artefact)
+      AaibReportPresenter.new(finder("aaib-reports"), artefact)
     when "cma_case"
-      CmaCasePresenter.new(schema("cma-cases"), artefact)
+      CmaCasePresenter.new(finder("cma-cases"), artefact)
     when "drug_safety_update"
-      DrugSafetyUpdatePresenter.new(schema("drug-safety-update"), artefact)
+      DrugSafetyUpdatePresenter.new(finder("drug-safety-update"), artefact)
     when "international_development_fund"
-      InternationalDevelopmentFundPresenter.new(schema("international-development-funding"), artefact)
+      InternationalDevelopmentFundPresenter.new(finder("international-development-funding"), artefact)
     when "maib_report"
-      MaibReportPresenter.new(schema("maib-reports"), artefact)
+      MaibReportPresenter.new(finder("maib-reports"), artefact)
     when "medical_safety_alert"
-      MedicalSafetyAlertPresenter.new(schema("drug-device-alerts"), artefact)
+      MedicalSafetyAlertPresenter.new(finder("drug-device-alerts"), artefact)
     when "raib_report"
-      RaibReportPresenter.new(schema("raib-reports"), artefact)
+      RaibReportPresenter.new(finder("raib-reports"), artefact)
     else
       DocumentPresenter.new(NullSchema.new, artefact)
     end
