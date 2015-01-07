@@ -27,7 +27,7 @@ Given(/^a published MAIB report exists$/) do
   )
 
   content_api_has_an_artefact(@slug, @artefact)
-  finder_api_has_schema("maib-reports", maib_report_schema)
+  content_store_has_item("/maib-reports", maib_report_finder)
 end
 
 Then(/^I see the content of the MAIB report$/) do
@@ -38,8 +38,8 @@ Then(/^I see the content of the MAIB report$/) do
   check_metadata_value("Report type", "Investigation report")
 end
 
-def maib_report_schema
+def maib_report_finder
   File.read(
-    File.expand_path('../../fixtures/schemas/maib-reports.json', __FILE__)
+    File.expand_path('../../fixtures/finders/maib-reports.json', __FILE__)
   )
 end

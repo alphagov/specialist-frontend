@@ -34,7 +34,7 @@ Given(/^a published case$/) do
 
   content_api_has_an_artefact(@slug, @artefact)
 
-  finder_api_has_schema("cma-cases")
+  content_store_has_item("/cma-cases", cma_cases_finder)
 end
 
 When(/^I visit the document page$/) do
@@ -53,4 +53,10 @@ end
 
 def slug_from_title(title)
   title.downcase.gsub(/\W/, '-')
+end
+
+def cma_cases_finder
+  File.read(
+    File.expand_path('../../fixtures/finders/cma-cases.json', __FILE__)
+  )
 end
