@@ -27,7 +27,7 @@ Given(/^a published RAIB report exists$/) do
   )
 
   content_api_has_an_artefact(@slug, @artefact)
-  finder_api_has_schema("raib-reports", raib_report_schema)
+  content_store_has_item("/raib-reports", raib_reports_finder)
 end
 
 Then(/^I see the content of the RAIB report$/) do
@@ -38,8 +38,8 @@ Then(/^I see the content of the RAIB report$/) do
   check_metadata_value("Report type", "Investigation report")
 end
 
-def raib_report_schema
+def raib_reports_finder
   File.read(
-    File.expand_path('../../fixtures/schemas/raib-reports.json', __FILE__)
+    File.expand_path('../../fixtures/finders/raib-reports.json', __FILE__)
   )
 end

@@ -20,7 +20,7 @@ Given(/^a published drug safety update exists$/) do
   )
 
   content_api_has_an_artefact(@slug, @artefact)
-  finder_api_has_schema("drug-safety-update", drug_safety_update_schema)
+  content_store_has_item("/drug-safety-update", drug_safety_update_finder)
 end
 
 Then(/^I see the content of the drug safety update$/) do
@@ -30,8 +30,8 @@ Then(/^I see the content of the drug safety update$/) do
   expect(page).to have_content("Cancer")
 end
 
-def drug_safety_update_schema
+def drug_safety_update_finder
   File.read(
-    File.expand_path('../../fixtures/schemas/drug-safety-update-schema.json', __FILE__)
+    File.expand_path('../../fixtures/finders/drug-safety-update.json', __FILE__)
   )
 end

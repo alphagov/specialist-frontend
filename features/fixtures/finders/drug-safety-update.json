@@ -1,0 +1,156 @@
+{
+  "base_path": "/drug-safety-update",
+  "title": "Drug Safety Update",
+  "description": "",
+  "format": "finder",
+  "need_ids": [],
+  "locale": "en",
+  "updated_at": "2015-01-05T17:14:10.740Z",
+  "public_updated_at": "2015-01-05T10:45:10.000+00:00",
+  "details": {
+    "beta": true,
+    "beta_message": "Until January 2015, <a href='http://www.mhra.gov.uk/Safetyinformation/DrugSafetyUpdate/index.htm'>the MHRA website</a> is the official home of the Drug Safety Update.",
+    "document_noun": "update",
+    "document_type": "drug_safety_update",
+    "email_signup_enabled": false,
+    "facets": [
+      {
+        "key": "therapeutic_area",
+        "name": "Therapeutic area",
+        "type": "multi-select",
+        "include_blank": false,
+        "preposition": "about",
+        "allowed_values": [
+          {
+            "label": "Anaesthesia and intensive care",
+            "value": "anaesthesia-intensive-care"
+          },
+          {
+            "label": "Cancer",
+            "value": "cancer"
+          },
+          {
+            "label": "Cardiovascular disease and lipidology",
+            "value": "cardiovascular-disease-lipidology"
+          },
+          {
+            "label": "Dentistry",
+            "value": "dentistry"
+          },
+          {
+            "label": "Dermatology",
+            "value": "dermatology"
+          },
+          {
+            "label": "Ear, nose and throat",
+            "value": "ear-nose-throat"
+          },
+          {
+            "label": "Endocrinology, diabetology and metabolism",
+            "value": "endocrinology-diabetology-metabolism"
+          },
+          {
+            "label": "GI, hepatology and pancreatic disorders",
+            "value": "gi-hepatology-pancreatic-disorders"
+          },
+          {
+            "label": "Haematology",
+            "value": "haematology"
+          },
+          {
+            "label": "Immunology and vaccination",
+            "value": "immunology-vaccination"
+          },
+          {
+            "label": "Immunosuppression and transplantation",
+            "value": "immunosuppression-transplantation"
+          },
+          {
+            "label": "Infectious disease",
+            "value": "infectious-disease"
+          },
+          {
+            "label": "Neurology",
+            "value": "neurology"
+          },
+          {
+            "label": "Nutrition and dietetics",
+            "value": "nutrition-dietetics"
+          },
+          {
+            "label": "Obstetrics, gynaecology and fertility",
+            "value": "obstetrics-gynaecology-fertility"
+          },
+          {
+            "label": "Ophthalmology",
+            "value": "ophthalmology"
+          },
+          {
+            "label": "Paediatrics and neonatology",
+            "value": "paediatrics-neonatology"
+          },
+          {
+            "label": "Pain management and palliation",
+            "value": "pain-management-palliation"
+          },
+          {
+            "label": "Psychiatry",
+            "value": "psychiatry"
+          },
+          {
+            "label": "Radiology and imaging",
+            "value": "radiology-imaging"
+          },
+          {
+            "label": "Respiratory disease and allergy",
+            "value": "respiratory-disease-allergy"
+          },
+          {
+            "label": "Rheumatology",
+            "value": "rheumatology"
+          },
+          {
+            "label": "Urology and nephrology",
+            "value": "urology-nephrology"
+          }
+        ]
+      },
+      {
+        "key": "first_published_at",
+        "name": "Published",
+        "type": "date",
+        "preposition": "published"
+      }
+    ]
+  },
+  "links": {
+    "organisations": [
+      {
+        "title": "Medicines and Healthcare Products Regulatory Agency",
+        "base_path": "/government/organisations/medicines-and-healthcare-products-regulatory-agency",
+        "api_url": "http://content-store.dev.gov.uk/content/government/organisations/medicines-and-healthcare-products-regulatory-agency",
+        "web_url": "http://www.dev.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency",
+        "locale": "en"
+      }
+    ],
+    "topics": [],
+    "related": [
+      {
+        "title": "Alerts and recalls for drugs and medical devices",
+        "base_path": "/drug-device-alerts",
+        "api_url": "http://content-store.dev.gov.uk/content/drug-device-alerts",
+        "web_url": "http://www.dev.gov.uk/drug-device-alerts",
+        "locale": "en"
+      }
+    ],
+    "available_translations": [
+      {
+        "title": "Drug Safety Update",
+        "base_path": "/drug-safety-update",
+        "api_url": "http://content-store.dev.gov.uk/content/drug-safety-update",
+        "web_url": "http://www.dev.gov.uk/drug-safety-update",
+        "locale": "en"
+      }
+    ]
+  }
+}

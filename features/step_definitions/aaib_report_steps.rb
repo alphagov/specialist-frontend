@@ -26,9 +26,9 @@ Then(/^I see the content of the republished AAIB report$/) do
   check_metadata_value("Updated", "24 October 2014")
 end
 
-def aaib_report_schema
+def aaib_reports_finder
   File.read(
-    File.expand_path('../../fixtures/schemas/aaib-reports.json', __FILE__)
+    File.expand_path('../../fixtures/finders/aaib-reports.json', __FILE__)
   )
 end
 
@@ -65,5 +65,5 @@ def create_aaib_report(slug, major_changes: 1)
   )
 
   content_api_has_an_artefact(slug, artefact)
-  finder_api_has_schema("aaib-reports", aaib_report_schema)
+  content_store_has_item("/aaib-reports", aaib_reports_finder)
 end

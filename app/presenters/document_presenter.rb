@@ -8,8 +8,8 @@ class DocumentPresenter
     :bulk_published,
     to: :"document.details"
 
-  def initialize(schema, document)
-    @schema = schema
+  def initialize(finder, document)
+    @finder = finder
     @document = document
   end
 
@@ -63,7 +63,7 @@ class DocumentPresenter
 
 private
 
-  attr_reader :document, :schema
+  attr_reader :document, :finder
 
   def metadata_response_builder(label, values)
     OpenStruct.new(
@@ -101,7 +101,7 @@ private
 
   def expanded_filterable_metadata
     present_metadata = filterable_metadata.reject { |_, value| value.blank? }
-    convert_filterable_metadata(schema.user_friendly_values(present_metadata))
+    convert_filterable_metadata(finder.user_friendly_values(present_metadata))
   end
 
   def default_date_metadata

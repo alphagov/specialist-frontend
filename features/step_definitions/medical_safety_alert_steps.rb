@@ -21,7 +21,7 @@ Given(/^a published medical safety alert exists$/) do
   )
 
   content_api_has_an_artefact(@slug, @artefact)
-  finder_api_has_schema("drug-device-alerts", medical_safety_alert_schema)
+  content_store_has_item("/drug-device-alerts", drug_device_alerts_finder)
 end
 
 Then(/^I see the content of the medical safety alert$/) do
@@ -30,8 +30,8 @@ Then(/^I see the content of the medical safety alert$/) do
   expect(page).to have_content("General practice")
 end
 
-def medical_safety_alert_schema
+def drug_device_alerts_finder
   File.read(
-    File.expand_path('../../fixtures/schemas/medical-safety-alert-schema.json', __FILE__)
+    File.expand_path('../../fixtures/finders/medical-safety-alert.json', __FILE__)
   )
 end
