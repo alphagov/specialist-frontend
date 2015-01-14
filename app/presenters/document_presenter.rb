@@ -17,6 +17,10 @@ class DocumentPresenter
     ""
   end
 
+  def finder_path
+    finder.base_path
+  end
+
   def date_metadata
     default_date_metadata
       .merge(extra_date_metadata)
@@ -45,11 +49,11 @@ class DocumentPresenter
   end
 
   def beta?
-    false
+    finder.beta
   end
 
   def beta_message
-    nil
+    finder.beta_message
   end
 
   def footer_date_metadata

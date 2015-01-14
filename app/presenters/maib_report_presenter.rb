@@ -9,22 +9,10 @@ class MaibReportPresenter < DocumentPresenter
     "Marine Accident Investigation Branch report"
   end
 
-  def finder_path
-    "/maib-reports"
-  end
-
   def extra_date_metadata
     {
       "Date of occurrence" => date_of_occurrence,
     }
-  end
-
-  def beta?
-    true
-  end
-
-  def beta_message
-    "Until early 2015, the <a href='http://www.maib.gov.uk/home/index.cfm'>MAIB website</a> is the main source for MAIB reports"
   end
 
 private
