@@ -1,5 +1,10 @@
 class Finder
 
+  delegate :base_path, to: :content_item
+  delegate :beta,
+           :beta_message,
+           to: :"content_item.details"
+
   def initialize(content_item)
     @content_item = content_item
   end

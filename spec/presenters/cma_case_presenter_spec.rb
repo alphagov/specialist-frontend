@@ -2,7 +2,7 @@ require "ostruct"
 require "spec_helper"
 
 describe CmaCasePresenter do
-  subject(:presenter) { CmaCasePresenter.new(schema, document) }
+  subject(:presenter) { CmaCasePresenter.new(finder, document) }
 
   let(:document) do
     double(
@@ -18,31 +18,85 @@ describe CmaCasePresenter do
 
   let(:document_details) {
     {
-      case_type: "a case type",
-      case_state: "a case state",
-      market_sector: "a market sector",
-      outcome_type: "an outcome type",
+      case_type: "ca98-and-civil-cartels",
+      market_sector: "aerospace",
+      case_state: "open",
+      outcome_type: "ca98-commitment",
     }
   }
 
-  let(:schema) { double(:schema) }
+  let(:finder) { OpenStruct.new(
+    base_path: "/cma-cases",
+    details: OpenStruct.new(
+      beta: false,
+      beta_message: nil,
+      facets: [
+        OpenStruct.new(
+          key: "case_type",
+          name: "Case type",
+          allowed_values: [
+            OpenStruct.new(
+              label: "CA98 and civil cartels",
+              value: "ca98-and-civil-cartels"
+            )
+          ]
+        ),
+        OpenStruct.new(
+          key: "market_sector",
+          name: "Market sector",
+          allowed_values: [
+            OpenStruct.new(
+              label: "Aerospace",
+              value: "aerospace"
+            )
+          ]
+        ),
+        OpenStruct.new(
+          key: "case_state",
+          name: "Case state",
+          allowed_values: [
+            OpenStruct.new(
+              label: "Open",
+              value: "open"
+            )
+          ]
+        ),
+        OpenStruct.new(
+          key: "outcome_type",
+          name: "Outcome type",
+          allowed_values: [
+            OpenStruct.new(
+              label: "CA98 commitment",
+              value: "ca98-commitment"
+            )
+          ]
+        ),
+      ]
+    )
+  ) }
 
-  let(:schema_response) {
+  let(:finder_response) {
     {
-      "foo" => {
-        label: "Foo",
+      "case_type" => {
+        label: "Case type",
         values: [
-          {label: 'The Bar', slug: "bar"}
+          {label: "CA98 and civil cartels", slug: "ca98-and-civil-cartels"}
+        ]
+      },
+      "market_sector" => {
+        label: "Market sector",
+        values: [
+          {label: "Aerospace", slug: "aerospace"}
         ]
       }
     }
   }
 
   describe "#metadata" do
-    it "converts raw metadata to user friendly metadata via the schema" do
-      expect(schema).to receive(:user_friendly_values)
+    it "converts raw metadata to user friendly metadata via the finder" do
+      expect(finder).to receive(:user_friendly_values)
         .with(document_details)
-        .and_return(schema_response)
+        .and_return(finder_response)
 
       presenter.metadata
     end
