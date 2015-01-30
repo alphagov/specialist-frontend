@@ -5,21 +5,25 @@
   "format": "finder",
   "need_ids": [],
   "locale": "en",
-  "updated_at": "2015-01-05T17:14:10.740Z",
-  "public_updated_at": "2015-01-05T10:45:10.000+00:00",
+  "updated_at": "2015-02-02T15:32:22.335Z",
+  "public_updated_at": "2015-01-30T12:02:10.000+00:00",
   "details": {
-    "beta": true,
-    "beta_message": "Until January 2015, <a href='http://www.mhra.gov.uk/Safetyinformation/DrugSafetyUpdate/index.htm'>the MHRA website</a> is the official home of the Drug Safety Update.",
+    "beta": false,
+    "beta_message": null,
     "document_noun": "update",
     "document_type": "drug_safety_update",
-    "email_signup_enabled": false,
+    "email_signup_enabled": true,
+    "format_name": "Drug Safety Update",
+    "signup_link": "/government/organisations/medicines-and-healthcare-products-regulatory-agency/email-signup",
+    "show_summaries": true,
     "facets": [
       {
         "key": "therapeutic_area",
         "name": "Therapeutic area",
-        "type": "multi-select",
-        "include_blank": false,
+        "type": "text",
         "preposition": "about",
+        "display_as_result_metadata": true,
+        "filterable": true,
         "allowed_values": [
           {
             "label": "Anaesthesia and intensive care",
@@ -119,7 +123,9 @@
         "key": "first_published_at",
         "name": "Published",
         "type": "date",
-        "preposition": "published"
+        "preposition": "published",
+        "display_as_result_metadata": true,
+        "filterable": true
       }
     ]
   },
@@ -140,6 +146,15 @@
         "base_path": "/drug-device-alerts",
         "api_url": "http://content-store.dev.gov.uk/content/drug-device-alerts",
         "web_url": "http://www.dev.gov.uk/drug-device-alerts",
+        "locale": "en"
+      }
+    ],
+    "email_alert_signup": [
+      {
+        "title": "Drug Safety Update",
+        "base_path": "/drug-safety-update/email-signup",
+        "api_url": "http://content-store.dev.gov.uk/content/drug-safety-update/email-signup",
+        "web_url": "http://www.dev.gov.uk/drug-safety-update/email-signup",
         "locale": "en"
       }
     ],

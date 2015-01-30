@@ -1,6 +1,6 @@
 Given(/^a published drug safety update exists$/) do
   @title = "Paracetamol - Damaging effects"
-  @slug = slug_from_title(@title)
+  @slug = "drug-safety-update/#{slug_from_title(@title)}"
   @summary = "Update about paracetamol"
 
   @artefact = artefact_for_slug(@slug).merge(
@@ -29,7 +29,7 @@ Then(/^I see the content of the drug safety update$/) do
   expect(page).to have_content(@summary)
   expect(page).to have_content("Anaesthesia and intensive care")
   expect(page).to have_content("Cancer")
-  expect(page).to have_content("24 December 2014")
+  expect(page).to have_content("24 October 2014")
 end
 
 def drug_safety_update_finder

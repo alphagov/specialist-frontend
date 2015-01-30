@@ -5,5 +5,5 @@ So that I can find out about drug safety
 
 Scenario: Viewing a published update
   Given a published drug safety update exists
-  When I visit the document page
+  When I visit the Document page
   Then I see the content of the drug safety update
