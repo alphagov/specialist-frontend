@@ -13,8 +13,24 @@ class DocumentPresenter
     @document = document
   end
 
+  def respond_to?(method)
+   if has_facet?(method.to_s)
+     true
+   else
+     super
+   end
+ end
+
+  def method_missing(method, *args)
+    if has_facet?(method.to_s)
+      document.details.send(method)
+    else
+      super
+    end
+  end
+
   def format_name
-    ""
+    finder.format_name
   end
 
   def finder_path
@@ -41,7 +57,7 @@ class DocumentPresenter
   end
 
   def extra_date_metadata
-    {}
+    finder.date_facets.each_with_object({}) { |facet, hash| hash[facet.name] = self.send(facet.key) }
   end
 
   def change_history
@@ -122,10 +138,16 @@ private
   end
 
   def filterable_metadata
-    {}
+    finder.text_facets.select(&:filterable)
+          .each_with_object({}) { |facet, hash| hash[facet.key] = self.send(facet.key) }
   end
 
   def extra_metadata
-    {}
+    finder.text_facets.reject(&:filterable)
+          .each_with_object({}) { |facet, hash| hash[facet.name] = self.send(facet.key) }
+  end
+
+  def has_facet?(facet)
+    finder.facets.map(&:key).include?(facet.to_s)
   end
 end
