@@ -3,6 +3,9 @@ class Finder
   delegate :base_path, to: :content_item
   delegate :beta,
            :beta_message,
+           :document_type,
+           :facets,
+           :format_name,
            to: :"content_item.details"
 
   def initialize(content_item)
@@ -19,6 +22,14 @@ class Finder
         }
       )
     end
+  end
+
+  def date_facets
+    facets.select{ |f| f.type == 'date' }
+  end
+
+  def text_facets
+    facets.select{ |f| f.type == 'text' }
   end
 
 private
@@ -57,10 +68,6 @@ private
 
   def find_facet(facet_key)
     facets.find { |facet| facet.key == facet_key }
-  end
-
-  def facets
-    content_item.details.facets
   end
 
 end

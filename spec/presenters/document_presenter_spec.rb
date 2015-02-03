@@ -3,44 +3,40 @@ require "spec_helper"
 
 describe DocumentPresenter do
 
-  subject(:presenter) {
-    Class.new(DocumentPresenter) {
+  subject {
+    DocumentPresenter.new(finder, document)
+  }
 
-      delegate :foo, :bar, to: :"document.details"
-
-      private
-      def filterable_metadata
-        {
-          foo: foo,
-        }
-      end
-
-      def extra_metadata
-        {
-          "Bar" => bar,
-        }
-      end
-
-      def finder_path
-        '/finder'
-      end
-
-    }.new(schema, document)
+  let(:finder) {
+    OpenStruct.new(
+      base_path: "/finder",
+      format_name: "Finder"
+    )
   }
 
   let(:document) do
     double(
       :document,
-      title: document_title,
+      title: "A Document Title",
       details: document_details,
     )
   end
 
-  let(:document_title) { "A Document" }
   let(:document_published_at) { 3.days.ago }
   let(:document_details) { double(:document_details, all_attributes) }
-  let(:filterable_attributes) { { foo: foo } }
-  let(:extra_attributes) { { bar: bar } }
+
+  let(:filterable_attributes) {
+    {
+      meal_type: "lunch",
+      food: "burger",
+    }.with_indifferent_access
+  }
+  let(:extra_attributes) {
+    {
+      location: "Big Kahuna Burger"
+    }
+  }
+
   let(:all_attributes) {
     filterable_attributes.merge(extra_attributes).merge({
       published_at: document_published_at,
@@ -49,44 +45,103 @@ describe DocumentPresenter do
     })
   }
 
-  let(:schema_response) {
+  let(:user_friendly_values) {
     {
-      "foo" => {
-        label: "Foo",
+      "meal_type" => {
+        label: "Meal type",
         values: [
-          {label: 'The Bar', slug: "bar"}
+          {label: "Lunch", slug: "lunch"}
+        ]
+      },
+      "food" => {
+        label: "Food",
+        values: [
+          {label: "Burger", slug: "burger"}
         ]
       }
     }
   }
 
-  let(:foo) { "bar" }
-  let(:bar) { "qux" }
-  let(:schema) { double(:schema) }
+  let(:facets) {
+    [
+      OpenStruct.new(
+        type: "text",
+        filterable: true,
+        name: "Meal type",
+        key: "meal_type",
+        allowed_values: [
+          OpenStruct.new(
+            label: "Breakfast",
+            value: "breakfast"
+          ),
+          OpenStruct.new(
+            label: "Lunch",
+            value: "lunch"
+          ),
+          OpenStruct.new(
+            label: "Dinner",
+            value: "dinner"
+          )
+        ]
+      ),
+      OpenStruct.new(
+        type: "text",
+        filterable: true,
+        name: "Food",
+        key: "food",
+        allowed_values: [
+          OpenStruct.new(
+            label: "Burrito",
+            value: "burrito"
+          ),
+          OpenStruct.new(
+            label: "Sushi",
+            value: "sushi"
+          ),
+          OpenStruct.new(
+            label: "Burger",
+            value: "burger"
+          )
+        ]
+      ),
+      OpenStruct.new(
+        type: "text",
+        filterable: false,
+        name: "Location",
+        key: "location",
+      ),
+    ]
+  }
+
+  before do
+    allow(finder).to receive(:facets).and_return(facets)
+    allow(finder).to receive(:date_facets).and_return(facets.select{ |f| f.type == 'date' })
+    allow(finder).to receive(:text_facets).and_return(facets.select{ |f| f.type == 'text' })
+  end
 
   describe "#metadata" do
     before do
-      allow(schema).to receive(:user_friendly_values).and_return(schema_response)
+      allow(finder).to receive(:user_friendly_values).and_return(user_friendly_values)
     end
 
     context "when all attributes present" do
-      it "converts raw metadata to user friendly metadata via the schema" do
-        presenter.metadata
+      it "converts raw metadata to user friendly metadata via the finder" do
+        subject.metadata
 
-        expect(schema).to have_received(:user_friendly_values).with(filterable_attributes)
+        expect(finder).to have_received(:user_friendly_values).with(filterable_attributes)
       end
 
       it "returns user-friendly metadata" do
-        metadata = presenter.metadata
-        expect(metadata.size).to eq(2)
+        metadata = subject.metadata
+        expect(metadata.size).to eq(3)
 
-        linkable = metadata.select { |m| m.label == "Foo" }.first
+        linkable = metadata.select { |m| m.label == "Meal type" }.first
         linkable_value = linkable.values.first
 
         expect(linkable_value.linkable?).to eq(true)
-        expect(linkable_value.href).to eq("/finder?foo%5B%5D=bar")
+        expect(linkable_value.href).to eq("/finder?meal_type%5B%5D=lunch")
 
-        unlinkable = metadata.select { |m| m.label == "Bar" }.first
+        unlinkable = metadata.select { |m| m.label == "Location" }.first
         unlinkable_value = unlinkable.values.first
 
         expect(unlinkable_value.linkable?).to eq(false)
@@ -94,13 +149,18 @@ describe DocumentPresenter do
     end
 
     context "when some attributes are blank" do
-      let(:foo) { "" }
+      let(:starter) {
+        {
+          "starter" => ""
+        }
+      }
 
       it "excludes them" do
-        presenter.metadata
+        filterable_attributes.merge(starter)
+        subject.metadata
 
-        expect(schema).to have_received(:user_friendly_values)
-          .with(filterable_attributes.except(:foo))
+        expect(finder).to have_received(:user_friendly_values)
+          .with(filterable_attributes.except(:starter))
       end
     end
   end
@@ -121,12 +181,12 @@ describe DocumentPresenter do
     it "returns the headers if there are some" do
       headers_array = ['blah']
       filterable_attributes.merge!(headers: ['blah'])
-      expect(presenter.headers).to eq(headers_array)
+      expect(subject.headers).to eq(headers_array)
     end
 
     it "returns an empty array if there is no headers in the details hash" do
       allow(document_details).to receive(:headers) { nil }
-      expect(presenter.headers).to eq([])
+      expect(subject.headers).to eq([])
     end
   end
 end

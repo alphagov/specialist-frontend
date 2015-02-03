@@ -1,0 +1,73 @@
+{
+  "base_path": "/team-meals",
+  "title": "GOV.UK Team meals",
+  "description": "",
+  "format": "finder",
+  "need_ids": [],
+  "locale": "en",
+  "updated_at": "2015-01-05T17:14:10.621Z",
+  "public_updated_at": "2015-01-05T10:45:10.000+00:00",
+  "details": {
+    "beta": false,
+    "beta_message": null,
+    "document_noun": "meal",
+    "document_type": "team_meal",
+    "email_signup_enabled": false,
+    "facets": [
+      {
+        "key": "meal_type",
+        "name": "Meal type",
+        "type": "text",
+        "preposition": "of type",
+        "filterable": true,
+        "allowed_values": [
+          {
+            "label": "Breakfast",
+            "value": "breakfast"
+          },
+          {
+            "label": "Lunch",
+            "value": "lunch"
+          },
+          {
+            "label": "Dinner",
+            "value": "dinner"
+          }
+        ]
+      },
+      {
+        "key": "food",
+        "name": "Food",
+        "type": "text",
+        "preposition": "which are",
+        "filterable": true,
+        "allowed_values": [
+          {
+            "label": "Steak",
+            "value": "steak"
+          },
+          {
+            "label": "Sushi",
+            "value": "sushi"
+          },
+          {
+            "label": "Burger",
+            "value": "burger"
+          }
+        ]
+      },
+      {
+        "key": "location",
+        "name": "Location",
+        "type": "text",
+        "filterable": false
+      },
+      {
+        "key": "date_of_meal",
+        "name": "Date of meal",
+        "type": "date",
+        "filterable": false
+      }
+    ]
+  }
+}

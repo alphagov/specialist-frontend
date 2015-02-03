@@ -1,22 +1,23 @@
 Given(/^a published drug safety update exists$/) do
   @title = "Paracetamol - Damaging effects"
-  @slug = slug_from_title(@title)
+  @slug = "drug-safety-update/#{slug_from_title(@title)}"
   @summary = "Update about paracetamol"
 
   @artefact = artefact_for_slug(@slug).merge(
-    "title" => @title,
-    "format" => "drug_safety_update",
-    "details" => {
-      "body" => "<p>Body content</p>\n",
-      "summary" => @summary,
-      "therapeutic_area" => ["anaesthesia-intensive-care", "cancer"],
-      "change_history" => [
-        {
-          "public_timestamp" => "2014-10-24T08:41:18Z",
-          "note" => "Published the Drug Safety Update",
-        },
-      ],
-    }
+  "title" => @title,
+  "format" => "drug_safety_update",
+  "details" => {
+    "body" => "<p>Body content</p>\n",
+    "summary" => @summary,
+    "therapeutic_area" => ["anaesthesia-intensive-care", "cancer"],
+    "first_published_at" => "2014-10-24T08:41:18Z",
+    "change_history" => [
+      {
+        "public_timestamp" => "2014-10-24T08:41:18Z",
+        "note" => "Published the Drug Safety Update",
+      },
+    ],
+  }
   )
 
   content_api_has_an_artefact(@slug, @artefact)
@@ -28,6 +29,7 @@ Then(/^I see the content of the drug safety update$/) do
   expect(page).to have_content(@summary)
   expect(page).to have_content("Anaesthesia and intensive care")
   expect(page).to have_content("Cancer")
+  expect(page).to have_content("24 October 2014")
 end
 
 def drug_safety_update_finder
