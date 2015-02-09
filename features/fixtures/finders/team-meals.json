@@ -11,7 +11,6 @@
     "beta": false,
     "beta_message": null,
     "document_noun": "meal",
-    "document_type": "team_meal",
     "email_signup_enabled": false,
     "facets": [
       {

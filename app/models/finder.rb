@@ -3,7 +3,6 @@ class Finder
   delegate :base_path, to: :content_item
   delegate :beta,
            :beta_message,
-           :document_type,
            :facets,
            :format_name,
            to: :"content_item.details"
