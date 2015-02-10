@@ -11,7 +11,6 @@
     "beta": false,
     "beta_message": null,
     "document_noun": "update",
-    "document_type": "drug_safety_update",
     "email_signup_enabled": true,
     "format_name": "Drug Safety Update",
     "signup_link": "/government/organisations/medicines-and-healthcare-products-regulatory-agency/email-signup",
