@@ -25,18 +25,24 @@ Displays long form single page documents published via
 
 * [alphagov/static]: provides static assets (JS/CSS) and provides the GOV.UK
   templates.
-* [alphagov/finder-api]: provides the schema used to convert metadata into
+* [alphagov/content-store]: provides the finder schema used to convert metadata into
   human-readable values.
 * [alphagov/govuk_content_api]: provides the document to display.
 
 [alphagov/static]: https://github.com/alphagov/static
-[alphagov/finder-api]: https://github.com/alphagov/finder-api
+[alphagov/content-store]: https://github.com/alphagov/content-store
 [alphagov/govuk_content_api]: https://github.com/alphagov/govuk_content_api
 
 ## Running the application
 
 ```
 $ ./startup.sh
+```
+
+or you can run using bowler in the VM from cd /var/govuk/development/:
+
+```
+bowl specialist-frontend
 ```
 
 If you are using the GDS development virtual machine then the application will
