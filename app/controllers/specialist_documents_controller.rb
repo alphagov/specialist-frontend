@@ -32,18 +32,4 @@ private
     render status: :not_found, text: "404 error not found"
   end
 
-  def set_robots_headers
-    if finders_excluded_from_robots.include?(request.path.split('/')[1])
-      response.headers["X-Robots-Tag"] = "none"
-    end
-  end
-
-  def finders_excluded_from_robots
-    [
-      'aaib-reports',
-      'maib-reports',
-      'raib-reports',
-    ]
-  end
-
 end
