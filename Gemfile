@@ -4,7 +4,7 @@ gem 'rails', '4.1.11'
 if ENV['API_DEV']
   gem 'gds-api-adapters', :path => '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '13.0.0'
+  gem 'gds-api-adapters', '20.1.1'
 end
 
 gem 'exception_notification', '4.0.1'
