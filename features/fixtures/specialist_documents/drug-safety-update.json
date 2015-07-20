@@ -1,0 +1,42 @@
+{
+  "format": "drug_safety_update",
+  "locale": "en",
+  "details" : {
+    "body" : "<p>Body content</p>\n",
+    "metadata": {
+      "therapeutic_area" : [
+        "anaesthesia-intensive-care",
+        "cancer"
+      ],
+      "document_type" : "drug_safety_update"
+    },
+    "headers" : [
+      {
+        "text" : "Reports of diabetic acidosis",
+        "level" : 2,
+        "id" : "reports-of-diabetic-acidosis"
+      },
+      {
+        "text" : "SGLT2 inhibitors – medicines in this class",
+        "level" : 2,
+        "id" : "sglt2-inhibitors--medicines-in-this-class"
+      },
+      {
+        "text" : "Further information",
+        "level" : 2,
+        "id" : "further-information"
+      }
+    ],
+    "change_note" : "",
+    "change_history" : [
+      {
+        "public_timestamp" : "2014-10-24T08:41:18Z",
+        "note" : "Published the Drug Safety Update"
+      }
+    ]
+  },
+  "base_path" : "/drug-safety-update/paracetamol-damaging-effects",
+  "description" : "Update about paracetamol",
+  "title" : "Paracetamol - Damaging effects",
+  "public_updated_at" : "2014-10-24T08:41:18Z"
+}
