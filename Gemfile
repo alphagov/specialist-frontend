@@ -9,7 +9,7 @@ end
 
 gem 'exception_notification', '4.0.1'
 gem 'aws-ses', '0.5.0', require: 'aws/ses'
-gem 'plek', '1.3.0'
+gem 'plek', '1.11.0'
 gem 'unicorn', '4.8.1'
 gem 'slimmer', '8.2.1'
 
