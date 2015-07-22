@@ -29,7 +29,7 @@
 
   <div class='summary'>
     <p>
-      <%= @document.description %>
+      <%= @document.summary %>
     </p>
   </div>
 </header>
@@ -49,7 +49,7 @@
 
 <footer class="js-footer">
   <%= render partial: 'govuk_component/document_footer', locals: {
-    other_dates: date_hash(@document.expanded_extra_date_metadata),
+    other_dates: date_hash(@document.extra_date_metadata),
     other: metadata_hash(@document.metadata),
     history: @document.change_history.reverse.map { |c|
       {

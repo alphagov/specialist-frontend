@@ -1,8 +1,12 @@
 class DocumentPresenter
   include SpecialistDocumentsHelper
 
-  delegate :title, :description, :details, :public_updated_at, to: :document
-  delegate :body, :bulk_published, to: :"document.details"
+  delegate :title, :details, to: :document
+  delegate :summary,
+    :body,
+    :published_at,
+    :bulk_published,
+    to: :"document.details"
 
   def initialize(finder, document)
     @finder = finder
@@ -35,7 +39,7 @@ class DocumentPresenter
 
   def date_metadata
     default_date_metadata
-      .merge(expanded_extra_date_metadata)
+      .merge(extra_date_metadata)
   end
 
   def metadata
@@ -47,15 +51,13 @@ class DocumentPresenter
   end
 
   def organisations
-    if links = document.links
-      links.organisations
-    else
-      []
-    end
+    document.tags.select{ |t|
+      t.type = "organisation"
+    }
   end
 
-  def expanded_extra_date_metadata
-    expand_metadata(extra_date_metadata, change_values: false)
+  def extra_date_metadata
+    finder.date_facets.each_with_object({}) { |facet, hash| hash[facet.name] = self.send(facet.key) }
   end
 
   def change_history
@@ -73,9 +75,9 @@ class DocumentPresenter
   def footer_date_metadata
     return {} if bulk_published
     if first_edition?
-      { published: nice_date_format(public_updated_at) }
+      { published: nice_date_format(published_at) }
     else
-      { updated: nice_date_format(public_updated_at) }
+      { updated: nice_date_format(published_at) }
     end
   end
 
@@ -108,16 +110,18 @@ private
   end
 
   def expanded_extra_metadata
-    expand_metadata(extra_metadata, change_values: false).map { |key, data| metadata_response_builder(key, data) }
+    extra_metadata
+      .reject { |_, value| value.blank? }
+      .map { |label, values| metadata_response_builder(label, values) }
+  end
+
+  def convert_filterable_metadata(expanded_filterable_metadata)
+    expanded_filterable_metadata.map { |key, data| filterable_metadata_response_builder(key, data) }
   end
 
   def expanded_filterable_metadata
-    expand_metadata(filterable_metadata).map { |key, data| filterable_metadata_response_builder(key, data) }
-  end
-
-  def expand_metadata(unexpanded_metadata, change_values: true)
-    present_metadata = unexpanded_metadata.reject { |_, value| value.blank? }
-    finder.user_friendly(present_metadata, change_values: change_values)
+    present_metadata = filterable_metadata.reject { |_, value| value.blank? }
+    convert_filterable_metadata(finder.user_friendly_values(present_metadata))
   end
 
   def default_date_metadata
@@ -125,16 +129,8 @@ private
     caption = first_edition? ? "Published" : "Updated"
 
     {
-      caption.downcase => {
-        label: caption,
-        values: public_updated_at,
-      }
+      caption => published_at,
     }
-  end
-
-  def extra_date_metadata
-    keys = finder.date_facets.map(&:key)
-    get_metadata(keys)
   end
 
   def first_edition?
@@ -142,21 +138,13 @@ private
   end
 
   def filterable_metadata
-    keys = finder.text_facets.select(&:filterable).map(&:key)
-    get_metadata(keys)
+    finder.text_facets.select(&:filterable)
+          .each_with_object({}) { |facet, hash| hash[facet.key] = self.send(facet.key) }
   end
 
   def extra_metadata
-    keys = finder.text_facets.reject(&:filterable).map(&:key)
-    get_metadata(keys)
-  end
-
-  def get_metadata(keys)
-    metadata_hash.slice(*keys)
-  end
-
-  def metadata_hash
-    @metadata_hash ||= document.details.metadata.to_h.stringify_keys
+    finder.text_facets.reject(&:filterable)
+          .each_with_object({}) { |facet, hash| hash[facet.name] = self.send(facet.key) }
   end
 
   def has_facet?(facet)

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Finder do
 
-  describe "#user_friendly" do
+  describe "#user_friendly_values" do
     let(:cma_cases_finder) {
       OpenStruct.new(
         details: OpenStruct.new(
@@ -40,7 +40,7 @@ describe Finder do
       }
     }
 
-    let(:attrs_with_expanded_keys_and_values) {
+    let(:formatted_attrs) {
       {
         "case_type" => {
           :label => "Case type",
@@ -50,7 +50,7 @@ describe Finder do
               :slug => "ca98-and-civil-cartels"
             }
           ]
-        },
+        }, 
         "market_sector" => {
           :label => "Market sector",
           :values => [
@@ -63,25 +63,8 @@ describe Finder do
       }
     }
 
-    let(:attrs_with_expanded_keys) {
-      {
-        "case_type" => {
-          :label => "Case type",
-          :values => "ca98-and-civil-cartels",
-        },
-        "market_sector" => {
-          :label => "Market sector",
-          :values => "aerospace",
-        }
-      }
-    }
-
-    it "formats the given keys and values by default" do
-      finder.user_friendly(document_attrs).should eq(attrs_with_expanded_keys_and_values)
-    end
-
-    it "doesn't alter the values if disabled (used for things without 'allowed_values', like dates)" do
-      finder.user_friendly(document_attrs, change_values: false).should eq(attrs_with_expanded_keys)
+    it "formats the given keys and values" do
+      finder.user_friendly_values(document_attrs).should eq(formatted_attrs)
     end
   end
 
