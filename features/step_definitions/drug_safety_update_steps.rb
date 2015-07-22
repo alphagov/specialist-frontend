@@ -1,39 +1,22 @@
 Given(/^a published drug safety update exists$/) do
-  @title = "Paracetamol - Damaging effects"
-  @slug = "drug-safety-update/#{slug_from_title(@title)}"
-  @summary = "Update about paracetamol"
-
-  @artefact = artefact_for_slug(@slug).merge(
-  "title" => @title,
-  "format" => "drug_safety_update",
-  "details" => {
-    "body" => "<p>Body content</p>\n",
-    "summary" => @summary,
-    "therapeutic_area" => ["anaesthesia-intensive-care", "cancer"],
-    "first_published_at" => "2014-10-24T08:41:18Z",
-    "change_history" => [
-      {
-        "public_timestamp" => "2014-10-24T08:41:18Z",
-        "note" => "Published the Drug Safety Update",
-      },
-    ],
-  }
-  )
-
-  content_api_has_an_artefact(@slug, @artefact)
   content_store_has_item("/drug-safety-update", drug_safety_update_finder)
+
+  @document_base_path = "/drug-safety-update/paracetamol-damaging-effects"
+  content_store_has_item(@document_base_path, drug_safety_update)
 end
 
 Then(/^I see the content of the drug safety update$/) do
-  expect(page).to have_content(@title)
-  expect(page).to have_content(@summary)
+  expect(page).to have_content("Paracetamol - Damaging effects")
+  expect(page).to have_content("Update about paracetamol")
   expect(page).to have_content("Anaesthesia and intensive care")
   expect(page).to have_content("Cancer")
   expect(page).to have_content("24 October 2014")
 end
 
+def drug_safety_update
+  read_fixture("specialist_documents/drug-safety-update.json")
+end
+
 def drug_safety_update_finder
-  File.read(
-    File.expand_path('../../fixtures/finders/drug-safety-update.json', __FILE__)
-  )
+  read_fixture("finders/drug-safety-update.json")
 end
