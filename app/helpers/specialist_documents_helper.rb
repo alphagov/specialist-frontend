@@ -21,14 +21,20 @@ module SpecialistDocumentsHelper
   end
 
   def metadata_hash(metadata)
-    metadata.inject({}) do |hash, value|
-      hash.merge(value.label => metadata_values(value))
+    hash = {}
+    metadata.each do |value|
+      hash[value.label] = metadata_values(value)
     end
+    hash
   end
 
   def date_hash(date_metadata)
-    date_metadata.inject({}) do |hash, (key, value)|
-      hash.merge(value[:label] => nice_date_format(value[:values]))
-    end
+    hash = {}
+    date_metadata
+      .reject { |_, value| value.blank? }
+      .each { |key, value|
+        hash[key] = nice_date_format(value)
+      }
+    hash
   end
 end

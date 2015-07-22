@@ -4,8 +4,10 @@ class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
 
   def show
-    if document = content_store.content_item(base_path)
-      @document = document_presenter(finder, document)
+    artefact = content_api.artefact(params[:path])
+
+    if artefact
+      @document = document(finder, artefact)
     else
       error_not_found
     end
@@ -13,12 +15,12 @@ class SpecialistDocumentsController < ApplicationController
 
 private
 
-  def document_presenter(finder, document)
-    case document.format
+  def document(finder, artefact)
+    case artefact.format
     when "drug_safety_update"
-      DrugSafetyUpdatePresenter.new(finder, document)
+      DrugSafetyUpdatePresenter.new(finder, artefact)
     else
-      DocumentPresenter.new(finder, document)
+      DocumentPresenter.new(finder, artefact)
     end
   end
 
@@ -30,7 +32,4 @@ private
     render status: :not_found, text: "404 error not found"
   end
 
-  def base_path
-    "/#{params[:path]}"
-  end
 end

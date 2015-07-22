@@ -11,21 +11,13 @@ class Finder
     @content_item = content_item
   end
 
-  def user_friendly(document_attributes, change_values: true)
+  def user_friendly_values(document_attributes)
     document_attributes.each_with_object({}) do |(k, v), values|
-      label = user_friendly_facet_label(k.to_s)
-
-      if change_values
-        value = user_friendly_facet_value(k.to_s, v)
-      else
-        value = v
-      end
-
       values.store(
         k.to_s,
         {
-          label: label,
-          values: value,
+          label: user_friendly_facet_label(k.to_s),
+          values: user_friendly_facet_value(k.to_s, v),
         }
       )
     end
