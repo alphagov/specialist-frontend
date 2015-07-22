@@ -7,6 +7,8 @@ class Finder
            :format_name,
            to: :"content_item.details"
 
+   ValueNotFoundError = Class.new(RuntimeError)
+
   def initialize(content_item)
     @content_item = content_item
   end
@@ -75,6 +77,10 @@ private
 
   def find_facet(facet_key)
     facets.find { |facet| facet.key == facet_key }
+  end
+
+  def raise_value_not_found_error(facet_key, value)
+    raise ValueNotFoundError.new("#{facet_key} value '#{value}' not found in #{base_path} content item")
   end
 
 end
