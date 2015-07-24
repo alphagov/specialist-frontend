@@ -47,7 +47,7 @@ class DocumentPresenter
   end
 
   def organisations
-    if links = document.links
+    if links = finder.links
       links.organisations
     else
       []
