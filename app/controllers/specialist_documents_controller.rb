@@ -4,7 +4,7 @@ class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
 
   def show
-    if document = content_store.content_item(base_path)
+    if (document = content_store.content_item(base_path)) && document.format != 'gone'
       @document = document_presenter(finder, document)
     else
       error_not_found
