@@ -1,6 +1,6 @@
 class Finder
 
-  delegate :base_path, to: :content_item
+  delegate :base_path, :links, to: :content_item
   delegate :beta,
            :beta_message,
            :facets,
