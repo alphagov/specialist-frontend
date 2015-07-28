@@ -83,12 +83,15 @@ private
 
   attr_reader :document, :finder
 
-  def metadata_response_builder(label, values)
+  def metadata_response_builder(data)
     OpenStruct.new(
-      label: label,
-      values: Array(values).map { |value|
-        OpenStruct.new(label: value, linkable?: false)
-      }
+      label: data.fetch(:label),
+      values: Array(data.fetch(:values)).map do |value|
+        OpenStruct.new(
+          label: value,
+          linkable?: false
+        )
+      end
     )
   end
 
@@ -108,7 +111,7 @@ private
   end
 
   def expanded_extra_metadata
-    expand_metadata(extra_metadata, change_values: false).map { |key, data| metadata_response_builder(key, data) }
+    expand_metadata(extra_metadata, change_values: false).map { |_, data| metadata_response_builder(data) }
   end
 
   def expanded_filterable_metadata

@@ -188,7 +188,7 @@ describe DocumentPresenter do
         expect(linkable_value.linkable?).to eq(true)
         expect(linkable_value.href).to eq("/finder?meal_type%5B%5D=lunch")
 
-        unlinkable = metadata.select { |m| m.label == "location" }.first
+        unlinkable = metadata.select { |m| m.label == "Location" }.first
         unlinkable_value = unlinkable.values.first
 
         expect(unlinkable_value.linkable?).to eq(false)
