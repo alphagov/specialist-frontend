@@ -16,4 +16,13 @@ describe SpecialistDocumentsController, type: :controller do
     get :show, path: path
     expect(response.status).to eq(404)
   end
+
+  it "returns 403 for access-limited item" do
+    path = 'aaib-reports/super-sekrit-document'
+    url = Plek.current.find('content-store') + "/content/" + path
+    stub_request(:get, url).to_return(status: 403, headers: {})
+
+    get :show, path: path
+    expect(response.status).to eq(403)
+  end
 end
