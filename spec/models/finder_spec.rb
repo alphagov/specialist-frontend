@@ -5,6 +5,7 @@ describe Finder do
   describe "#user_friendly" do
     let(:cma_cases_finder) {
       OpenStruct.new(
+        base_path: '/cma-cases',
         details: OpenStruct.new(
           facets: [
             OpenStruct.new(
@@ -82,6 +83,18 @@ describe Finder do
 
     it "doesn't alter the values if disabled (used for things without 'allowed_values', like dates)" do
       finder.user_friendly(document_attrs, change_values: false).should eq(attrs_with_expanded_keys)
+    end
+
+    let(:bad_document_attrs) {
+      {
+        case_type: "not-a-case-type",
+        market_sector: "not-a-market-sector",
+      }
+    }
+
+    it "throws an error when given incorrect document attrs" do
+      expect { finder.user_friendly(bad_document_attrs) }.
+        to raise_error(Finder::ValueNotFoundError)
     end
   end
 
