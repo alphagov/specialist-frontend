@@ -35,7 +35,7 @@
 </header>
 <div class="grid-row">
   <nav class="column-third sidebar">
-    <ol class="js-stick-at-top-when-scrolling">
+    <ol>
       <%= render 'nav_item', headings: @document.headers %>
     </ol>
   </nav>
@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<footer class="js-footer">
+<footer>
   <%= render partial: 'govuk_component/document_footer', locals: {
     other_dates: date_hash(@document.expanded_extra_date_metadata),
     other: metadata_hash(@document.metadata),
