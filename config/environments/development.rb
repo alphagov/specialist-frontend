@@ -25,5 +25,7 @@ SpecialistFrontend::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.slimmer.asset_host = ENV["STATIC_DEV"] || "http://static.dev.gov.uk"
+  if ENV['GOVUK_ASSET_ROOT'].present?
+    config.asset_host = ENV['GOVUK_ASSET_ROOT']
+  end
 end
