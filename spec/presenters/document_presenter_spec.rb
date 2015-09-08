@@ -30,13 +30,14 @@ describe DocumentPresenter do
   let(:document_details) {
     double(:document_details,
       metadata: metadata,
-      bulk_published: false,
       change_history: [],
     )
   }
 
   let(:metadata) {
-    filterable_attributes.merge(extra_attributes).merge(date_attributes)
+    filterable_attributes.merge(extra_attributes).merge(date_attributes).merge(
+      bulk_published: false
+    )
   }
 
   let(:filterable_attributes) {
@@ -241,6 +242,12 @@ describe DocumentPresenter do
     it "returns an empty array if there is no headers in the details hash" do
       allow(document_details).to receive(:headers) { nil }
       expect(subject.headers).to eq([])
+    end
+  end
+
+  describe "bulk_published" do
+    it "returns the value of bulk_published" do
+      expect(subject.bulk_published).to eq false
     end
   end
 end

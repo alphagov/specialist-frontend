@@ -2,7 +2,7 @@ class DocumentPresenter
   include SpecialistDocumentsHelper
 
   delegate :title, :description, :details, :public_updated_at, to: :document
-  delegate :body, :bulk_published, to: :"document.details"
+  delegate :body, to: :"document.details"
 
   def initialize(finder, document)
     @finder = finder
@@ -77,6 +77,10 @@ class DocumentPresenter
     else
       { updated: nice_date_format(public_updated_at) }
     end
+  end
+
+  def bulk_published
+    document.details.metadata["bulk_published"]
   end
 
 private
