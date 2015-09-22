@@ -7,8 +7,6 @@ else
   gem 'gds-api-adapters', '20.1.1'
 end
 
-gem 'exception_notification', '4.0.1'
-gem 'aws-ses', '0.5.0', require: 'aws/ses'
 gem 'plek', '1.11.0'
 gem 'unicorn', '4.8.1'
 gem 'slimmer', '8.4.0'
