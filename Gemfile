@@ -9,7 +9,7 @@ end
 
 gem 'plek', '1.11.0'
 gem 'unicorn', '4.8.1'
-gem 'slimmer', '8.4.0'
+gem 'slimmer', '9.0.0'
 
 gem 'logstasher', '0.4.8'
 
