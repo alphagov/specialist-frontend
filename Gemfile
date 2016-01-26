@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.11'
+gem 'rails', '4.1.14.1'
 if ENV['API_DEV']
   gem 'gds-api-adapters', :path => '../gds-api-adapters'
 else
@@ -9,7 +9,7 @@ end
 
 gem 'plek', '1.11.0'
 gem 'unicorn', '4.8.1'
-gem 'slimmer', '9.0.0'
+gem 'slimmer', '~> 9.0'
 
 gem 'logstasher', '0.4.8'
 
