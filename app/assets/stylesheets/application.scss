@@ -31,17 +31,20 @@
     }
 
     .govuk-metadata {
+      // Temporary margin addition.
+      // Should be removed once this default margin has been
+      // added to the component itself.
+      margin-bottom: $gutter * 1.5;
+
       dt {
         min-width: 134px;
       }
     }
     .summary {
       @include core-19;
-      padding: $gutter/2 0 0;
 
       @include media(tablet){
         @include core-24;
-        padding: $gutter*2 0 0;
       }
     }
   }
