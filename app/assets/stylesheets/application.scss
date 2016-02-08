@@ -30,6 +30,8 @@
       text-decoration:none;
     }
 
+    // Use a wider dt width to accommodate longer
+    // labels, eg "Date of occurrence:"
     .govuk-metadata {
       dt {
         min-width: 134px;
