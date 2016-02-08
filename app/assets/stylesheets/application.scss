@@ -20,10 +20,10 @@
 
   header {
     @extend %contain-floats;
-    padding: $gutter-half 0;
+    padding-bottom: $gutter-half;
 
-    @include media(tablet){
-      padding: $gutter-one-third 0 $gutter;
+    @include media(tablet) {
+      padding-bottom: $gutter;
     }
 
     .category {
