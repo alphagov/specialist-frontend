@@ -28,11 +28,6 @@
     // Use a wider dt width to accommodate longer
     // labels, eg "Date of occurrence:"
     .govuk-metadata {
-      // Temporary margin addition.
-      // Should be removed once this default margin has been
-      // added to the component itself.
-      margin-bottom: $gutter * 1.5;
-
       dt {
         min-width: 134px;
       }
