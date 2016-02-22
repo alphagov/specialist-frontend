@@ -15,7 +15,7 @@ describe SpecialistDocumentsHelper do
     it 'should return <time> tag that includes a datetime attribute which is the ISO8601 timestamp for the time provided' do
       html = helper.nice_date_format(@time)
       datetime = /<time[^>]+datetime=['"](.*?)['"]>/.match(html)[1]
-      datetime.should == Time.zone.parse(@time).iso8601
+      expect(datetime).to eql(Time.zone.parse(@time).iso8601)
     end
 
     it 'should return a html_safe string' do
@@ -31,7 +31,7 @@ describe SpecialistDocumentsHelper do
       timestamp = '2013-12-1T15:35:33+00:00'
 
       cleaned_timestamp = strip_tags(helper.nice_date_format(timestamp))
-      cleaned_timestamp.should == formatted_timestamp
+      expect(cleaned_timestamp).to eql(formatted_timestamp)
     end
 
   end

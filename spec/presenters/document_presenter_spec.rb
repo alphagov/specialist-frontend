@@ -218,7 +218,7 @@ describe DocumentPresenter do
       let(:document_published_at) { DateTime.new(2014, 4, 1) }
 
       specify do
-        subject.date_metadata.should eq({
+        expect(subject.date_metadata).to eql({
           "published" => {
             label: "Published",
             values: DateTime.new(2014, 4, 1),
