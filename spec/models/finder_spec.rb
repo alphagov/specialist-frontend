@@ -78,11 +78,11 @@ describe Finder do
     }
 
     it "formats the given keys and values by default" do
-      finder.user_friendly(document_attrs).should eq(attrs_with_expanded_keys_and_values)
+      expect(finder.user_friendly(document_attrs)).to eq(attrs_with_expanded_keys_and_values)
     end
 
     it "doesn't alter the values if disabled (used for things without 'allowed_values', like dates)" do
-      finder.user_friendly(document_attrs, change_values: false).should eq(attrs_with_expanded_keys)
+      expect(finder.user_friendly(document_attrs, change_values: false)).to eq(attrs_with_expanded_keys)
     end
 
     let(:bad_document_attrs) {

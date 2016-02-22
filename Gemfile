@@ -23,7 +23,7 @@ end
 group :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'webmock', '1.17.1'
-  gem 'rspec-rails', '2.99.0'
+  gem 'rspec-rails', '3.1.0'
   gem 'launchy'
   gem 'govuk-content-schema-test-helpers', '1.3.0'
 end
