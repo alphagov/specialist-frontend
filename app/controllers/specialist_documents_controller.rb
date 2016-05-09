@@ -3,9 +3,11 @@ require 'gds_api/helpers'
 class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
   rescue_from GdsApi::HTTPForbidden, with: :error_403
+  DEFAULT_CACHE_TIME = 10
 
   def show
     if (document = content_store.content_item(base_path)) && document.format != 'gone'
+      expires_in(cache_time(document), public: true)
       @document = document_presenter(finder, document)
     else
       error_not_found
@@ -21,6 +23,10 @@ private
     else
       DocumentPresenter.new(finder, document)
     end
+  end
+
+  def cache_time(document)
+    document['details']['max_cache_time'] || DEFAULT_CACHE_TIME
   end
 
   def finder
