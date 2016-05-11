@@ -7,6 +7,15 @@ describe SpecialistDocumentsController, type: :controller do
 
     get :show, path: "aaib-report/plane-took-off-by-mistake"
     expect(assigns["document"].title).to eq("The plane took off by mistake")
+    expect(response.cache_control[:max_age]).to eq(30)
+  end
+
+  it "gets item from content store without max cache time and sets default cache time" do
+    stub_specialist_document_without_max_cache_time
+    stub_finder
+
+    get :show, path: "aaib-report/plane-took-off-by-mistake"
+    expect(response.cache_control[:max_age]).to eq(10)
   end
 
   it "returns 404 for item not in content store" do
