@@ -1,5 +1,6 @@
 class DocumentPresenter
   include SpecialistDocumentsHelper
+  include Breadcrumbs
 
   delegate :title, :description, :details, :public_updated_at, to: :document
   delegate :body, to: :"document.details"
@@ -23,6 +24,10 @@ class DocumentPresenter
     else
       super
     end
+  end
+
+  def finder_name
+    finder.title
   end
 
   def format_name

@@ -6,6 +6,7 @@ describe Finder do
     let(:cma_cases_finder) {
       OpenStruct.new(
         base_path: '/cma-cases',
+        title: 'Competition and Markets Authority cases',
         details: OpenStruct.new(
           facets: [
             OpenStruct.new(

@@ -10,8 +10,8 @@
 <header>
   <div class="grid-row">
     <div class="column-two-thirds">
+      <%= render "shared/breadcrumbs" %>
       <%= render partial: 'govuk_component/title', locals: {
-        context: link_to(@document.format_name, @document.finder_path),
         title: @document.title,
         average_title_length: "long"
       } %>

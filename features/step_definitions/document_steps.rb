@@ -13,6 +13,7 @@ Then(/^I see the content of the Document$/) do
   check_metadata_value("Meal type", "Lunch")
   check_metadata_value("Food", "Steak")
   check_metadata_value("Location", "Moe's Tavern")
+  check_breadcrumb_value("GOV.UK Team meals", "/team-meals")
 end
 
 Given(/^a published Document with a major change exists$/) do
@@ -22,6 +23,7 @@ end
 Then(/^I see the content of the republished Document$/) do
   expect(page).to have_content("Product Gaps Team Lunch")
   check_metadata_value("Updated", "24 October 2014")
+  check_breadcrumb_value("GOV.UK Team meals", "/team-meals")
 end
 
 def slug_from_title(title)
