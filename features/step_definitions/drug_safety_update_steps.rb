@@ -11,6 +11,7 @@ Then(/^I see the content of the drug safety update$/) do
   expect(page).to have_content("Anaesthesia and intensive care")
   expect(page).to have_content("Cancer")
   expect(page).to have_content("24 October 2014")
+  check_breadcrumb_value("Drug Safety Update", "/drug-safety-update")
 end
 
 def drug_safety_update

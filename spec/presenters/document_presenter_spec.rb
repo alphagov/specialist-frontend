@@ -10,6 +10,7 @@ describe DocumentPresenter do
   let(:finder) {
     OpenStruct.new(
       base_path: "/finder",
+      title: "Finder documents",
       format_name: "Finder",
       facets: facets,
       date_facets: date_facets,
@@ -248,6 +249,22 @@ describe DocumentPresenter do
   describe "bulk_published" do
     it "returns the value of bulk_published" do
       expect(subject.bulk_published).to eq false
+    end
+  end
+
+  describe "breadcrumbs" do
+    it "returns the breadcrumbs for the document" do
+      breadcrumbs_array = [
+        {
+          "title": "Home",
+          "url": "/",
+        },
+        {
+          "title": "Finder documents",
+          "url": "/finder",
+        },
+      ]
+      expect(subject.breadcrumbs).to eq(breadcrumbs_array)
     end
   end
 end
