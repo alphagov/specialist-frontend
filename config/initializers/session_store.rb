@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-SpecialistFrontend::Application.config.session_store :cookie_store, key: '_specialist-frontend_session'
+Rails.application.config.session_store :cookie_store, key: '_specialist_frontend_session'

@@ -5,7 +5,7 @@ class SpecialistDocumentsController < ApplicationController
   rescue_from GdsApi::HTTPForbidden, with: :error_403
 
   def show
-    if (document = content_store.content_item(base_path)) && document.format != 'gone'
+    if (document = content_store.content_item(base_path)) && document['format'] != 'gone'
       expires_in(cache_time(document), public: true)
       @document = document_presenter(finder, document)
     else
@@ -16,7 +16,7 @@ class SpecialistDocumentsController < ApplicationController
 private
 
   def document_presenter(finder, document)
-    case document.format
+    case document['format']
     when "drug_safety_update"
       DrugSafetyUpdatePresenter.new(finder, document)
     else
