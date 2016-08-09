@@ -33,7 +33,7 @@ private
   end
 
   def error_not_found
-    render status: :not_found, text: "404 error not found"
+    render status: :not_found, plain: "404 error not found"
   end
 
   def base_path
@@ -41,6 +41,6 @@ private
   end
 
   def error_403(exception)
-    render text: exception.message, status: 403
+    render plain: exception.message, status: 403
   end
 end

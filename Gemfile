@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 5.0'
 if ENV['API_DEV']
   gem 'gds-api-adapters', :path => '../gds-api-adapters'
 else
@@ -23,16 +23,15 @@ end
 group :test do
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'webmock', '1.17.1'
-  gem 'rspec-rails', '3.4.0'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.0'
   gem 'launchy'
   gem 'govuk-content-schema-test-helpers', '1.3.0'
 end
 
-group :assets do
-  gem 'sass-rails', '~> 4.0.2'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'govuk_frontend_toolkit', '3.0.1'
-end
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'govuk_frontend_toolkit', '3.0.1'
 
 group :development, :test do
   gem 'pry'
