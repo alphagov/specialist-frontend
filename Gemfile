@@ -23,7 +23,7 @@ group :development do
 end
 
 group :test do
-  gem 'cucumber-rails', '1.4.0', require: false
+  gem 'cucumber-rails', require: false
   gem 'govuk-content-schema-test-helpers', '1.3.0'
   gem 'launchy'
   gem 'rails-controller-testing'
