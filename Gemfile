@@ -27,10 +27,10 @@ group :test do
   gem 'govuk-content-schema-test-helpers', '1.3.0'
   gem 'launchy'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 3.0'
   gem 'webmock'
 end
 
 group :development, :test do
   gem 'pry'
+  gem 'rspec-rails', '~> 3.0'
 end
