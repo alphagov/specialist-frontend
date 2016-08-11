@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Finder do
+RSpec.describe Finder do
 
   describe "#user_friendly" do
     let(:cma_cases_finder) {

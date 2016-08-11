@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpecialistDocumentsController, type: :controller do
+RSpec.describe SpecialistDocumentsController, type: :controller do
   it "gets item from content store" do
     stub_specialist_document
     stub_finder
