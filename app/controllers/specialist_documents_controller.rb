@@ -8,8 +8,9 @@ class SpecialistDocumentsController < ApplicationController
   def show
     document = content_store.content_item(base_path)
 
-    if document['format'] != 'gone'
+    if document
       expires_in(cache_time(document), public: true)
+      render_gone and return if gone?(document)
       @document = document_presenter(finder, document)
     else
       error_not_found
@@ -28,7 +29,8 @@ private
   end
 
   def cache_time(document)
-    document['details']['max_cache_time'] || DEFAULT_CACHE_TIME_IN_SECONDS
+    details = document['details'] || {}
+    details['max_cache_time'] || DEFAULT_CACHE_TIME_IN_SECONDS
   end
 
   def finder
@@ -45,5 +47,13 @@ private
 
   def error_403(exception)
     render plain: exception.message, status: 403
+  end
+
+  def render_gone
+    render text: "", status: 410
+  end
+
+  def gone?(document)
+    document['format'] == 'gone' || document['document_type'] == 'gone'
   end
 end

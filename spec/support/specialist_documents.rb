@@ -19,6 +19,14 @@ module SpecialistDocumentHelpers
     })
   end
 
+  def stub_unpublished_specialist_document(attributes = {})
+    base_path = "/aaib-report/plane-took-off-by-mistake"
+    content_store_has_item(base_path, {
+      base_path: base_path,
+      document_type: "gone",
+    }.merge(attributes))
+  end
+
   def stub_specialist_document_without_max_cache_time
     base_path = "/aaib-report/plane-took-off-by-mistake"
     content_store_has_item(base_path, {
