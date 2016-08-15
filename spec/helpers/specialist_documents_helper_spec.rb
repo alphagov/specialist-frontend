@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpecialistDocumentsHelper do
+RSpec.describe SpecialistDocumentsHelper do
   describe '#nice_date_format' do
 
     before :all do

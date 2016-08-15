@@ -1,7 +1,7 @@
 require "ostruct"
 require "spec_helper"
 
-describe DocumentPresenter do
+RSpec.describe DocumentPresenter do
 
   subject {
     DocumentPresenter.new(finder, document)

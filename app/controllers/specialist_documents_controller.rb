@@ -3,9 +3,12 @@ require 'gds_api/helpers'
 class SpecialistDocumentsController < ApplicationController
   include GdsApi::Helpers
   rescue_from GdsApi::HTTPForbidden, with: :error_403
+  rescue_from GdsApi::HTTPNotFound, with: :error_not_found
 
   def show
-    if (document = content_store.content_item(base_path)) && document['format'] != 'gone'
+    document = content_store.content_item(base_path)
+
+    if document['format'] != 'gone'
       expires_in(cache_time(document), public: true)
       @document = document_presenter(finder, document)
     else
@@ -33,7 +36,7 @@ private
   end
 
   def error_not_found
-    render status: :not_found, text: "404 error not found"
+    render status: :not_found, plain: "404 error not found"
   end
 
   def base_path
@@ -41,6 +44,6 @@ private
   end
 
   def error_403(exception)
-    render text: exception.message, status: 403
+    render plain: exception.message, status: 403
   end
 end
