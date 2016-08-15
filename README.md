@@ -23,15 +23,12 @@ Displays long form single page documents published via
 
 ## Dependencies
 
+* [alphagov/content-store]: provides the document to display.
 * [alphagov/static]: provides static assets (JS/CSS) and provides the GOV.UK
   templates.
-* [alphagov/content-store]: provides the finder schema used to convert metadata into
-  human-readable values.
-* [alphagov/govuk_content_api]: provides the document to display.
 
 [alphagov/static]: https://github.com/alphagov/static
 [alphagov/content-store]: https://github.com/alphagov/content-store
-[alphagov/govuk_content_api]: https://github.com/alphagov/govuk_content_api
 
 ## Running the application
 
