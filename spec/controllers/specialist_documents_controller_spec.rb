@@ -26,6 +26,22 @@ RSpec.describe SpecialistDocumentsController, type: :controller do
     expect(response.status).to eq(404)
   end
 
+  it "returns 410 for an item that exists, but has a format of 'gone'" do
+    stub_unpublished_specialist_document(format: "gone", document_type: nil)
+    stub_finder
+
+    get :show, path: "aaib-report/plane-took-off-by-mistake"
+    expect(response.status).to eq(410)
+  end
+
+  it "returns 410 for an item that exists, but has a document_type of 'gone'" do
+    stub_unpublished_specialist_document
+    stub_finder
+
+    get :show, path: "aaib-report/plane-took-off-by-mistake"
+    expect(response.status).to eq(410)
+  end
+
   it "returns 403 for access-limited item" do
     path = 'aaib-reports/super-sekrit-document'
     url = Plek.current.find('content-store') + "/content/" + path
