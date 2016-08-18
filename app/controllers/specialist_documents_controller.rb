@@ -8,7 +8,7 @@ class SpecialistDocumentsController < ApplicationController
   def show
     document = content_store.content_item(base_path)
 
-    if document['format'] != 'gone'
+    if document.schema_name != 'gone'
       expires_in(cache_time(document), public: true)
       @document = document_presenter(finder, document)
     else
@@ -19,7 +19,7 @@ class SpecialistDocumentsController < ApplicationController
 private
 
   def document_presenter(finder, document)
-    case document['format']
+    case document.document_type
     when "drug_safety_update"
       DrugSafetyUpdatePresenter.new(finder, document)
     else
