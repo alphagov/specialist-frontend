@@ -65,7 +65,9 @@ private
       }
 
     if value_label_pair.nil?
-      raise_value_not_found_error(facet_key, value)
+      err = ValueNotFoundError.new("#{facet_key} value '#{value}' not found in #{base_path} content item")
+      Airbrake.notify_or_ignore(err)
+      value
     else
       value_label_pair.label
     end
@@ -78,9 +80,4 @@ private
   def find_facet(facet_key)
     facets.find { |facet| facet.key == facet_key }
   end
-
-  def raise_value_not_found_error(facet_key, value)
-    raise ValueNotFoundError.new("#{facet_key} value '#{value}' not found in #{base_path} content item")
-  end
-
 end

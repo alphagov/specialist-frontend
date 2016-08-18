@@ -93,9 +93,9 @@ RSpec.describe Finder do
       }
     }
 
-    it "throws an error when given incorrect document attrs" do
-      expect { finder.user_friendly(bad_document_attrs) }.
-        to raise_error(Finder::ValueNotFoundError)
+    it "sends an error via Airbrake when given incorrect document attrs" do
+      expect(Airbrake).to receive(:notify_or_ignore).twice.with(Finder::ValueNotFoundError)
+      finder.user_friendly(bad_document_attrs)
     end
   end
 
