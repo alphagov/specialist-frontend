@@ -5,7 +5,7 @@ env
 function github_status {
   STATUS="$1"
   MESSAGE="$2"
-  gh-status alphagov/govuk-content-schemas "$SCHEMA_GIT_COMMIT" "$STATUS" -d "Build #${BUILD_NUMBER} ${MESSAGE}" -u "$BUILD_URL" -c "Specialist frontend contract tests" >/dev/null
+  gh-status alphagov/govuk-content-schemas "$SCHEMA_GIT_COMMIT" "$STATUS" -d "Build #${BUILD_NUMBER} ${MESSAGE}" -u "$BUILD_URL" -c "Verify specialist-frontend against content schemas" >/dev/null
 }
 
 function error_handler {
