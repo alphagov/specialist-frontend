@@ -1,4 +1,5 @@
 <% content_for :page_title, [@document.title, @document.format_name].join(' ') %>
+<% content_for :meta_description, @document.description %>
 <% if @document.beta? %>
   <% if @document.beta_message %>
     <%= render partial: 'govuk_component/beta_label', locals: { message: @document.beta_message } %>
