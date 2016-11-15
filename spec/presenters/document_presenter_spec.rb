@@ -267,4 +267,45 @@ RSpec.describe DocumentPresenter do
       expect(subject.breadcrumbs).to eq(breadcrumbs_array)
     end
   end
+
+  describe "organisations" do
+    let(:links) do
+      [
+        OpenStruct.new(content_id: SecureRandom.uuid),
+        OpenStruct.new(content_id: SecureRandom.uuid),
+      ]
+    end
+
+    context "when the finder has organisations links" do
+      before do
+        finder.links = OpenStruct.new(
+          organisations: links,
+        )
+      end
+
+      it "it returns the finder links" do
+        expect(subject.organisations).to be(finder.links.organisations)
+      end
+    end
+
+    context "when the finder has links but no organisations ones" do
+      before do
+        finder.links = OpenStruct.new(
+          different_links: links,
+        )
+      end
+
+      it "returns an empty array" do
+        expect(subject.organisations).to eq([])
+      end
+    end
+
+    context "when the finder has no links" do
+      before { finder.links = nil }
+
+      it "returns an empty array" do
+        expect(subject.organisations).to eq([])
+      end
+    end
+  end
 end

@@ -52,8 +52,8 @@ class DocumentPresenter
   end
 
   def organisations
-    if links = finder.links
-      links.organisations
+    if finder.links && finder.links.organisations
+      finder.links.organisations
     else
       []
     end
