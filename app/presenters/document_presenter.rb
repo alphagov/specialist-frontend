@@ -52,11 +52,7 @@ class DocumentPresenter
   end
 
   def organisations
-    if links = finder.links
-      links.organisations
-    else
-      []
-    end
+    finder.try(:links).try(:organisations) || []
   end
 
   def expanded_extra_date_metadata
