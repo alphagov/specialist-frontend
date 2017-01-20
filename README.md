@@ -30,11 +30,21 @@ Displays long form single page documents published via
 [alphagov/static]: https://github.com/alphagov/static
 [alphagov/content-store]: https://github.com/alphagov/content-store
 
-## Running the application
+### Running the application
 
 ```
-$ ./startup.sh
+./startup.sh
 ```
+
+The app should start on http://localhost:3065 or
+http://specialist-frontend.dev.gov.uk on GOV.UK development machines.
+
+```
+./startup.sh --live
+```
+
+This will run the app and point it at the production GOV.UK `content-store` and `static` instances.
+
 
 or you can run using bowler in the VM from cd /var/govuk/development/:
 
