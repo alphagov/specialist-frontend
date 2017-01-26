@@ -1,4 +1,4 @@
-# Specialist frontend
+# Specialist Frontend
 
 ## Purpose
 
