@@ -35,11 +35,11 @@
   </div>
 </header>
 <div class="grid-row">
-  <nav class="column-third sidebar">
-    <ol>
-      <%= render 'nav_item', headings: @document.headers %>
-    </ol>
-  </nav>
+  <div class="column-third">
+    <%= render partial: 'govuk_component/contents_list', locals: {
+      items: @document.contents_list_items
+    } %>
+  </div>
 
   <div class="column-two-thirds">
     <%= render partial: 'govuk_component/govspeak', locals: {

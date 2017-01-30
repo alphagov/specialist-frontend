@@ -47,8 +47,25 @@ class DocumentPresenter
     expanded_filterable_metadata + expanded_extra_metadata
   end
 
-  def headers
-    document.details.headers || []
+  def contents_list_items
+    Array(document.details.headers.map!{ |header|
+      map_contents_list_item(header)
+    }) || []
+  end
+
+  def map_contents_list_item(header)
+    # Backend should normalise header levels
+    header[:level] = header[:level] - 1 if header[:level].present?
+
+    # Backend should have generic items rather than headers?
+    if header[:headers].present?
+      header[:items] = header[:headers]
+      header[:items] = header[:items].map!{ |header|
+        map_contents_list_item(header)
+      }
+      header.delete_field('headers')
+    end
+    header
   end
 
   def organisations

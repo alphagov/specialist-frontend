@@ -41,48 +41,6 @@
     }
   }
 
-  .sidebar {
-    @include media(tablet){
-      padding-bottom: $gutter*2;
-    }
-
-    ol {
-      list-style: none;
-      @include core-16;
-      padding-bottom: $gutter;
-
-      ol {
-        padding-bottom:0;
-      }
-    }
-    a {
-      text-decoration: none;
-    }
-    li {
-      padding-top: 10px;
-      font-weight: bold;
-    }
-  }
-  .dash-list {
-    li {
-      list-style-position: inside;
-      padding-right: $gutter-half;
-      padding-top: 5px;
-      font-weight: normal;
-
-      @media (min-width: 1px ){ // target modern browsers
-        margin-left: $gutter-half;
-        list-style: none;
-        &:before {
-          content: "-";
-          position: relative;
-          float: left;
-          width: $gutter-half;
-          margin-left: $gutter-half*-1;
-        }
-      }
-    }
-  }
   footer {
     clear: both;
   }
