@@ -33,4 +33,6 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'govuk-lint'
+  gem 'ci_reporter_rspec'
 end
