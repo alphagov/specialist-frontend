@@ -1,11 +1,17 @@
+<% heading_level ||= 2 %>
 <% headings.each do |heading| %>
-   <li>
-     <a href='#<%= heading['id'] %>'><%= heading['text'] %></a>
-       <% if heading['headers'].present? %>
-         <ol class="dash-list">
-           <%= render 'nav_item', headings: heading['headers'] %>
-         </ol>
-       <% end %>
+  <li>
+    <a
+      href="#<%= heading['id']%>"
+      data-track-category="contentsClicked"
+      data-track-action="leftColumnH<%= heading_level %>"
+      data-track-label="<%= heading['id']%>">
+      <%= heading['text'] %>
+    </a>
+    <% if heading['headers'].present? %>
+      <ol class="dash-list">
+        <%= render 'nav_item', headings: heading['headers'], heading_level: heading_level + 1 %>
+      </ol>
+    <% end %>
    </li>
 <% end %>
-
