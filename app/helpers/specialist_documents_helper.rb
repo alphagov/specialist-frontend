@@ -31,4 +31,8 @@ module SpecialistDocumentsHelper
       hash.merge(value[:label] => nice_date_format(value[:values]))
     end
   end
+
+  def strip_trailing_colons(heading)
+    heading.gsub(/\:$/, '')
+  end
 end

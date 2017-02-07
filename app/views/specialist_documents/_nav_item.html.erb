@@ -6,7 +6,7 @@
       data-track-category="contentsClicked"
       data-track-action="leftColumnH<%= heading_level %>"
       data-track-label="<%= heading['id']%>">
-      <%= heading['text'] %>
+      <%= strip_trailing_colons(heading['text']) %>
     </a>
     <% if heading['headers'].present? %>
       <ol class="dash-list">
