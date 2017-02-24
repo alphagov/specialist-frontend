@@ -7,7 +7,7 @@ gem 'govuk_frontend_toolkit', '3.0.1'
 gem 'logstasher', '0.4.8'
 gem 'plek', '~> 1.11'
 gem 'sass-rails', '~> 5.0'
-gem 'slimmer', '~> 9.0'
+gem 'slimmer', github: 'alphagov/slimmer', branch: 'resolver-cache'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn', '4.8.1'
 
