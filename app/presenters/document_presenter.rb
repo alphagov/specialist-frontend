@@ -84,6 +84,14 @@ class DocumentPresenter
     document.details.metadata["bulk_published"]
   end
 
+  def continuation_link
+    document.details.metadata["continuation_link"]
+  end
+
+  def will_continue_on
+    document.details.metadata["will_continue_on"]
+  end
+
 private
 
   attr_reader :document, :finder
