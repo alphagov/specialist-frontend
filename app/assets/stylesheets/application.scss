@@ -4,8 +4,10 @@
 @import "shims";
 @import "typography";
 @import "css3";
+@import "design-patterns/buttons";
 
 @import "reset";
+@import "buttons";
 
 #wrapper {
 
@@ -39,6 +41,16 @@
         @include core-24;
       }
     }
+  }
+
+  // This is some text that appears below the "find out more" button to
+  // describe where the button leads to (for example, "on gov.uk").
+  .find-out-more-destination {
+    @include core-14;
+    color: $text-colour;
+    display: block;
+    margin-top: 0.5em;
+    max-width: 13em;
   }
 
   .sidebar {

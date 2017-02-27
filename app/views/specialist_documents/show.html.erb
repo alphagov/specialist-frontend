@@ -45,6 +45,10 @@
     <%= render partial: 'govuk_component/govspeak', locals: {
       content: @document.body.html_safe
     } %>
+    <% if @document.continuation_link %>
+      <a class="button button-start" href="<%= @document.continuation_link %>" role="button">Find out more</a>
+      <span class="find-out-more-destination"><%= @document.will_continue_on %></span>
+    <% end %>
   </div>
 </div>
 
