@@ -26,6 +26,10 @@ class DocumentPresenter
     end
   end
 
+  def content_item
+    document
+  end
+
   def finder_name
     finder.title
   end
