@@ -1,5 +1,7 @@
 # Specialist frontend
 
+**Specialist documents are now rendered by [government-frontend](https://github.com/alphagov/government-frontend). This application is being retired.**
+
 ## Purpose
 
 Displays long form single page documents published via
